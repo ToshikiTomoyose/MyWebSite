@@ -234,7 +234,7 @@
                                                 </div>
                                             </div>
                                         </form>
-                                        <li><a href="bbsguide_medium.html">掲示板一覧</a></li>
+                                        <li><a href="bbsguide_Medium">掲示板一覧</a></li>
                                         <li><a href="#logout">ログアウト</a></li>
                                     </ul>
                                 </ul>
@@ -259,9 +259,8 @@
 				<div class="row row-bottom-padded-md">
 					<div class="signin cf">
                         <h1>Login!</h1>
-					<% if () %>
-                        <p class="text-danger"><small>ログインIDまたはパスワードが異なります</small></p>
 
+                        <p class="text-danger"><small>${errMsg}</small></p>
                         <link href="https://code.ionicframework.com/ionicons/1.4.1/css/ionicons.min.css" rel="stylesheet" type="text/css"/>
                           <div class="avatar"></div>
                           <form action="Login" method= "post">
@@ -289,8 +288,8 @@
                         <div class="modal_window">
                             <h2>Logout</h2>
                             <p>ログアウトしますか？</p>
-                            <p>よろしければ<br />
-                            <a class="btn btn-success" href="logout.html">削除。</a> <br />
+                            <p>よろしければ<br/>
+                            <a class="btn btn-success" href="Logout">削除。</a> <br />
                             <p>そうでなければこのウィンドウを閉じる際は、ウィンドウ外をクリックするか、<br />
                             ×をクリック。</p>
                             <a href="#">【×】CLOSE</a>

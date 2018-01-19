@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -13,12 +14,12 @@
 	<meta name="keywords" content="free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />
 	<meta name="author" content="FreeHTML5.co" />
 
-  	<!-- 
+  	<!--
 	//////////////////////////////////////////////////////
 
-	FREE HTML5 TEMPLATE 
+	FREE HTML5 TEMPLATE
 	DESIGNED & DEVELOPED by FreeHTML5.co
-		
+
 	Website: 		http://freehtml5.co/
 	Email: 			info@freehtml5.co
 	Twitter: 		http://twitter.com/fh5co
@@ -42,7 +43,7 @@
 	<link rel="shortcut icon" href="favicon.ico">
 
 	<link rel="stylesheet" href="css/bootstrap.css" type="text/css">
-	
+
 	<!-- Animate.css -->
 	<link rel="stylesheet" href="css/animate.css">
 	<!-- Icomoon Icon Fonts-->
@@ -54,7 +55,7 @@
 	<link rel="stylesheet" href="css/flexslider.css">
 	<!-- Theme style  -->
 	<link rel="stylesheet" href="css/style.css">
-    
+
     <link rel="stylesheet" href="css/logout.css">
 
 	<!-- Modernizr JS -->
@@ -66,7 +67,7 @@
 
 	</head>
 	<body>
-        
+
       <!--  <div id="fb-root"></div>
             <script>(function(d, s, id) {
               var js, fjs = d.getElementsByTagName(s)[0];
@@ -81,20 +82,19 @@
                     <aside id="fh5co-aside" role="complementary" class="border js-fullheight">
 
                             <h1 id="fh5co-logo"><a href="index.html">TheBBS</a></h1>
-                        
-                            
+
 
                             <nav id="fh5co-main-menu" role="navigation">
                                 <ul>
                                     <ul>
-                                        <li><a href="login.html">ログイン</a></li>
+                                        <li><a href="Login">ログイン</a></li>
                                          <!-- ログイン済み（一般ユーザ） -->
-                                        <li><a href="userguide_up.html">おなまえ</a></li>
+                                        <li><a href="Userguide_up">おなまえ</a></li>
                                         <!--　管理者の場合 -->
-                                        <li><a href="ownermenu_bbs.html">管理者</a></li>
+                                        <li><a href="Ownermenu_bbs">管理者</a></li>
                                         <!-- 新規登録リンクはログインしたら消える -->
-                                        <li><a href="usercreate.html">アカウント新規登録</a></li>
-                                                              
+                                        <li><a href="Usercreate">アカウント新規登録</a></li>
+
                                         <form class="navbar-form navbar-left" role="search">
                                 <div class="form-group">
                                     <div class="form-group">
@@ -103,9 +103,9 @@
                                 </div>
                             </form>
                                     <!--    ログインしたらこの空白を加える
-                                        
+
                                         <li><p></p></li> -->
-                                        <li><a href="bbsguide_medium.html">掲示板一覧</a></li>
+                                        <li><a href="Bbsguide_medium">掲示板一覧</a></li>
                                         <li><a href="#logout">ログアウト</a></li>
                                     </ul>
                                 </ul>
@@ -118,13 +118,13 @@
                                         <li><a href="#"><i class="icon-instagram"></i></a></li>
                                         <li><a href="#">LINE</a></li>
                                     </ul> -->
-                                    
+
                                     <p><small>Designed <span>&copy; 2016 Blend Free HTML5. All Rights Reserved.<span>Designed by <a href="http://freehtml5.co/" target="_blank">FreeHTML5.co</a> </span> <span>Demo Images: <a href="https://unsplash.com/" target="_blank">Unsplash</a></span> <span>Free html5 templates Made by <a href="http://freehtml5.co/" target="_blank">freehtml5.co</a></span></span></small></p>
                                 </div>
 
                     </aside>
             </div>
-         
+
 		<div id="fh5co-main">
 			<aside id="fh5co-hero" class="js-fullheight">
 				<div class="flexslider js-fullheight">
@@ -138,9 +138,9 @@
 					   					<h1>アツいやつな掲示板！</h1>
 											<p>
                                                 <a href="#smoothplay" class="btn btn-danger btn-demo popup-vimeo"><i class="icon-monitor"></i>とりあえず何か観る</a>
-                                                <a class="btn btn-success btn-demo popup-vimeo" href="bbsguide_medium.html"> <i class="icon-monitor"></i>　いろいろ観る</a> 
+                                                <a class="btn btn-success btn-demo popup-vimeo" href="Bbsguide_medium"> <i class="icon-monitor"></i>　いろいろ観る</a>
                                             </p>
-                                            <a class="btn btn-primary btn-learn btn-block" href="usercreate.html">登録して参加したい！<i class="icon-arrow-right3"></i></a>
+                                            <a class="btn btn-primary btn-learn btn-block" href="Usercreate">登録して参加したい！<i class="icon-arrow-right3"></i></a>
 					   				</div>
 					   			</div>
 					   		</div>
@@ -156,9 +156,9 @@
 											<h2>なので気軽に記事が読める！</h2>
 											<p>
                                                 <a href="#smoothplay" class="btn btn-danger btn-demo popup-vimeo"><i class="icon-monitor"></i>てきとうに観る</a>
-                                                <a class="btn btn-success btn-demo popup-vimeo" href="bbsguide_medium.html"> <i class="icon-monitor"></i>　どんなのか観る</a> 
+                                                <a class="btn btn-success btn-demo popup-vimeo" href="bbsguide_medium.html"> <i class="icon-monitor"></i>　どんなのか観る</a>
                                             </p>
-                                            <a class="btn btn-primary btn-learn btn-block">自分も参加したい！<i class="icon-arrow-right3"></i></a>
+                                            <a class="btn btn-primary btn-learn btn-block" href="Usercreate">自分も参加したい！<i class="icon-arrow-right3"></i></a>
 					   				</div>
 					   			</div>
 					   		</div>
@@ -219,7 +219,7 @@
 				</div>
 			</div>
 
-			
+
 <div id="contents">
 <div id="modal">
 <div id="logout">
@@ -228,17 +228,17 @@
 <h2>Logout</h2>
 <p>ログアウトしますか？</p>
 <p>よろしければ<br />
-<a class="btn btn-success" href="logout.html">ログアウト</a> <br />
+<a class="btn btn-success" href="Logout">ログアウト</a> <br />
 <p>そうでなければこのウィンドウを閉じる際は、ウィンドウ外をクリックするか、<br />
 ×をクリック。</p>
 <a href="#">【×】CLOSE</a>
 </div><!--/.modal_window-->
 </div><!--/#open01-->
 </div>
-</div>  
-            
+</div>
+
         </div>
-   
+
 	<!-- jQuery -->
 	<script src="js/jquery.min.js"></script>
 	<!-- jQuery Easing -->
@@ -249,8 +249,8 @@
 	<script src="js/jquery.waypoints.min.js"></script>
 	<!-- Flexslider -->
 	<script src="js/jquery.flexslider-min.js"></script>
-	
-	
+
+
 	<!-- MAIN JS -->
 	<script src="js/main.js"></script>
 
