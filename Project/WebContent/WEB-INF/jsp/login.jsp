@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
-
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -219,7 +218,7 @@
                 <a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
                     <aside id="fh5co-aside" role="complementary" class="border js-fullheight">
 
-                            <h1 id="fh5co-logo"><a href="index.html">TheBBS</a></h1>
+                            <h1 id="fh5co-logo"><a href="Index">TheBBS</a></h1>
 
                             <nav id="fh5co-main-menu" role="navigation">
                                 <ul>
@@ -260,7 +259,7 @@
 					<div class="signin cf">
                         <h1>Login!</h1>
 
-                        <p class="text-danger"><small>${errMsg}</small></p>
+                        <p class="text-danger"><small><%= request.getAttribute("errMsg") %></small></p>
                         <link href="https://code.ionicframework.com/ionicons/1.4.1/css/ionicons.min.css" rel="stylesheet" type="text/css"/>
                           <div class="avatar"></div>
                           <form action="Login" method= "post">
