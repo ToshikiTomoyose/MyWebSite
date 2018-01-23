@@ -78,8 +78,26 @@
                             <nav id="fh5co-main-menu" role="navigation">
                             <%Userbean u =(Userbean)session.getAttribute("ub"); %>
 
+							<% if (u ==  null) { %>
+								<ul>
+                                   	<ul>
+										<li><a href="Login">ログイン</a></li>
+                                        <li><a href="Usercreate">アカウント新規登録</a></li>
+                                        <form class="navbar-form navbar-left" role="search">
+			                                <div class="form-group">
+			                                    <div class="form-group">
+			                                        <input type="text" class="form-control" placeholder="検索">
+			                                    </div>
+			                                </div>
+			                            </form>
+                                    <!--    ログインしたらこの空白を加える
+                                        <li><p></p></li> -->
+                                        <li><a href="Bbsguide_medium">掲示板一覧</a></li>
 
-                            	<% if ( u.getUser_id() == (1) )  { %>
+                                       </ul>
+                               	</ul>
+
+                            	<%} else if ( u.getUser_id() == (1) )  { %>
                                 <ul>
                                     <ul>
                                     	<!--　管理者の場合 -->
@@ -113,30 +131,8 @@
 		                                        <li><a href="#logout">ログアウト</a></li>
 	                                        </ul>
 	                                	</ul>
-                                	<% } else if(u == null) { %>
-	                                	<ul>
-	                                    	<ul>
-												<li><a href="Login">ログイン</a></li>
-		                                         <!-- ログイン済み（一般ユーザ） -->
-		                                        <li><a href="Userguide_up">おなまえ</a></li>
-		                                        <!--　管理者の場合 -->
-		                                        <li><a href="Ownermenu_bbs">管理者</a></li>
-		                                        <!-- 新規登録リンクはログインしたら消える -->
-		                                        <li><a href="Usercreate">アカウント新規登録</a></li>
-		                                        <form class="navbar-form navbar-left" role="search">
-					                                <div class="form-group">
-					                                    <div class="form-group">
-					                                        <input type="text" class="form-control" placeholder="検索">
-					                                    </div>
-					                                </div>
-					                            </form>
-		                                    <!--    ログインしたらこの空白を加える
-		                                        <li><p></p></li> -->
-		                                        <li><a href="Bbsguide_medium">掲示板一覧</a></li>
-		                                        <li><a href="#logout">ログアウト</a></li>
-	                                        </ul>
-	                                	</ul>
-	                                <% } %>
+                                		<% } %>
+
                             </nav>
 
                                 <div class="fh5co-footer">
@@ -247,7 +243,7 @@
 				</div>
 			</div>
 
-
+<--
 <div id="contents">
 <div id="modal">
 <div id="logout">
@@ -263,7 +259,7 @@
 </div><!--/.modal_window-->
 </div><!--/#open01-->
 </div>
-</div>
+</div> -->
 
         </div>
 
