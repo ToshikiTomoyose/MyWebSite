@@ -78,9 +78,13 @@ public class userDAO {
 
 	                String logid = rs.getString("login_id");
 	                String logpass = rs.getString("password");
+	                int userid = rs.getInt("id");
+	                String logname = rs.getString("name");
 
 	                userbean.setLogin_id(logid);
 	                userbean.setPassword(logpass);
+	                userbean.setUser_id(userid);
+	                userbean.setName(logname);
 
 	                return userbean;
 	            }

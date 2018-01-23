@@ -234,7 +234,7 @@
                                             </div>
                                         </form>
                                         <li><a href="bbsguide_Medium">掲示板一覧</a></li>
-                                        <li><a href="#logout">ログアウト</a></li>
+
                                     </ul>
                                 </ul>
                             </nav>
@@ -258,8 +258,7 @@
 				<div class="row row-bottom-padded-md">
 					<div class="signin cf">
                         <h1>Login!</h1>
-
-                        <p class="text-danger"><small><%= request.getAttribute("errMsg") %></small></p>
+                        <p class="text-danger"><small>${errMsg}</small></p>
                         <link href="https://code.ionicframework.com/ionicons/1.4.1/css/ionicons.min.css" rel="stylesheet" type="text/css"/>
                           <div class="avatar"></div>
                           <form action="Login" method= "post">
@@ -279,23 +278,6 @@
 			</div>
 		</div>
 
-
-        <div id="contents">
-                <div id="modal">
-                    <div id="logout">
-                        <a href="#" class="close_overlay">×</a>
-                        <div class="modal_window">
-                            <h2>Logout</h2>
-                            <p>ログアウトしますか？</p>
-                            <p>よろしければ<br/>
-                            <a class="btn btn-success" href="Logout">削除。</a> <br />
-                            <p>そうでなければこのウィンドウを閉じる際は、ウィンドウ外をクリックするか、<br />
-                            ×をクリック。</p>
-                            <a href="#">【×】CLOSE</a>
-                        </div><!--/.modal_window-->
-                    </div><!--/#open01-->
-                </div>
-             </div>
 
 	<!-- jQuery -->
 	<script src="js/jquery.min.js"></script>
