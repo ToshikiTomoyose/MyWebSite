@@ -77,7 +77,6 @@
 
                             <nav id="fh5co-main-menu" role="navigation">
                             <%Userbean u =(Userbean)session.getAttribute("ub"); %>
-
 							<% if (u ==  null) { %>
 								<ul>
                                    	<ul>
@@ -90,11 +89,10 @@
 			                                    </div>
 			                                </div>
 			                            </form>
-                                    <!--    ログインしたらこの空白を加える
-                                        <li><p></p></li> -->
+                                        <li><p></p></li>
                                         <li><a href="Bbsguide_medium">掲示板一覧</a></li>
 
-                                       </ul>
+                                      </ul>
                                	</ul>
 
                             	<%} else if ( u.getUser_id() == (1) )  { %>
@@ -243,7 +241,7 @@
 				</div>
 			</div>
 
-<--
+
 <div id="contents">
 <div id="modal">
 <div id="logout">
@@ -259,7 +257,7 @@
 </div><!--/.modal_window-->
 </div><!--/#open01-->
 </div>
-</div> -->
+</div>
 
         </div>
 
