@@ -80,12 +80,13 @@ public class userDAO {
 	                String logpass = rs.getString("password");
 	                int userid = rs.getInt("id");
 	                String logname = rs.getString("name");
+	                String profilephoto = rs.getString("profile_photo");
 
 	                userbean.setLogin_id(logid);
 	                userbean.setPassword(logpass);
 	                userbean.setUser_id(userid);
 	                userbean.setName(logname);
-
+	                userbean.setProfile_photo(profilephoto);
 	                return userbean;
 	            }
 	        } catch (SQLException e) {
@@ -104,6 +105,42 @@ public class userDAO {
 	        }
 	        return null;
 	}
+
+		public void Usercreate(String clogid, String cname, int cbirthd, String profile_picture, int createdate, int updatedate, String pass, String tweet, int report_flag) {
+	        Connection conn = null;
+	        try {
+	            // データベースへ接続
+	        	conn = DBManager.getConnection();
+	            // INSERT文を準備
+	            String sql = "INSERT INTO usermanagement (login_id, name, birth_date, profile_photo, create_date, update_date, password, usertweet, report_flag) VALUES (?, ?, ?, ?, now(),now(),?,?)";
+
+	         // SELECTを実行し、結果表を取得
+	            PreparedStatement pStmt = conn.prepareStatement(sql);
+	            pStmt.setString(1, clogid);
+	            pStmt.setString(2, cname);
+	            pStmt.setInt(3, cbirthd);
+	            pStmt.setString(4, profile_picture);
+	            pStmt.setString(7, pass);
+	            pStmt.setString(8, tweet);
+	            pStmt.setInt(9, report_flag);
+
+	            int rs = pStmt.executeUpdate();
+
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        } finally {
+
+	            // データベース切断
+	            if (conn != null) {
+	                try {
+	                    conn.close();
+	                } catch (SQLException e) {
+	                    e.printStackTrace();
+
+	                }
+	            }
+	        }
+	  }
 
 
 }

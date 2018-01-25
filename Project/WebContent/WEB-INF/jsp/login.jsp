@@ -270,7 +270,7 @@
                               <input type="password" id="pass" name="pass" placeholder="パスワード"/>
                               <label class="ion-locked" for="pass"></label>
                             </div>
-                              <p><small>アカウントを持ってない場合は<a href="usercreate.html">新規作成</a>。</small></p>
+                              <p><small>アカウントを持ってない場合は<a href="Usercreate">新規作成</a>。</small></p>
                             <input type="submit" value="Login"/>
                           </form>
                      </div>

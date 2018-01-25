@@ -95,62 +95,64 @@
 
 		<div id="fh5co-main">
             <div class="fh5co-narrow-content">
+            <form class="form-horizontal">
                 <h2 class="animate-box" data-animate-effect="fadeInLeft"><strong>アカウント新規作成</strong></h2>
                 <div class="row row-bottom-padded-md">
-                     <div class="col-lg-6">
+                     <div class="col-lg-8">
                         <div class="well bs-component">
                             <p class="text-danger">${ errMsg }</p>
-                          <form class="form-horizontal">
+
                             <fieldset>
                               <div class="form-group">
                                 <label for="inputLoginID" class="col-lg-2 control-label">ログインID</label>
                                 <div class="col-lg-10">
-                                  <input type="text" class="form-control" id="logid" name="logid" placeholder="ID入力して下さい">
+                                  <input type="text" class="form-control" id="logid" name="clogid" placeholder="ID入力して下さい">
                                 </div>
                               </div>
                             <div class="form-group">
                                 <label for="inputname" class="col-lg-2 control-label">ユーザ名</label>
                                 <div class="col-lg-10">
-                                    <input type="text" class="form-control" id="input" name="username" placeholder="ユーザ名を記入してね">
+                                    <input type="text" class="form-control" id="input" name="cusername" placeholder="ユーザ名を記入してね">
                                 </div>
                             </div>
                               <div class="form-group">
                                 <label for="inputPassword" class="col-lg-2 control-label">パスワード</label>
                                 <div class="col-lg-10">
-                                  <input type="text" class="form-control" id="inputPassword" placeholder="Password">
+                                  <input type="text" class="form-control" id="inputPassword" name="cpassword" placeholder="Password">
                                 </div>
                               </div>
                                  <div class="form-group">
                                     <label for="inputPassword" class="col-lg-2 control-label">パスワード（確認）</label>
                                     <div class="col-lg-10">
-                                      <input type="password" class="form-control" id="inputPassword" placeholder="Password（確認）">
+                                      <input type="password" class="form-control" id="inputPassword" name="conpass" placeholder="Password（確認）">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="inputname" class="col-lg-2 control-label">生年月日</label>
                                     <div class="col-lg-10">
-                                        <input type="date" class="form-control" id="date" name="birthdate" placeholder="生年月日を入力して下さい">
+                                        <input type="date" class="form-control" id="date" name="cbirthdate" placeholder="生年月日を入力して下さい">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <input type="hidden" id="createdate" name="createdate">
+                                    <input type="hidden" id ="updatedate" name="cupdatedate">
                                 </div>
                                 <div class="form-group">
-                                    <label for="textArea" class="col-lg-2 control-label">ひとこと（任意）</label>
+                                    <label for="textArea" class="col-lg-2 control-label">ひとこと<br>（任意）</label>
                                     <div class="col-lg-10">
-                                      <input type="text" class="form-control" id="textArea"　name="jibun">
+                                      <input type="text" class="form-control" id="textArea" name="ctweet">
                                       <span class="help-block">公序良俗に反しなければなんでも書いていいよ。</span>
                                     </div>
                                 </div>
                                <div class="form-group">
-                                  <label for="textArea" class="col-lg-2 control-label">プロフィール画像（任意）</label>
+                                  <label for="textArea" class="col-lg-2 control-label">プロフィール画像<br>（任意）</label>
                                 <div class="col-lg-10">
-                                  <input type="file" value="image(oops.jpg)" name="picture">
+                                  <input type="file" value="image(oops.jpg)" id ="profile_picture" name="cprofpic">
                                 </div>
-                                   <input type="hidden" name="createtime">
+                                   <input type="hidden" id ="updatedate" name="cupdatedate">
+                                   <input type="hidden" id ="report_flag" name="creportfg">
                               </div>
                             </fieldset>
-                          </form>
+
                         </div>
                       </div>
 
@@ -161,17 +163,16 @@
 
                                 <div class="row">
                                    <div class="col-md-6 col-md-offset-3 col-md-pull-3 animate-box" data-animate-effect="fadeInLeft">
-                                       <form>
-                                      <p><button type="submit" class="btn btn-primary">確定。</button>
-                                           </p>
-                                       </form>
+
+                                     	<p><button type="submit" class="btn btn-primary">確定。</button></p>
+
                                     </div>
                                 </div>
                            </div>
                         </div>
                     </div>
                 </div>
-
+						</form>
                     </div>
                 </div>
         </div>
