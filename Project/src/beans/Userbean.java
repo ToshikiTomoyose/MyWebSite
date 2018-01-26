@@ -14,7 +14,6 @@ public class Userbean implements Serializable {
 	private String user_tweet;
 	private int report_flag;
 
-
 	public Userbean () {}
 
 	public Userbean (int user_id,String login_id,String name,int birth_date, String profile_photo, int user_createdate,int user_updatedate, String password, String user_tweet, int report_flag) {

@@ -7,7 +7,7 @@
 }
 /* =======================================================
 *
-* 	Template Style 
+* 	Template Style
 *	Edit this section
 *
 * ======================================================= */
@@ -211,7 +211,7 @@ figure figcaption {
   transform: scaleX(1);
 }
 #fh5co-aside .fh5co-footer {
-  position: absolute;
+  position: static;
   bottom: 40px;
   font-size: 14px;
   text-align: center;
@@ -283,7 +283,7 @@ figure figcaption {
 
 #fh5co-hero {
   min-height: 500px;
-  
+
   width: 100%;
   float: left;
   clear: both;

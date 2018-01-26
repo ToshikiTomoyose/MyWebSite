@@ -95,17 +95,18 @@
 
 		<div id="fh5co-main">
             <div class="fh5co-narrow-content">
-            <form class="form-horizontal">
+            <form class="form-horizontal" action = "Usercreate">
                 <h2 class="animate-box" data-animate-effect="fadeInLeft"><strong>アカウント新規作成</strong></h2>
                 <div class="row row-bottom-padded-md">
                      <div class="col-lg-8">
                         <div class="well bs-component">
-                            <p class="text-danger">${ errMsg }</p>
+                            <p class="text-danger">${errMsg}</p>
 
                             <fieldset>
                               <div class="form-group">
                                 <label for="inputLoginID" class="col-lg-2 control-label">ログインID</label>
                                 <div class="col-lg-10">
+                                  <input type="hidden" id ="userid" name="cid">
                                   <input type="text" class="form-control" id="logid" name="clogid" placeholder="ID入力して下さい">
                                 </div>
                               </div>
@@ -156,8 +157,6 @@
                         </div>
                       </div>
 
-                    <div class="fh5co-narrow-content-center">
-                        <div class="row">
                             <div class="col-md-4 animate-box" data-animate-effect="fadeInLeft">
                                 <h1 class="fh5co-heading-colored">準備できたら</h1>
 
@@ -169,12 +168,11 @@
                                     </div>
                                 </div>
                            </div>
-                        </div>
-                    </div>
+
                 </div>
-						</form>
-                    </div>
-                </div>
+			</form>
+                 </div>
+             </div>
         </div>
 	<!-- jQuery -->
 	<script src="js/jquery.min.js"></script>
