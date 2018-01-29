@@ -75,18 +75,25 @@ public class userDAO {
 	            ResultSet rs = pStmt.executeQuery();
 
 	            while (rs.next()) {
-
 	                String logid = rs.getString("login_id");
 	                String logpass = rs.getString("password");
 	                int userid = rs.getInt("id");
 	                String logname = rs.getString("name");
 	                String profilephoto = rs.getString("profile_photo");
+	                int lbirthdy = rs.getInt("birth_date");
+	                String lprofphoto = rs.getString("profile_photo");
+	                int lcreatedate = rs.getInt("create_date");
+	                int lupdate = rs.getInt("update_date");
+	                String lpass = rs.getString("password");
+	                String lusetweet = rs.getString("user_tweet");
+	                int lreportflag = rs.getInt("report_flag");
 
 	                userbean.setLogin_id(logid);
 	                userbean.setPassword(logpass);
 	                userbean.setUser_id(userid);
 	                userbean.setName(logname);
 	                userbean.setProfile_photo(profilephoto);
+	                userbean.
 	                return userbean;
 	            }
 	        } catch (SQLException e) {
@@ -112,7 +119,7 @@ public class userDAO {
 	            // データベースへ接続
 	        	conn = DBManager.getConnection();
 	            // INSERT文を準備
-	            String sql = "INSERT INTO usermanagement (login_id, name, birth_date, profile_photo, create_date, update_date, password, usertweet, report_flag) VALUES (?, ?, ?, ?, now(),now(),?,?)";
+	            String sql = "INSERT INTO bbs_user (login_id, name, birth_date, profile_photo, create_date, update_date, password, usertweet, report_flag) VALUES (?, ?, ?, ?, now(),now(),?,?,?)";
 
 	         // SELECTを実行し、結果表を取得
 	            PreparedStatement pStmt = conn.prepareStatement(sql);
@@ -124,7 +131,7 @@ public class userDAO {
 	            pStmt.setString(8, tweet);
 	            pStmt.setInt(9, report_flag);
 
-	            int rs = pStmt.executeUpdate();
+	            int rs = pStmt.executeUpdate(sql);
 
 	        } catch (SQLException e) {
 	            e.printStackTrace();

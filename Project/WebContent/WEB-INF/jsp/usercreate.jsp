@@ -75,7 +75,7 @@
                             <ul>
                                 <li><a href="Login">ログイン</a></li>
                                 <li class="fh5co-active"><a href="Usercreate">アカウント新規登録</a></li>
-                                <form class="navbar-form navbar-left" role="search">
+                                <form class="navbar-form navbar-left" role="Usercreate">
                                        <div class="form-group">
                                             <div class="form-group">
                                             <input type="text" class="form-control" placeholder="検索">
@@ -95,18 +95,19 @@
 
 		<div id="fh5co-main">
             <div class="fh5co-narrow-content">
-            <form class="form-horizontal" action = "Usercreate">
+            <form class="form-horizontal" action = "Index" method="post">
                 <h2 class="animate-box" data-animate-effect="fadeInLeft"><strong>アカウント新規作成</strong></h2>
                 <div class="row row-bottom-padded-md">
                      <div class="col-lg-8">
                         <div class="well bs-component">
-                            <p class="text-danger">${errMsg}</p>
 
                             <fieldset>
                               <div class="form-group">
+                              <p class="text-danger">${errMsg}</p>
+                              <p class="text-danger">${errmsg}</p>
                                 <label for="inputLoginID" class="col-lg-2 control-label">ログインID</label>
                                 <div class="col-lg-10">
-                                  <input type="hidden" id ="userid" name="cid">
+									<input type="hidden" id ="userid" name="cid">
                                   <input type="text" class="form-control" id="logid" name="clogid" placeholder="ID入力して下さい">
                                 </div>
                               </div>
@@ -119,7 +120,7 @@
                               <div class="form-group">
                                 <label for="inputPassword" class="col-lg-2 control-label">パスワード</label>
                                 <div class="col-lg-10">
-                                  <input type="text" class="form-control" id="inputPassword" name="cpassword" placeholder="Password">
+                                  <input type="password" class="form-control" id="inputPassword" name="cpassword" placeholder="Password">
                                 </div>
                               </div>
                                  <div class="form-group">
