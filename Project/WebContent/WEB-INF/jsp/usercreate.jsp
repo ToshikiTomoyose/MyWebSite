@@ -75,7 +75,7 @@
                             <ul>
                                 <li><a href="Login">ログイン</a></li>
                                 <li class="fh5co-active"><a href="Usercreate">アカウント新規登録</a></li>
-                                <form class="navbar-form navbar-left" role="Usercreate">
+                                <form class="navbar-form navbar-left" role="Serch">
                                        <div class="form-group">
                                             <div class="form-group">
                                             <input type="text" class="form-control" placeholder="検索">
@@ -95,7 +95,7 @@
 
 		<div id="fh5co-main">
             <div class="fh5co-narrow-content">
-            <form class="form-horizontal" action = "Index" method="post">
+            <form class="form-horizontal" action = "Usercreate" method="post">
                 <h2 class="animate-box" data-animate-effect="fadeInLeft"><strong>アカウント新規作成</strong></h2>
                 <div class="row row-bottom-padded-md">
                      <div class="col-lg-8">
@@ -150,8 +150,6 @@
                                 <div class="col-lg-10">
                                   <input type="file" value="image(oops.jpg)" id ="profile_picture" name="cprofpic">
                                 </div>
-                                   <input type="hidden" id ="updatedate" name="cupdatedate">
-                                   <input type="hidden" id ="report_flag" name="creportfg">
                               </div>
                             </fieldset>
 

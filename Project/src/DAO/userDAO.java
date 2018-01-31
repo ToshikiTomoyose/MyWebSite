@@ -30,7 +30,7 @@ public class userDAO {
 	                    int id = rs.getInt("id");
 	                    String logid = rs.getString("login_id");
 	                    String name = rs.getString("name");
-	                    int birthdy = rs.getInt("birth_date");
+	                    String birthdy = rs.getString("birth_date");
 	                    String profphoto = rs.getString("profile_photo");
 	                    int createdy = rs.getInt("create_date");
 	                    int updatedy = rs.getInt("update_date");
@@ -80,11 +80,9 @@ public class userDAO {
 	                int userid = rs.getInt("id");
 	                String logname = rs.getString("name");
 	                String profilephoto = rs.getString("profile_photo");
-	                int lbirthdy = rs.getInt("birth_date");
-	                String lprofphoto = rs.getString("profile_photo");
+	                String lbirthdy = rs.getString("birth_date");
 	                int lcreatedate = rs.getInt("create_date");
 	                int lupdate = rs.getInt("update_date");
-	                String lpass = rs.getString("password");
 	                String lusetweet = rs.getString("user_tweet");
 	                int lreportflag = rs.getInt("report_flag");
 
@@ -93,7 +91,14 @@ public class userDAO {
 	                userbean.setUser_id(userid);
 	                userbean.setName(logname);
 	                userbean.setProfile_photo(profilephoto);
-	                userbean.
+	                userbean.setBirth_date(lbirthdy);
+	                userbean.setUser_createdate(lcreatedate);
+	                userbean.setUser_id(userid);
+	                userbean.setUser_updatedate(lupdate);
+	                userbean.setUser_tweet(lusetweet);
+	                userbean.setReport_flag(lreportflag);
+
+
 	                return userbean;
 	            }
 	        } catch (SQLException e) {
@@ -113,25 +118,25 @@ public class userDAO {
 	        return null;
 	}
 
-		public void Usercreate(String clogid, String cname, int cbirthd, String profile_picture, int createdate, int updatedate, String pass, String tweet, int report_flag) {
+		public void Usercreate(String clogid, String cname, String cbirthd, String profile_picture, String pass, String tweet) {
 	        Connection conn = null;
 	        try {
 	            // データベースへ接続
 	        	conn = DBManager.getConnection();
 	            // INSERT文を準備
-	            String sql = "INSERT INTO bbs_user (login_id, name, birth_date, profile_photo, create_date, update_date, password, usertweet, report_flag) VALUES (?, ?, ?, ?, now(),now(),?,?,?)";
+	            String sql = "INSERT INTO bbs_user ( login_id , name , birth_date , profile_photo , create_date , update_date , password , user_tweet , report_flag ) VALUES (?,?,?,?,now(),now(),?, ? ,0)";
 
 	         // SELECTを実行し、結果表を取得
 	            PreparedStatement pStmt = conn.prepareStatement(sql);
 	            pStmt.setString(1, clogid);
 	            pStmt.setString(2, cname);
-	            pStmt.setInt(3, cbirthd);
+	            pStmt.setString(3, cbirthd);
 	            pStmt.setString(4, profile_picture);
-	            pStmt.setString(7, pass);
-	            pStmt.setString(8, tweet);
-	            pStmt.setInt(9, report_flag);
+	            pStmt.setString(5, pass);
+	            pStmt.setString(6, tweet);
 
-	            int rs = pStmt.executeUpdate(sql);
+	            int rs = pStmt.executeUpdate();
+	            System.out.println(rs);
 
 	        } catch (SQLException e) {
 	            e.printStackTrace();
@@ -147,7 +152,27 @@ public class userDAO {
 	                }
 	            }
 	        }
-	  }
+		}
+
+
+//	   	 public String convertPass(String pass) {
+//			 //ハッシュ生成前にバイト配列に置き換える際のCharset
+//			 Charset charset = StandardCharsets.UTF_8;
+//			 //ハッシュアルゴリズム
+//			 String algorithm = "MD5";
+//
+//			 //ハッシュ生成処理
+//			 byte[] bytes = {};
+//			try {
+//				bytes = MessageDigest.getInstance(algorithm).digest(pass.getBytes(charset));
+//			} catch (NoSuchAlgorithmException e) {
+//				// TODO 自動生成された catch ブロック
+//				e.printStackTrace();
+//			}
+//			 String result = DatatypeConverter.printHexBinary(bytes);
+//			 //標準出力
+//			return result;
+//	 }
 
 
 }

@@ -42,47 +42,33 @@ public class Usercreate extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("UTF-8");
-		String id = request.getParameter("cid");
 		String logid = request.getParameter("clogid");
 		String name = request.getParameter("cusername");
 		String birthdate = request.getParameter("cbirthdate");
 		String pass = request.getParameter("cpassword");
-		String conpass = request.getParameter("conpass");
-		String createdate = request.getParameter("ccreatedate");
-		String updatedate = request.getParameter("cupdatedate");
+//		String conpass = request.getParameter("conpass");
 		String usertweet = request.getParameter("ctweet");
 		String profile_picture = request.getParameter("cprogpic");
-		String report_flag = request.getParameter("creportfg");
 
-//		int gid = Integer.parseInt(id);
-//		int gbirthdate = Integer.parseInt(birthdate);
-//		int greport_flag = Integer.parseInt(report_flag);
-//		int gcreatedate = Integer.parseInt(createdate);
-//		int gupdatedate = Integer.parseInt(updatedate);
+		userDAO dao = new userDAO();
+		dao.Usercreate(logid, name, birthdate, profile_picture, pass, usertweet);
+		response.sendRedirect("Index");
 
-
-			if (pass.equals(conpass)) {
-//					Userbean ub = new Userbean(id,logid, name, birthdate, profile_picture, createdate, updatedate, pass, usertweet, report_flag);
-//					request.setAttribute("ub",ub);
-					userDAO dao = new userDAO();
-					dao.Usercreate(logid, name, birthdate, profile_picture, createdate, updatedate, pass, usertweet, report_flag);
-					RequestDispatcher dispatcher =
-					request.getRequestDispatcher("/WEB-INF/jsp/index.jsp");
-					dispatcher.forward(request, response);
-
-				} else if (pass != conpass) {
-					String nullmsg = "パスワード！";
-					request.setAttribute("Errmsg", nullmsg);
-					RequestDispatcher dispatcher =
-					request.getRequestDispatcher("/WEB-INF/jsp/usercreate.jsp");
-					response.sendRedirect("Usercreate");
-
-			} else if (logid.equals(null) || name.equals(null)  || birthdate == null  || pass.equals(null) || conpass.equals(null) || createdate == null || updatedate == null ||  report_flag == null) {
-				String msg = "入力された内容は正しくありません";
-				request.setAttribute("errMsg", msg);
-				RequestDispatcher dispatcher =
-				request.getRequestDispatcher("/WEB-INF/jsp/usercreate.jsp");
-				dispatcher.forward(request, response);
-	}
-	}
+//			if ( pass != conpass || pass == null && conpass == null ) {
+//				String nullmsg = "パスワード！";
+//				request.setAttribute("Errmsg", nullmsg);
+//				RequestDispatcher dispatcher =
+//				request.getRequestDispatcher("/WEB-INF/jsp/usercreate.jsp");
+//				response.sendRedirect("Usercreate");
+//
+//				} else if  ( logid ==null || name == null  || birthdate == null  || pass == null || conpass == null ) {
+//					String msg = "入力された内容は正しくありません";
+//					request.setAttribute("errMsg", msg);
+//					request.getRequestDispatcher("/WEB-INF/jsp/usercreate.jsp");
+//					response.sendRedirect("Usercreate");
+//
+//			} else  {
+//
+//			}
+		}
 }

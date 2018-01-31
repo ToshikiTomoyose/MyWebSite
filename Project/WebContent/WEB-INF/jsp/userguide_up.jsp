@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="beans.Userbean" %>
+<%Userbean u =(Userbean)session.getAttribute("ub"); %>
 
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -9,7 +10,7 @@
 	<head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>THEBBS　ユーザ名無し</title>
+	<title><%= u.getName()%> THEBBS</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="Free HTML5 Website Template by FreeHTML5.co" />
 	<meta name="keywords" content="free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />
@@ -71,8 +72,7 @@
 		<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
 		<aside id="fh5co-aside" role="complementary" class="border js-fullheight">
 
-			<h1 id="fh5co-logo"><a href="index.html">TheBBS</a></h1>
-			<%Userbean u =(Userbean)session.getAttribute("ub"); %>
+			<h1 id="fh5co-logo"><a href="Index">TheBBS</a></h1>
 			<nav id="fh5co-main-menu" role="navigation">
 				<ul>
                     <ul>
@@ -138,7 +138,7 @@
 						<a>
 							<div class="desc">
 								<h3>一言</h3>
-								<p>一ひとことひとことyotootototoaaaaaaaaaaaaaaaaa</p>
+								<p><%= u.getUser_tweet() %></p>
 							</div>
 						</a>
 					</div>
