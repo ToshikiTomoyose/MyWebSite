@@ -103,8 +103,7 @@
 
                             <fieldset>
                               <div class="form-group">
-                              <p class="text-danger">${errMsg}</p>
-                              <p class="text-danger">${errmsg}</p>
+                              	<p class="text-danger">${passerr}${errMsg}</p>
                                 <label for="inputLoginID" class="col-lg-2 control-label">ログインID</label>
                                 <div class="col-lg-10">
 									<input type="hidden" id ="userid" name="cid">
@@ -158,7 +157,6 @@
 
                             <div class="col-md-4 animate-box" data-animate-effect="fadeInLeft">
                                 <h1 class="fh5co-heading-colored">準備できたら</h1>
-
                                 <div class="row">
                                    <div class="col-md-6 col-md-offset-3 col-md-pull-3 animate-box" data-animate-effect="fadeInLeft">
 

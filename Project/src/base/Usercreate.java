@@ -42,33 +42,33 @@ public class Usercreate extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("UTF-8");
+
 		String logid = request.getParameter("clogid");
 		String name = request.getParameter("cusername");
 		String birthdate = request.getParameter("cbirthdate");
 		String pass = request.getParameter("cpassword");
-//		String conpass = request.getParameter("conpass");
+		String conpass = request.getParameter("conpass");
 		String usertweet = request.getParameter("ctweet");
 		String profile_picture = request.getParameter("cprogpic");
 
-		userDAO dao = new userDAO();
-		dao.Usercreate(logid, name, birthdate, profile_picture, pass, usertweet);
-		response.sendRedirect("Index");
 
-//			if ( pass != conpass || pass == null && conpass == null ) {
-//				String nullmsg = "パスワード！";
-//				request.setAttribute("Errmsg", nullmsg);
-//				RequestDispatcher dispatcher =
-//				request.getRequestDispatcher("/WEB-INF/jsp/usercreate.jsp");
-//				response.sendRedirect("Usercreate");
-//
-//				} else if  ( logid ==null || name == null  || birthdate == null  || pass == null || conpass == null ) {
-//					String msg = "入力された内容は正しくありません";
-//					request.setAttribute("errMsg", msg);
-//					request.getRequestDispatcher("/WEB-INF/jsp/usercreate.jsp");
-//					response.sendRedirect("Usercreate");
-//
-//			} else  {
-//
-//			}
+			if ( !pass.equals(conpass)) {
+				request.setAttribute("passerr", "パスワード一致しない！");
+				RequestDispatcher dispatcher =
+						request.getRequestDispatcher("/WEB-INF/jsp/usercreate.jsp");
+						dispatcher.forward(request, response);
+
+				} else if  ( logid.equals("") || name.equals("")  || birthdate.equals("")  || pass.equals("") || conpass.equals("") ) {
+
+					request.setAttribute("errMsg", "【任意】以外の空白は許しまへんで～");
+					RequestDispatcher dispatcher =
+							request.getRequestDispatcher("/WEB-INF/jsp/usercreate.jsp");
+							dispatcher.forward(request, response);
+
+			} else  {
+				userDAO dao = new userDAO();
+				dao.Usercreate(logid, name, birthdate, profile_picture, pass, usertweet);
+				response.sendRedirect("Index");
+			}
 		}
 }
