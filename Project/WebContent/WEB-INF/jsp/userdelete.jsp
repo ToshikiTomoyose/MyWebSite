@@ -1,3 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="beans.Userbean" %>
+<%Userbean u =(Userbean)session.getAttribute("ub"); %>
+
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -11,13 +15,13 @@
 	<meta name="description" content="Free HTML5 Website Template by FreeHTML5.co" />
 	<meta name="keywords" content="free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />
 	<meta name="author" content="FreeHTML5.co" />
-    
 
-  	<!-- 
+
+  	<!--
 	//////////////////////////////////////////////////////
-	FREE HTML5 TEMPLATE 
+	FREE HTML5 TEMPLATE
 	DESIGNED & DEVELOPED by FreeHTML5.co
-		
+
 	Website: 		http://freehtml5.co/
 	Email: 			info@freehtml5.co
 	Twitter: 		http://twitter.com/fh5co
@@ -40,7 +44,7 @@
 	<link rel="shortcut icon" href="favicon.ico">
 
 	<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700" rel="stylesheet">
-	
+
 	<!-- Animate.css -->
 	<link rel="stylesheet" href="css/animate.css">
 	<!-- Icomoon Icon Fonts-->
@@ -70,7 +74,7 @@
 			<nav id="fh5co-main-menu" role="navigation">
 				<ul>
                     <ul>
-                        <li class="fh5co-active"><a href="userguide_up.html">おなまえ</a></li>
+                        <li class="fh5co-active"><a href="Userguide_upl"><%= u.getName() %></a></li>
                         <form class="navbar-form navbar-left" role="search">
                            <div class="form-group">
                                 <div class="form-group">
@@ -78,7 +82,7 @@
                                 </div>
                             </div>
                         </form>
-                        <li><a href="bbsguide_medium.html">掲示板一覧</a></li>
+                        <li><a href="Bbsguide_medium">掲示板一覧</a></li>
                         <li><a href="#logout">ログアウト</a></li>
 				    </ul>
                 </ul>
@@ -86,31 +90,35 @@
 
 			<div class="fh5co-footer">
                 <ul>
-					
+
                     <p><small>Designed <span>&copy; 2016 Blend Free HTML5. All Rights Reserved.<span>Designed by <a href="http://freehtml5.co/" target="_blank">FreeHTML5.co</a> </span> <span>Demo Images: <a href="https://unsplash.com/" target="_blank">Unsplash</a></span> <span>Free html5 templates Made by <a href="http://freehtml5.co/" target="_blank">freehtml5.co</a></span></span></small></p>
                 </ul>
 			</div>
         </aside>
     </div>
 
-        
+
 		<div id="fh5co-main">
 			<div class="fh5co-narrow-content">
 				<div class="row row-bottom-padded-md">
-					
+
 					<div class="animate-box" data-animate-effect="fadeInLeft" align="center">
 						<h1 class="text-danger">本当にログイン情報を削除してもよろしいですか？</h1>
                         <p class="text-danger">削除したら情報は復元できません。後悔のないようにお願いします。</p>
 
-                        <h2>ID001</h2>
+                        <h2>ユーザID【<%= u.getUser_id() %>】</h2>
+                        	<input type="hidden" value="<%= u.getUser_id() %>" name = "delid">
                         <img src="images/skytree.jpg" width="100px">
                         <p></p>
-                        <h3>コンちゃん</h3>
+                        <h3><%= u.getName() %></h3>
 						<div align="center">
+							<form action ="Userdelete" method ="post">
                             <p><strong>本当に良いければ</strong></p>
-                            <a href="#" class="btn btn-primary">戻る</a>
+                            <a href="Userguide_up" class="btn btn-primary btn-lg">戻る</a>
                             <a>&nbsp;</a>
-                            <a href="userdeleteOK.html" class="btn btn-danger">削除する</a></div>
+                            <a><input type="submit" value="削除" class="btn btn-danger btn-lg"></a>
+                            </form></div>
+
 					</div>
 				</div>
 			</div>
@@ -124,14 +132,14 @@
 <h2>Logout</h2>
 <p>ログアウトしますか？</p>
 <p>よろしければ<br />
-<a class="btn btn-success" href="logout.html">ログアウト</a> <br />
+<a class="btn btn-success" href="Logout">ログアウト</a> <br />
 <p>そうでなければこのウィンドウを閉じる際は、ウィンドウ外をクリックするか、<br />
 ×をクリック。</p>
 <a href="#">【×】CLOSE</a>
 </div><!--/.modal_window-->
 </div><!--/#open01-->
 </div>
-</div>  
+</div>
 	<!-- jQuery -->
 	<script src="js/jquery.min.js"></script>
 	<!-- jQuery Easing -->
@@ -142,8 +150,8 @@
 	<script src="js/jquery.waypoints.min.js"></script>
 	<!-- Flexslider -->
 	<script src="js/jquery.flexslider-min.js"></script>
-	
-	
+
+
 	<!-- MAIN JS -->
 	<script src="js/main.js"></script>
 

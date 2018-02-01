@@ -118,6 +118,66 @@ public class userDAO {
 	        return null;
 	}
 
+
+	 public Userbean findByUser(String id) {
+		   Connection conn = null;
+		   Userbean userbean = new Userbean();
+
+	        try {
+	            // データベースへ接続
+	            conn = DBManager.getConnection();
+
+	            // SELECT文を準備
+	            String sql = "SELECT * FROM bbs_user where id = ?";
+
+    		PreparedStatement pStmt = conn.prepareStatement(sql);
+	            pStmt.setString(1, id);
+	            ResultSet rs = pStmt.executeQuery();
+
+	            while (rs.next()) {
+	                String logid = rs.getString("login_id");
+	                String logpass = rs.getString("password");
+	                int userid = rs.getInt("id");
+	                String logname = rs.getString("name");
+	                String profilephoto = rs.getString("profile_photo");
+	                String lbirthdy = rs.getString("birth_date");
+	                int lcreatedate = rs.getInt("create_date");
+	                int lupdate = rs.getInt("update_date");
+	                String lusetweet = rs.getString("user_tweet");
+	                int lreportflag = rs.getInt("report_flag");
+
+	                userbean.setLogin_id(logid);
+	                userbean.setPassword(logpass);
+	                userbean.setUser_id(userid);
+	                userbean.setName(logname);
+	                userbean.setProfile_photo(profilephoto);
+	                userbean.setBirth_date(lbirthdy);
+	                userbean.setUser_createdate(lcreatedate);
+	                userbean.setUser_id(userid);
+	                userbean.setUser_updatedate(lupdate);
+	                userbean.setUser_tweet(lusetweet);
+	                userbean.setReport_flag(lreportflag);
+
+
+	                return userbean;
+	            }
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	            return null;
+	        } finally {
+	            // データベース切断
+	            if (conn != null) {
+	                try {
+	                    conn.close();
+	                } catch (SQLException e) {
+	                    e.printStackTrace();
+	                    return null;
+	                }
+	            }
+	        }
+	        return null;
+	}
+
 		public void Usercreate(String clogid, String cname, String cbirthd, String profile_picture, String pass, String tweet) {
 	        Connection conn = null;
 	        try {
@@ -155,6 +215,72 @@ public class userDAO {
 		}
 
 
+		public void Userupdate(String upd_id, String upd_logid, String upd_name, String upd_birthd, String upd_photo , String upd_pass, String upd_tweet) {
+	        Connection conn = null;
+	        try {
+	            // データベースへ接続
+	        	conn = DBManager.getConnection();
+	            // INSERT文を準備
+	            String sql = "UPDATE bbs_user SET  login_id = ? , name =? , birth_date =? , profile_photo =? , update_date = now()  , password =? , user_tweet =? WHERE id = ? ";
+
+	         // SELECTを実行し、結果表を取得
+	            PreparedStatement pStmt = conn.prepareStatement(sql);
+	            pStmt.setString(1, upd_logid);
+	            pStmt.setString(2, upd_name);
+	            pStmt.setString(3, upd_birthd);
+	            pStmt.setString(4, upd_photo);
+	            pStmt.setString(5, upd_pass);
+	            pStmt.setString(6, upd_tweet);
+	            pStmt.setString(7, upd_id);
+
+	            int rs = pStmt.executeUpdate();
+
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        } finally {
+
+	            // データベース切断
+	            if (conn != null) {
+	                try {
+	                    conn.close();
+	                } catch (SQLException e) {
+	                    e.printStackTrace();
+
+	                }
+	            }
+	        }
+		}
+
+
+		public Userbean UserDelete(String id) {
+	        Connection conn = null;
+	        try {
+	            // データベースへ接続、SELECT文で文字内のを呼び、書き換えるため次はUPDATE文を使いユーザ識別するためのWHERE文も使う
+	        	conn = DBManager.getConnection();
+	            // INSERT文を準備
+	            String sql = "DELETE FROM bbs_user WHERE id = ? ";
+
+	         // SELECTを実行し、結果表を取得
+	            PreparedStatement pStmt = conn.prepareStatement(sql);
+	            pStmt.setString(1, id);
+	            int rs = pStmt.executeUpdate();
+
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        } finally {
+
+	            // データベース切断
+	            if (conn != null) {
+	                try {
+	                    conn.close();
+	                } catch (SQLException e) {
+	                    e.printStackTrace();
+
+	                }
+	            }
+	        }
+			return null;
+	  }
 //	   	 public String convertPass(String pass) {
 //			 //ハッシュ生成前にバイト配列に置き換える際のCharset
 //			 Charset charset = StandardCharsets.UTF_8;

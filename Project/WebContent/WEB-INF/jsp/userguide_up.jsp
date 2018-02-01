@@ -101,7 +101,7 @@
         <a id="top"></a>
 		<div id="fh5co-main">
 			<div class="fh5co-narrow-content">
-				<h2 class="fh5co-heading"><strong><%= u.getName() %></strong></h2>
+				<h2 class="fh5co-heading"><strong>【ユーザID <%= u.getUser_id() %>】<%= u.getName() %></strong></h2>
 				<div class="row row-bottom-padded-md">
 					<div class="col-md-3 col-sm-6 col-padding text-center">
 						<a class="work image-popup" style="background-image: url(images/oops.jpg);">
@@ -138,7 +138,7 @@
 						<a>
 							<div class="desc">
 								<h3>一言</h3>
-								<p><%= u.getUser_tweet() %></p>
+								<p><%= u.getUser_tweet()%></p>
 							</div>
 						</a>
 					</div>
@@ -154,7 +154,7 @@
 						<a>
 							<div class="desc">
 								<h3>アカウント削除【注意】</h3>
-								<p><a href="Userupdatel" class="btn btn-danger">削除する</a></p>
+								<p><a href="Userdelete" class="btn btn-danger">削除する</a></p>
 							</div>
 						</a>
 					</div>
