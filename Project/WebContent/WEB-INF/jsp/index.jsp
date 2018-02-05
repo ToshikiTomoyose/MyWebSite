@@ -116,7 +116,7 @@
 	                                <% } else if ( u.getUser_id() != (1) ) { %>
 	                                	<ul>
 	                                    	<ul>
-		                                        <li><a href="Userguide_up?id=userbean.getId()"><%= u.getName() %></a></li>
+		                                        <li><a href="Userguide_up?id=<% u.getUser_id();%>"><%= u.getName() %></a></li>
 		                                        <form class="navbar-form navbar-left" role="search">
 					                                <div class="form-group">
 					                                    <div class="form-group">

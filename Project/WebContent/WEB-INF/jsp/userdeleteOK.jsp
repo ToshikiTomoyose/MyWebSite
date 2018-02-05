@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -11,13 +13,13 @@
 	<meta name="description" content="Free HTML5 Website Template by FreeHTML5.co" />
 	<meta name="keywords" content="free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />
 	<meta name="author" content="FreeHTML5.co" />
-    
 
-  	<!-- 
+
+  	<!--
 	//////////////////////////////////////////////////////
-	FREE HTML5 TEMPLATE 
+	FREE HTML5 TEMPLATE
 	DESIGNED & DEVELOPED by FreeHTML5.co
-		
+
 	Website: 		http://freehtml5.co/
 	Email: 			info@freehtml5.co
 	Twitter: 		http://twitter.com/fh5co
@@ -40,7 +42,7 @@
 	<link rel="shortcut icon" href="favicon.ico">
 
 	<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700" rel="stylesheet">
-	
+
 	<!-- Animate.css -->
 	<link rel="stylesheet" href="css/animate.css">
 	<!-- Icomoon Icon Fonts-->
@@ -51,8 +53,8 @@
 	<link rel="stylesheet" href="css/flexslider.css">
 	<!-- Theme style  -->
 	<link rel="stylesheet" href="css/style.css">
-        
-    
+
+
 
 	<!-- Modernizr JS -->
 	<script src="js/modernizr-2.6.2.min.js"></script>
@@ -67,15 +69,13 @@
                 <a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
                     <aside id="fh5co-aside" role="complementary" class="border js-fullheight">
 
-                            <h1 id="fh5co-logo"><a href="index.html">TheBBS</a></h1>
-                        
+                            <h1 id="fh5co-logo"><a href="Index">TheBBS</a></h1>
+
                             <nav id="fh5co-main-menu" role="navigation">
                                 <ul>
                                     <ul>
-                                        <li class="fh5co-active"><a href="ownermenu_bbs.html">管理者</a></li>
-                                        <li><a href="login.html">ログイン</a></li>
-                                        <!-- 新規登録リンクはログインしたら消える -->
-                                        <li><a href="usercreate.html">アカウント新規登録</a></li>
+										<li><a href="Login">ログイン</a></li>
+                                        <li><a href="Usercreate">アカウント新規登録</a></li>
                                         <form class="navbar-form navbar-left" role="search">
                                             <div class="form-group">
                                                 <div class="form-group">
@@ -83,8 +83,8 @@
                                                 </div>
                                             </div>
                                         </form>
-                                        <li><a href="bbsguide_medium.html">掲示板一覧</a></li>
-                                     
+                                        <li><a href="Bbsguide_medium">掲示板一覧</a></li>
+
                                     </ul>
                                 </ul>
                             </nav>
@@ -96,23 +96,23 @@
                                         <li><a href="#"><i class="icon-instagram"></i></a></li>
                                         <li><a href="#">LINE</a></li>
                                     </ul> -->
-                                    
+
                                     <p><small>Designed <span>&copy; 2016 Blend Free HTML5. All Rights Reserved.<span>Designed by <a href="http://freehtml5.co/" target="_blank">FreeHTML5.co</a> </span> <span>Demo Images: <a href="https://unsplash.com/" target="_blank">Unsplash</a></span> <span>Free html5 templates Made by <a href="http://freehtml5.co/" target="_blank">freehtml5.co</a></span></span></small></p>
                                 </div>
 
                     </aside>
             </div>
-        
+
 		<div id="fh5co-main">
 			<div class="fh5co-narrow-content">
 				<div class="row row-bottom-padded-md">
-					
+
 					<div class="animate-box" data-animate-effect="fadeInLeft">
 						<h1 class="text-danger">ログイン情報を削除しました。</h1>
                         <h2>ご利用いただきありがとうございました。</h2>
-                        
-                        
-                        <a href="index.html" class="btn btn-primary btn-block" >TOPへもどる</a>
+
+
+                        <a href="Index" class="btn btn-primary btn-block" >TOPへもどる</a>
 					</div>
 				</div>
 			</div>
@@ -128,8 +128,8 @@
 	<script src="js/jquery.waypoints.min.js"></script>
 	<!-- Flexslider -->
 	<script src="js/jquery.flexslider-min.js"></script>
-	
-	
+
+
 	<!-- MAIN JS -->
 	<script src="js/main.js"></script>
 

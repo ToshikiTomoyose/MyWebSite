@@ -1,3 +1,9 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="beans.Userbean" %>
+<%@ page import="java.util.List" %>
+
+<%List<Userbean> ublist = (List<Userbean>)request.getAttribute("userlist");%>
+<%Userbean u =(Userbean)session.getAttribute("ub"); %>
 
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -13,12 +19,12 @@
 	<meta name="keywords" content="free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />
 	<meta name="author" content="FreeHTML5.co" />
 
-  	<!-- 
+  	<!--
 	//////////////////////////////////////////////////////
 
-	FREE HTML5 TEMPLATE 
+	FREE HTML5 TEMPLATE
 	DESIGNED & DEVELOPED by FreeHTML5.co
-		
+
 	Website: 		http://freehtml5.co/
 	Email: 			info@freehtml5.co
 	Twitter: 		http://twitter.com/fh5co
@@ -42,7 +48,7 @@
 	<link rel="shortcut icon" href="favicon.ico">
 
 	<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700" rel="stylesheet">
-	
+
 	<!-- Animate.css -->
 	<link rel="stylesheet" href="css/animate.css">
 	<!-- Icomoon Icon Fonts-->
@@ -54,7 +60,7 @@
 	<!-- Theme style  -->
 	<link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/logout.css">
-        
+
 	<!-- Modernizr JS -->
 	<script src="js/modernizr-2.6.2.min.js"></script>
 	<!-- FOR IE9 below -->
@@ -68,12 +74,12 @@
                 <a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
                     <aside id="fh5co-aside" role="complementary" class="border js-fullheight">
 
-                            <h1 id="fh5co-logo"><a href="index.html">TheBBS</a></h1>
+                            <h1 id="fh5co-logo"><a href="Index">TheBBS</a></h1>
 
                             <nav id="fh5co-main-menu" role="navigation">
                                 <ul>
                                     <ul>
-                                        <li class="fh5co-active"><a href="ownermenu.html">管理者</a></li>
+                                        <li class="fh5co-active"><a href="Ownermenu_user">管理者</a></li>
                                         <form class="navbar-form navbar-left" role="search">
                                             <div class="form-group">
                                                 <div class="form-group">
@@ -81,7 +87,7 @@
                                                 </div>
                                             </div>
                                         </form>
-                                        <li><a href="bbsguide_medium.html">掲示板一覧</a></li>
+                                        <li><a href="Bbsguide_medium">掲示板一覧</a></li>
                                         <!-- ログインしてない場合は隠す -->
                                         <li><a href="#logout">ログアウト</a></li>
                                     </ul>
@@ -95,12 +101,12 @@
                                         <li><a href="#"><i class="icon-instagram"></i></a></li>
                                         <li><a href="#">LINE</a></li>
                                     </ul> -->
-                                    
+
                                     <p><small>Designed <span>&copy; 2016 Blend Free HTML5. All Rights Reserved.<span>Designed by <a href="http://freehtml5.co/" target="_blank">FreeHTML5.co</a> </span> <span>Demo Images: <a href="https://unsplash.com/" target="_blank">Unsplash</a></span> <span>Free html5 templates Made by <a href="http://freehtml5.co/" target="_blank">freehtml5.co</a></span></span></small></p>
                                 </div>
                     </aside>
             </div>
-    
+
 		 <div id="fh5co-main">
 			<div class="fh5co-narrow-content">
 				<h2 class="fh5co-heading animate-box" data-animate-effect="fadeInLeft"><big>管理者機能【ユーザ】</big></h2>
@@ -110,12 +116,12 @@
                                 <span class="caret"></span>
                             </button>
                             <ul class="dropdown-menu" role="menu">
-                                <li role="presentation"><a href="ownermenu_user.html">【ユーザ】</a></li>
-                                <li role="presentation"><a href="ownermenu_bbs.html">【掲示板一覧】</a></li>
-                                
+                                <li role="presentation"><a href="Ownermenu_user">【ユーザ】</a></li>
+                                <li role="presentation"><a href="Ownermenu_bbs">【掲示板一覧】</a></li>
+
                             </ul>
                         </div>
-                
+
                     <form class="navbar-form" role="search">
                                        <div class="form-group">
                                             <div class="form-group"><p>ID検索</p>
@@ -131,42 +137,17 @@
                                             </div>
                                         </div>
                     </form>
-                
+
                 <p></p>
-                <p>【※】赤字のユーザは通報を受けています。</p>
+                <p>【※】赤字のユーザは通報を受けています。  【 ユーザID / 生年月日 / 通報（0...通常 1...通報されている）】</p>
+					<% for (Userbean userbean : ublist) {%>
 				<div class="row row-bottom-padded-md">
 					<div class="col-md-3 col-sm-6 col-padding animate-box" data-animate-effect="fadeInLeft">
 						<div class="blog-entry">
-							<a class="blog-img"><img src="images/img-1.jpg" class="img-responsive" alt="Free HTML5 Bootstrap Template by FreeHTML5.co"></a>
-							<div class="desc">
-								<h3>Inspirational Website</h3>
-								<span><small>by Admin </small> / <small> Web Design </small> / <small> <i class="icon-comment"></i> 14</small></span>
-								<p>Design must be functional and functionality must be translated into visual aesthetics</p>
-                                    <a class="btn btn-info btn-block" href="userguide_up.html" role="button">詳細</a>
-                                    <a class="btn btn-primary btn-block" href="userupdate.html" role="button">更新</a>
-                                    <a class="btn btn-danger btn-block" href="userdelete.html" role="button">削除</a>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-3 col-sm-6 col-padding animate-box" data-animate-effect="fadeInLeft">
-						<div class="blog-entry">
-							<a href="#" class="blog-img"><img src="images/img-2.jpg" class="img-responsive" alt="Free HTML5 Bootstrap Template by FreeHTML5.co"></a>
-							<div class="desc">
-								<h3><a href="#">Inspirational Website</a></h3>
-								<span><small>by Admin </small> / <small> Web Design </small> / <small> <i class="icon-comment"></i> 14</small></span>
-								<p>Design must be functional and functionality must be translated into visual aesthetics</p>
-								    <a class="btn btn-info btn-block" href="userguide_up.html" role="button">詳細</a>
-                                    <a class="btn btn-primary btn-block" href="userupdate.html" role="button">更新</a>
-                                    <a class="btn btn-danger btn-block" href="userdelete.html" role="button">削除</a>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-3 col-sm-6 col-padding animate-box" data-animate-effect="fadeInLeft">
-						<div class="blog-entry">
+						<% if ( userbean.getReport_flag() == (1) ) {%>
 							<a href="index.html" class="blog-img"><img src="images/img-3.jpg" class="img-responsive" alt="Free HTML5 Bootstrap Template by FreeHTML5.co"></a>
 							<div class="desc">
 								<h3 class="text-danger">ユーザ名</h3>
-                               
                                 <span><small>Web Design </small> / <small>警告</small>/<small> 14</small></span>
 								<p>Design must be functional and functionality must be translated into visual aesthetics</p>
 								    <a class="btn btn-info btn-block" href="userguide_up.html" role="button">詳細</a>
@@ -174,81 +155,27 @@
                                     <a class="btn btn-danger btn-block" href="userdelete.html" role="button">削除</a>
 							</div>
 						</div>
-					</div>
-					
-					<div class="col-md-3 col-sm-6 col-padding animate-box" data-animate-effect="fadeInLeft">
-						<div class="blog-entry">
-							<a href="#" class="blog-img"><img src="images/img-5.jpg" class="img-responsive" alt="Free HTML5 Bootstrap Template by FreeHTML5.co"></a>
-							<div class="desc">
-								<h3><a href="#">Inspirational Website</a></h3>
-								<span><small>by Admin </small> / <small> Web Design </small> / <small> <i class="icon-comment"></i> 14</small></span>
-								<p>Design must be functional and functionality must be translated into visual aesthetics</p>
-                                    <a class="btn btn-info btn-block" href="userguide_up.html" role="button">詳細</a>
-                                    <a class="btn btn-primary btn-block" href="userupdate.html" role="button">更新</a>
-                                    <a class="btn btn-danger btn-block" href="userdelete.html" role="button">削除</a>
-							</div>
-						</div>
+						<% } else { %>
 					</div>
 					<div class="col-md-3 col-sm-6 col-padding animate-box" data-animate-effect="fadeInLeft">
 						<div class="blog-entry">
-							<a href="#" class="blog-img"><img src="images/img-6.jpg" class="img-responsive" alt="Free HTML5 Bootstrap Template by FreeHTML5.co"></a>
+							<a class="blog-img"><img src="images/img-1.jpg" class="img-responsive" alt="Free HTML5 Bootstrap Template by FreeHTML5.co"></a>
 							<div class="desc">
-								<h3><a href="#">Inspirational Website</a></h3>
-								<span><small>by Admin </small> / <small> Web Design </small> / <small> <i class="icon-comment"></i> 14</small></span>
-								<p>Design must be functional and functionality must be translated into visual aesthetics</p>
-								    <a class="btn btn-info btn-block" href="userguide_up.html" role="button">詳細</a>
-                                    <a class="btn btn-primary btn-block" href="userupdate.html" role="button">更新</a>
-                                    <a class="btn btn-danger btn-block" href="userdelete.html" role="button">削除</a>
+								<h3><%= u.getName() %></h3>
+								<span><small>ID <%= u.getUser_id() %> </small> / <small> <%= u.getBirth_date() %> </small> / <small> <i class="icon-comment"></i> <%= u.getReport_flag() %></small></span>
+								<p><%= u.getUser_tweet() %></p>
+                                    <a class="btn btn-info btn-block" href="Userguide_up" role="button">詳細</a>
+                                    <a class="btn btn-primary btn-block" href="Userupdate" role="button">更新</a>
+                                    <a class="btn btn-danger btn-block" href="Userdelete" role="button">削除</a>
 							</div>
 						</div>
 					</div>
-                    
-					<div class="col-md-3 col-sm-6 col-padding animate-box" data-animate-effect="fadeInLeft">
-						<div class="blog-entry">
-							<a href="#" class="blog-img"><img src="images/img-3.jpg" class="img-responsive" alt="Free HTML5 Bootstrap Template by FreeHTML5.co"></a>
-							<div class="desc">
-								<h3><a href="#">Inspirational Website</a></h3>
-								<span><small>by Admin </small> / <small> Web Design </small> / <small> <i class="icon-comment"></i> 14</small></span>
-								<p>Design must be functional and functionality must be translated into visual aesthetics</p>
-								    <a class="btn btn-info btn-block" href="userguide_up.html" role="button">詳細</a>
-                                    <a class="btn btn-primary btn-block" href="userupdate.html" role="button">更新</a>
-                                    <a class="btn btn-danger btn-block" href="userdelete.html" role="button">削除</a>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-3 col-sm-6 col-padding animate-box" data-animate-effect="fadeInLeft">
-						<div class="blog-entry">
-							<a href="#" class="blog-img"><img src="images/img-4.jpg" class="img-responsive" alt="Free HTML5 Bootstrap Template by FreeHTML5.co"></a>
-							<div class="desc">
-								<h3 class="text-danger">ユーザ名</h3>
-								<span><small>by Admin </small> / <small> Web Design </small> / <small> <i class="icon-comment"></i> 14</small></span>
-								<p>Design must be functional and functionality must be translated into visual aesthetics</p>
-								    <a class="btn btn-info btn-block" href="userguide_up.html" role="button">詳細</a>
-                                    <a class="btn btn-primary btn-block" href="userupdate.html" role="button">更新</a>
-                                    <a class="btn btn-danger btn-block" href="userdelete.html" role="button">削除</a>
-                                
-							</div>
-						</div>
-					</div>
-
-					<div class="col-md-3 col-sm-6 col-padding animate-box" data-animate-effect="fadeInLeft">
-						<div class="blog-entry">
-							<a href="#" class="blog-img"><img src="images/img-1.jpg" class="img-responsive" alt="Free HTML5 Bootstrap Template by FreeHTML5.co"></a>
-							<div class="desc">
-								<h3><a href="#">Inspirational Website</a></h3>
-								<span><small>by Admin </small> / <small> Web Design </small> / <small> <i class="icon-comment"></i> 14</small></span>
-								<p>Design must be functional and functionality must be translated into visual aesthetics</p>
-								    <a class="btn btn-info btn-block" href="userguide_up.html" role="button">詳細</a>
-                                    <a class="btn btn-primary btn-block" href="userupdate.html" role="button">更新</a>
-                                    <a class="btn btn-danger btn-block" href="userdelete.html" role="button">削除</a>
-							</div>
-						</div>
-					</div>
-					
+					<% } %>
+				<% } %>
 				</div>
 			</div>
 		  </div>
-    
+
 
 <div id="contents">
 <div id="modal">
@@ -258,7 +185,7 @@
 <h2>Logout</h2>
 <p>ログアウトしますか？</p>
 <p>よろしければ<br />
-<a class="btn btn-success" href="logout.html">ログアウト。</a> <br />
+<a class="btn btn-success" href="Logout">ログアウト。</a> <br />
 <p>そうでなければこのウィンドウを閉じる際は、ウィンドウ外をクリックするか、<br />
 ×をクリック。</p>
 <a href="#">【×】CLOSE</a>
@@ -277,8 +204,8 @@
 	<script src="js/jquery.waypoints.min.js"></script>
 	<!-- Flexslider -->
 	<script src="js/jquery.flexslider-min.js"></script>
-	
-	
+
+
 	<!-- MAIN JS -->
 	<script src="js/main.js"></script>
 

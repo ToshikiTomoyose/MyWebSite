@@ -8,8 +8,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import DAO.userDAO;
+import beans.Userbean;
 
 /**
  * Servlet implementation class Userupdate
@@ -52,7 +54,6 @@ public class Userupdate extends HttpServlet {
 		String conpass = request.getParameter("upd_conpass");
 		String usertweet = request.getParameter("upd_tweet");
 		String profile_picture = request.getParameter("upd_photo");
-		System.out.println(usertweet);
 
 			if ( !pass.equals(conpass)) {
 				request.setAttribute("passerr", "パスワード一致しない！");
@@ -70,6 +71,13 @@ public class Userupdate extends HttpServlet {
 			} else  {
 				userDAO dao = new userDAO();
 				dao.Userupdate(id, logid, name, birthdate, profile_picture, pass, usertweet);
+				//セッションに更新した情報を詰めるためHttpSessionを呼ぶ↓
+				HttpSession session =  request.getSession();
+				//セッションから取り出す
+				Userbean ub = (Userbean)session.getAttribute("ub");
+				//取り出したセッションをdao.findByUserにセット
+				Userbean uid = dao.findByUser(ub.getUser_id());
+				session.setAttribute("ub", uid);
 				response.sendRedirect("Userguide_up");
 			}
 	}

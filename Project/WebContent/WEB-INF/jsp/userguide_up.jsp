@@ -69,6 +69,7 @@
 	</head>
 	<body>
 	<div id="fh5co-page">
+
 		<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
 		<aside id="fh5co-aside" role="complementary" class="border js-fullheight">
 
@@ -98,7 +99,7 @@
 			</div>
         </aside>
     </div>
-        <a id="top"></a>
+
 		<div id="fh5co-main">
 			<div class="fh5co-narrow-content">
 				<h2 class="fh5co-heading"><strong>【ユーザID <%= u.getUser_id() %>】<%= u.getName() %></strong></h2>
@@ -146,7 +147,7 @@
 						<a>
 							<div class="desc">
 								<h3>アカウント変更</h3>
-								<p><a href="Userupdate" class="btn btn-primary">更新する</a></p>
+								<p><a href="Userupdate?id=<% u.getUser_id(); %>" class="btn btn-primary">更新する</a></p>
 							</div>
 						</a>
 					</div>
@@ -154,7 +155,7 @@
 						<a>
 							<div class="desc">
 								<h3>アカウント削除【注意】</h3>
-								<p><a href="Userdelete" class="btn btn-danger">削除する</a></p>
+								<p><a href="Userdelete?id=<% u.getUser_id(); %>" class="btn btn-danger">削除する</a></p>
 							</div>
 						</a>
 					</div>

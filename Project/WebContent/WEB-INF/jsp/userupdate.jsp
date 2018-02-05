@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="beans.Userbean" %>
-<%Userbean u =(Userbean)session.getAttribute("ub"); %>
 
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -70,6 +69,7 @@
     <body>
 
         <div id="fh5co-page">
+        <%Userbean u =(Userbean)session.getAttribute("ub"); %>
 		<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
 		<aside id="fh5co-aside" role="complementary" class="border js-fullheight">
 
@@ -118,7 +118,7 @@
                         <div class="form-group">
                         <label for="inputname" class="col-lg-2 control-label">ユーザ名</label>
                         <div class="col-lg-10">
-                            <input type="text" class="form-control" id="textArea" value="コンちゃん" placeholder="ユーザ名を記入してね" name="upd_name">
+                            <input type="text" class="form-control" id="textArea" value="<%= u.getName()%>" placeholder="ユーザ名を記入してね" name="upd_name">
                         </div>
                     </div>
                       <div class="form-group">

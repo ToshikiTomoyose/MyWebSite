@@ -119,7 +119,7 @@ public class userDAO {
 	}
 
 
-	 public Userbean findByUser(String id) {
+	 public Userbean findByUser(int id) {
 		   Connection conn = null;
 		   Userbean userbean = new Userbean();
 
@@ -131,33 +131,31 @@ public class userDAO {
 	            String sql = "SELECT * FROM bbs_user where id = ?";
 
     		PreparedStatement pStmt = conn.prepareStatement(sql);
-	            pStmt.setString(1, id);
+	            pStmt.setInt(1, id);
 	            ResultSet rs = pStmt.executeQuery();
 
 	            while (rs.next()) {
+	            	int userid = rs.getInt("id");
 	                String logid = rs.getString("login_id");
-	                String logpass = rs.getString("password");
-	                int userid = rs.getInt("id");
-	                String logname = rs.getString("name");
+	                String pass = rs.getString("password");
+	                String name = rs.getString("name");
 	                String profilephoto = rs.getString("profile_photo");
-	                String lbirthdy = rs.getString("birth_date");
-	                int lcreatedate = rs.getInt("create_date");
-	                int lupdate = rs.getInt("update_date");
-	                String lusetweet = rs.getString("user_tweet");
-	                int lreportflag = rs.getInt("report_flag");
+	                String birthdy = rs.getString("birth_date");
+	                int createdate = rs.getInt("create_date");
+	                int update = rs.getInt("update_date");
+	                String usetweet = rs.getString("user_tweet");
+	                int reportflag = rs.getInt("report_flag");
 
+	                userbean.setUser_id(userid);
 	                userbean.setLogin_id(logid);
-	                userbean.setPassword(logpass);
-	                userbean.setUser_id(userid);
-	                userbean.setName(logname);
+	                userbean.setPassword(pass);
+	                userbean.setName(name);
 	                userbean.setProfile_photo(profilephoto);
-	                userbean.setBirth_date(lbirthdy);
-	                userbean.setUser_createdate(lcreatedate);
-	                userbean.setUser_id(userid);
-	                userbean.setUser_updatedate(lupdate);
-	                userbean.setUser_tweet(lusetweet);
-	                userbean.setReport_flag(lreportflag);
-
+	                userbean.setBirth_date(birthdy);
+	                userbean.setUser_createdate(createdate);
+	                userbean.setUser_updatedate(update);
+	                userbean.setUser_tweet(usetweet);
+	                userbean.setReport_flag(reportflag);
 
 	                return userbean;
 	            }
@@ -178,6 +176,7 @@ public class userDAO {
 	        return null;
 	}
 
+
 		public void Usercreate(String clogid, String cname, String cbirthd, String profile_picture, String pass, String tweet) {
 	        Connection conn = null;
 	        try {
@@ -196,7 +195,6 @@ public class userDAO {
 	            pStmt.setString(6, tweet);
 
 	            int rs = pStmt.executeUpdate();
-	            System.out.println(rs);
 
 	        } catch (SQLException e) {
 	            e.printStackTrace();
@@ -221,7 +219,7 @@ public class userDAO {
 	            // データベースへ接続
 	        	conn = DBManager.getConnection();
 	            // INSERT文を準備
-	            String sql = "UPDATE bbs_user SET  login_id = ? , name =? , birth_date =? , profile_photo =? , update_date = now()  , password =? , user_tweet =? WHERE id = ? ";
+	            String sql = "UPDATE bbs_user SET login_id = ? , name = ? , birth_date = ? , profile_photo = ? , update_date = now() , password = ? , user_tweet = ?  WHERE id = ? ";
 
 	         // SELECTを実行し、結果表を取得
 	            PreparedStatement pStmt = conn.prepareStatement(sql);
@@ -281,6 +279,8 @@ public class userDAO {
 	        }
 			return null;
 	  }
+
+
 //	   	 public String convertPass(String pass) {
 //			 //ハッシュ生成前にバイト配列に置き換える際のCharset
 //			 Charset charset = StandardCharsets.UTF_8;

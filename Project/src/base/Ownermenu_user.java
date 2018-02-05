@@ -1,6 +1,7 @@
 package base;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,17 +10,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import DAO.userDAO;
+import beans.Userbean;
+
 /**
- * Servlet implementation class Userguide_up
+ * Servlet implementation class Ownermenu_user
  */
-@WebServlet("/Userguide_up")
-public class Userguide_up extends HttpServlet {
+@WebServlet("/Ownermenu_user")
+public class Ownermenu_user extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Userguide_up() {
+    public Ownermenu_user() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,17 +32,14 @@ public class Userguide_up extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub]
-
-//		userDAO dao = new userDAO();
-//		String id = request.getParameter("id");
-//		System.out.println(id);
-//		Userbean dataub = dao.findByUser(id);
-//		request.setAttribute("dub", dataub);
-
+		// TODO Auto-generated method stub
+		request.setCharacterEncoding("UTF-8");
+		userDAO dao = new userDAO();
+		List<Userbean> ublist =  dao.findAll();
+		request.setAttribute("userlist", ublist);
 
 		RequestDispatcher dispatcher =
-				request.getRequestDispatcher("/WEB-INF/jsp/userguide_up.jsp");
+				request.getRequestDispatcher("/WEB-INF/jsp/ownermenu_user.jsp");
 				 dispatcher.forward(request, response);
 	}
 
@@ -47,7 +48,8 @@ public class Userguide_up extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		request.setCharacterEncoding("UTF-8");
+
 	}
 
 }

@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="beans.Userbean" %>
-<%Userbean u =(Userbean)session.getAttribute("ub"); %>
 
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -67,6 +66,7 @@
 	</head>
 	<body>
 	<div id="fh5co-page">
+	<%Userbean u =(Userbean)session.getAttribute("ub"); %>
 		<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
 		<aside id="fh5co-aside" role="complementary" class="border js-fullheight">
 
@@ -107,18 +107,19 @@
                         <p class="text-danger">削除したら情報は復元できません。後悔のないようにお願いします。</p>
 
                         <h2>ユーザID【<%= u.getUser_id() %>】</h2>
-                        	<input type="hidden" value="<%= u.getUser_id() %>" name = "delid">
+
                         <img src="images/skytree.jpg" width="100px">
                         <p></p>
                         <h3><%= u.getName() %></h3>
 						<div align="center">
 							<form action ="Userdelete" method ="post">
+							<input type="hidden" value="<%= u.getUser_id() %>" name = "delid">
                             <p><strong>本当に良いければ</strong></p>
                             <a href="Userguide_up" class="btn btn-primary btn-lg">戻る</a>
                             <a>&nbsp;</a>
                             <a><input type="submit" value="削除" class="btn btn-danger btn-lg"></a>
-                            </form></div>
-
+                          </div>
+					 </form>
 					</div>
 				</div>
 			</div>

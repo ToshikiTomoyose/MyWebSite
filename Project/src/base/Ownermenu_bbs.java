@@ -10,16 +10,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class Userguide_up
+ * Servlet implementation class Ownermenu_bbs
  */
-@WebServlet("/Userguide_up")
-public class Userguide_up extends HttpServlet {
+@WebServlet("/Ownermenu_bbs")
+public class Ownermenu_bbs extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Userguide_up() {
+    public Ownermenu_bbs() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,18 +28,11 @@ public class Userguide_up extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub]
-
-//		userDAO dao = new userDAO();
-//		String id = request.getParameter("id");
-//		System.out.println(id);
-//		Userbean dataub = dao.findByUser(id);
-//		request.setAttribute("dub", dataub);
-
+		// TODO Auto-generated method stub
 
 		RequestDispatcher dispatcher =
-				request.getRequestDispatcher("/WEB-INF/jsp/userguide_up.jsp");
-				 dispatcher.forward(request, response);
+		request.getRequestDispatcher("/WEB-INF/jsp/ownermenu_bbs.jsp");
+		 dispatcher.forward(request, response);
 	}
 
 	/**

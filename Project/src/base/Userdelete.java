@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import DAO.userDAO;
+import beans.Userbean;
 
 /**
  * Servlet implementation class Userdelete
@@ -44,13 +45,14 @@ public class Userdelete extends HttpServlet {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("UTF-8");
 
-		HttpSession session = request.getSession();
-		session.removeAttribute("ub");
 		userDAO dao = new userDAO();
 		String id = request.getParameter("delid");
-		dao.UserDelete(id);
+		Userbean ub = dao.UserDelete(id);
+		request.setAttribute("ub", ub);
 
-		response.sendRedirect("Index");
+		HttpSession session = request.getSession();
+		session.removeAttribute("ub");
+		response.sendRedirect("Userdelete_ok");
 	}
 
 }

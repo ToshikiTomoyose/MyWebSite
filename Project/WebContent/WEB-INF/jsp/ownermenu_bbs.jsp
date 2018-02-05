@@ -1,3 +1,4 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -13,12 +14,12 @@
 	<meta name="keywords" content="free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />
 	<meta name="author" content="FreeHTML5.co" />
 
-  	<!-- 
+  	<!--
 	//////////////////////////////////////////////////////
 
-	FREE HTML5 TEMPLATE 
+	FREE HTML5 TEMPLATE
 	DESIGNED & DEVELOPED by FreeHTML5.co
-		
+
 	Website: 		http://freehtml5.co/
 	Email: 			info@freehtml5.co
 	Twitter: 		http://twitter.com/fh5co
@@ -42,7 +43,7 @@
 	<link rel="shortcut icon" href="favicon.ico">
 
 	<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700" rel="stylesheet">
-	
+
 	<!-- Animate.css -->
 	<link rel="stylesheet" href="css/animate.css">
 	<!-- Icomoon Icon Fonts-->
@@ -54,7 +55,7 @@
 	<!-- Theme style  -->
 	<link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/logout.css">
-        
+
 	<!-- Modernizr JS -->
 	<script src="js/modernizr-2.6.2.min.js"></script>
 	<!-- FOR IE9 below -->
@@ -68,12 +69,12 @@
                 <a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
                     <aside id="fh5co-aside" role="complementary" class="border js-fullheight">
 
-                            <h1 id="fh5co-logo"><a href="index.html">TheBBS</a></h1>
+                            <h1 id="fh5co-logo"><a href="Index">TheBBS</a></h1>
 
                             <nav id="fh5co-main-menu" role="navigation">
                                 <ul>
                                     <ul>
-                                        <li class="fh5co-active"><a href="ownermenu.html">管理者</a></li>
+                                        <li class="fh5co-active"><a href="Ownermenu_user">管理者</a></li>
                                         <form class="navbar-form navbar-left" role="search">
                                             <div class="form-group">
                                                 <div class="form-group">
@@ -81,7 +82,7 @@
                                                 </div>
                                             </div>
                                         </form>
-                                        <li><a href="bbsguide_medium.html">掲示板一覧</a></li>
+                                        <li><a href="Bbsguide_medium">掲示板一覧</a></li>
                                         <!-- ログインしてない場合は隠す -->
                                         <li><a href="#logout">ログアウト</a></li>
                                     </ul>
@@ -95,12 +96,12 @@
                                         <li><a href="#"><i class="icon-instagram"></i></a></li>
                                         <li><a href="#">LINE</a></li>
                                     </ul> -->
-                                    
+
                                     <p><small>Designed <span>&copy; 2016 Blend Free HTML5. All Rights Reserved.<span>Designed by <a href="http://freehtml5.co/" target="_blank">FreeHTML5.co</a> </span> <span>Demo Images: <a href="https://unsplash.com/" target="_blank">Unsplash</a></span> <span>Free html5 templates Made by <a href="http://freehtml5.co/" target="_blank">freehtml5.co</a></span></span></small></p>
                                 </div>
                     </aside>
             </div>
-    
+
 		 <div id="fh5co-main">
 			<div class="fh5co-narrow-content">
 				<h2 class="fh5co-heading animate-box" data-animate-effect="fadeInLeft"><big>管理者機能【掲示板】</big></h2>
@@ -110,12 +111,12 @@
                                 <span class="caret"></span>
                             </button>
                             <ul class="dropdown-menu" role="menu">
-                                <li role="presentation"><a href="ownermenu_user.html">【ユーザ】</a></li>
-                                <li role="presentation"><a href="ownermenu_bbs.html">【掲示板一覧】</a></li>
-                                
+                                <li role="presentation"><a href="Ownermenu_user">【ユーザ】</a></li>
+                                <li role="presentation"><a href="Ownermenu_bbs">【掲示板一覧】</a></li>
+
                             </ul>
                         </div>
-                
+
                     <form class="navbar-form" role="search">
                                        <div class="form-group">
                                             <div class="form-group"><p>スレッドID検索</p>
@@ -125,12 +126,12 @@
                                            <div class="form-group"><p>スレッド名検索</p>
                                             <input type="text" class="form-control" placeholder="スレッド名検索">
                                             </div>
-                                           
+
                                         </div>
                     </form>
-                
+
                 <p></p>
-  
+
 				<div class="row row-bottom-padded-md">
 					<div class="col-md-3 col-sm-6 col-padding animate-box" data-animate-effect="fadeInLeft">
 						<div class="blog-entry">
@@ -168,13 +169,13 @@
 							</div>
 						</div>
 					</div>
-					
-					
-					
+
+
+
 				</div>
 			</div>
 		  </div>
-    
+
 
 <div id="contents">
 <div id="modal">
@@ -184,7 +185,7 @@
 <h2>Logout</h2>
 <p>ログアウトしますか？</p>
 <p>よろしければ<br />
-<a class="btn btn-success" href="logout.html">ログアウト。</a> <br />
+<a class="btn btn-success" href="Logout">ログアウト。</a> <br />
 <p>そうでなければこのウィンドウを閉じる際は、ウィンドウ外をクリックするか、<br />
 ×をクリック。</p>
 <a href="#">【×】CLOSE</a>
@@ -203,8 +204,8 @@
 	<script src="js/jquery.waypoints.min.js"></script>
 	<!-- Flexslider -->
 	<script src="js/jquery.flexslider-min.js"></script>
-	
-	
+
+
 	<!-- MAIN JS -->
 	<script src="js/main.js"></script>
 

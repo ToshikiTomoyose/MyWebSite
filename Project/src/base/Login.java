@@ -49,8 +49,8 @@ public class Login extends HttpServlet {
         String pass = request.getParameter("pass");
 
         //確認
-		System.out.println(id);
-		System.out.println(pass);
+//		System.out.println(id);
+//		System.out.println(pass);
 
 		userDAO dao = new userDAO();
 		Userbean ub = dao.findByLoginId(id, pass);
