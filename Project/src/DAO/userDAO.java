@@ -119,7 +119,7 @@ public class userDAO {
 	}
 
 
-	 public Userbean findByUser(int id) {
+	 public Userbean findByUser(String id) {
 		   Connection conn = null;
 		   Userbean userbean = new Userbean();
 
@@ -130,8 +130,9 @@ public class userDAO {
 	            // SELECT文を準備
 	            String sql = "SELECT * FROM bbs_user where id = ?";
 
+	            //↓管理者のIDでユーザ検索につかっちゃおう
     		PreparedStatement pStmt = conn.prepareStatement(sql);
-	            pStmt.setInt(1, id);
+	            pStmt.setString(1, id);
 	            ResultSet rs = pStmt.executeQuery();
 
 	            while (rs.next()) {
@@ -280,7 +281,53 @@ public class userDAO {
 			return null;
 	  }
 
+		public List<Userbean> searchUser(String id) {
+			   Connection conn = null;
+			   List<Userbean> beanlist = new ArrayList<Userbean>();
 
+		        try {
+		            // データベースへ接続
+		            conn = DBManager.getConnection();
+
+		            // SELECT文を準備
+		            String sql = "SELECT * FROM bbs_user WHERE id LIKE ? ";
+
+		            //↓管理者のIDでユーザ検索につかっちゃおう
+	    		PreparedStatement pStmt = conn.prepareStatement(sql);
+		            pStmt.setString(1,'%' + id + '%');
+		            ResultSet rs = pStmt.executeQuery();
+
+		            while (rs.next()) {
+		            	int userid = rs.getInt("id");
+		                String logid = rs.getString("login_id");
+		                String pass = rs.getString("password");
+		                String name = rs.getString("name");
+		                String profilephoto = rs.getString("profile_photo");
+		                String birthdy = rs.getString("birth_date");
+		                int createdate = rs.getInt("create_date");
+		                int update = rs.getInt("update_date");
+		                String usetweet = rs.getString("user_tweet");
+		                int reportflag = rs.getInt("report_flag");
+
+		                Userbean userbean = new Userbean(userid,logid,pass,name,profilephoto,update,createdate,birthdy,usetweet,reportflag);
+		                beanlist.add(userbean);
+		            }
+		        } catch (SQLException e) {
+		            e.printStackTrace();
+		            return null;
+		        } finally {
+		            // データベース切断
+		            if (conn != null) {
+		                try {
+		                    conn.close();
+		                } catch (SQLException e) {
+		                    e.printStackTrace();
+		                    return null;
+		                }
+		            }
+		        }
+		        return null;
+		}
 //	   	 public String convertPass(String pass) {
 //			 //ハッシュ生成前にバイト配列に置き換える際のCharset
 //			 Charset charset = StandardCharsets.UTF_8;

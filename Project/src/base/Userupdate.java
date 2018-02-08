@@ -71,14 +71,31 @@ public class Userupdate extends HttpServlet {
 			} else  {
 				userDAO dao = new userDAO();
 				dao.Userupdate(id, logid, name, birthdate, profile_picture, pass, usertweet);
-				//セッションに更新した情報を詰めるためHttpSessionを呼ぶ↓
 				HttpSession session =  request.getSession();
-				//セッションから取り出す
 				Userbean ub = (Userbean)session.getAttribute("ub");
+				int iid = ub.getUser_id();
+				Integer lid = new Integer(iid);
+				String sid = lid.toString();
+				System.out.println(iid);
+				Userbean dataub = dao.findByUser(sid);
+				request.setAttribute("dub", dataub);
+
+				//セッションに更新した情報を詰めるためHttpSessionを呼ぶ↓
+
+				//セッションから取り出す
+
+//				int iid = ub.getUser_id();
+//				request.setAttribute("id", iid);
+//				Integer lid = new Integer(iid);
+//				String sid = lid.toString();
 				//取り出したセッションをdao.findByUserにセット
-				Userbean uid = dao.findByUser(ub.getUser_id());
-				session.setAttribute("ub", uid);
-				response.sendRedirect("Userguide_up");
+//				Userbean uid = dao.findByUser(sid);
+//				session.setAttribute("ub", uid);
+//				request.setAttribute("id", iid);
+				RequestDispatcher dispatcher =
+						request.getRequestDispatcher("/WEB-INF/jsp/userguide_up.jsp");
+						dispatcher.forward(request, response);
+
 			}
 	}
 

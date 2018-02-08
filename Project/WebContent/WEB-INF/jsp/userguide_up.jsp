@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="beans.Userbean" %>
 <%Userbean u =(Userbean)session.getAttribute("ub"); %>
+<%Userbean dub =  (Userbean)request.getAttribute("dub");%>
 
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -69,7 +70,6 @@
 	</head>
 	<body>
 	<div id="fh5co-page">
-
 		<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
 		<aside id="fh5co-aside" role="complementary" class="border js-fullheight">
 
@@ -77,7 +77,7 @@
 			<nav id="fh5co-main-menu" role="navigation">
 				<ul>
                     <ul>
-                        <li class="fh5co-active"><a href="Userguide_up"><%= u.getName() %></a></li>
+                        <li class="fh5co-active"><a href="Userguide_up?id=<%= u.getUser_id()%>"><%= u.getName() %></a></li>
                         <form class="navbar-form navbar-left" role="search">
                            <div class="form-group">
                                 <div class="form-group">
@@ -93,7 +93,6 @@
 
 			<div class="fh5co-footer">
                 <ul>
-
                     <p><small>Designed <span>&copy; 2016 Blend Free HTML5. All Rights Reserved.<span>Designed by <a href="http://freehtml5.co/" target="_blank">FreeHTML5.co</a> </span> <span>Demo Images: <a href="https://unsplash.com/" target="_blank">Unsplash</a></span> <span>Free html5 templates Made by <a href="http://freehtml5.co/" target="_blank">freehtml5.co</a></span></span></small></p>
                 </ul>
 			</div>
@@ -102,18 +101,19 @@
 
 		<div id="fh5co-main">
 			<div class="fh5co-narrow-content">
-				<h2 class="fh5co-heading"><strong>【ユーザID <%= u.getUser_id() %>】<%= u.getName() %></strong></h2>
+				<h2 class="fh5co-heading"><strong>【ユーザID <%= dub.getUser_id() %>】<%= dub.getName() %></strong></h2>
 				<div class="row row-bottom-padded-md">
 					<div class="col-md-3 col-sm-6 col-padding text-center">
 						<a class="work image-popup" style="background-image: url(images/oops.jpg);">
-
+							<input type= "hidden" value= "<%= dub.getUser_id() %>" name = "uid">
+							<%  %>
 						</a>
 					</div>
                     <div class="col-md-3 col-sm-6 col-padding text-center">
 						<a>
 							<div class="desc">
 								<h3>ログインID</h3>
-								<p><%= u.getLogin_id() %></p>
+								<p><%= dub.getLogin_id() %></p>
 							</div>
 						</a>
 					</div>
@@ -122,7 +122,7 @@
 						<a>
 							<div class="desc">
 								<h3>名前</h3>
-								<p><%= u.getName() %></p>
+								<p><%= dub.getName() %></p>
 							</div>
 						</a>
 					</div>
@@ -130,7 +130,7 @@
 						<a>
 							<div class="desc">
 								<h3>生年月日</h3>
-								<p><%= u.getBirth_date() %></p>
+								<p><%= dub.getBirth_date() %></p>
 
 							</div>
 						</a>
@@ -139,7 +139,7 @@
 						<a>
 							<div class="desc">
 								<h3>一言</h3>
-								<p><%= u.getUser_tweet()%></p>
+								<p><%= dub.getUser_tweet()%></p>
 							</div>
 						</a>
 					</div>
@@ -147,7 +147,7 @@
 						<a>
 							<div class="desc">
 								<h3>アカウント変更</h3>
-								<p><a href="Userupdate?id=<% u.getUser_id(); %>" class="btn btn-primary">更新する</a></p>
+								<p><a href="Userupdate?id=<% dub.getUser_id(); %>" class="btn btn-primary">更新する</a></p>
 							</div>
 						</a>
 					</div>
@@ -155,7 +155,7 @@
 						<a>
 							<div class="desc">
 								<h3>アカウント削除【注意】</h3>
-								<p><a href="Userdelete?id=<% u.getUser_id(); %>" class="btn btn-danger">削除する</a></p>
+								<p><a href="Userdelete?id=<% dub.getUser_id(); %>" class="btn btn-danger">削除する</a></p>
 							</div>
 						</a>
 					</div>

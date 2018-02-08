@@ -38,6 +38,10 @@ public class Ownermenu_user extends HttpServlet {
 		List<Userbean> ublist =  dao.findAll();
 		request.setAttribute("userlist", ublist);
 
+//		request.setCharacterEncoding("UTF-8");
+//		String msg = "警告";
+//		request.setAttribute("Warning",  msg);
+
 		RequestDispatcher dispatcher =
 				request.getRequestDispatcher("/WEB-INF/jsp/ownermenu_user.jsp");
 				 dispatcher.forward(request, response);
@@ -49,7 +53,20 @@ public class Ownermenu_user extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("UTF-8");
+		userDAO fdao = new userDAO();
+		String userid = request.getParameter("userid");
+		List<Userbean> ublist = null;
 
-	}
+		if (userid == null) {
+			ublist = fdao.findAll();
+		} else {
+				ublist = fdao.searchUser(userid);
+		}
+		request.setAttribute("searchid", ublist);
+
+		RequestDispatcher dispatcher =
+				request.getRequestDispatcher("/WEB-INF/jsp/ownermenu_user.jsp");
+				dispatcher.forward(request, response);
+		}
 
 }

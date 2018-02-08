@@ -79,7 +79,7 @@
                             <nav id="fh5co-main-menu" role="navigation">
                                 <ul>
                                     <ul>
-                                        <li class="fh5co-active"><a href="Ownermenu_user">管理者</a></li>
+                                        <li class="fh5co-active"><a href="Ownermenu_user"><%= u.getName() %></a></li>
                                         <form class="navbar-form navbar-left" role="search">
                                             <div class="form-group">
                                                 <div class="form-group">
@@ -122,51 +122,53 @@
                             </ul>
                         </div>
 
-                    <form class="navbar-form" role="search">
-                                       <div class="form-group">
-                                            <div class="form-group"><p>ID検索</p>
-                                            <input type="text" class="form-control" placeholder="ID検索">
-                                            </div>
-                                           <p></p>
-                                           <div class="form-group"><p>名前検索</p>
-                                            <input type="text" class="form-control" placeholder="名前検索">
-                                            </div>
-                                           <p></p>
-                                           <div class="form-group"><p>生年月日検索</p>
-                                            <input type="date" class="form-control">～<input type="date" class="form-control">
-                                            </div>
+                    <div class="navbar-form">
+                                       <div>
+                                            <form class="navbar-form" action = "Ownermenu_user" method="post"><p>ID検索</p>
+                                            	<input type="text" class="form-control" placeholder="ID検索" name = "userid">
+                                            	<input type="submit" value="検索" class="btn btn-primary">
+                                            </form>
+                                           <form class="navbar-form" action = "Ownermenu_user" method="post"><p>名前検索</p>
+                                            	<input type="text" class="form-control" placeholder="名前検索">
+                                            	<input type="submit" value="検索" class="btn btn-primary">
+                                            </form>
+                                           <form class="navbar-form" action = "Ownermenu_user" method="post"><p>生年月日検索</p>
+                                            	<input type="date" class="form-control">～<input type="date" class="form-control">
+                                            	<input type="submit" value="検索" class="btn btn-primary">
+                                            </form>
                                         </div>
-                    </form>
+                    </div>
 
-                <p></p>
+
                 <p>【※】赤字のユーザは通報を受けています。  【 ユーザID / 生年月日 / 通報（0...通常 1...通報されている）】</p>
-					<% for (Userbean userbean : ublist) {%>
+
 				<div class="row row-bottom-padded-md">
-					<div class="col-md-3 col-sm-6 col-padding animate-box" data-animate-effect="fadeInLeft">
-						<div class="blog-entry">
-						<% if ( userbean.getReport_flag() == (1) ) {%>
-							<a href="index.html" class="blog-img"><img src="images/img-3.jpg" class="img-responsive" alt="Free HTML5 Bootstrap Template by FreeHTML5.co"></a>
-							<div class="desc">
-								<h3 class="text-danger">ユーザ名</h3>
-                                <span><small>Web Design </small> / <small>警告</small>/<small> 14</small></span>
-								<p>Design must be functional and functionality must be translated into visual aesthetics</p>
-								    <a class="btn btn-info btn-block" href="userguide_up.html" role="button">詳細</a>
-                                    <a class="btn btn-primary btn-block" href="userupdate.html" role="button">更新</a>
-                                    <a class="btn btn-danger btn-block" href="userdelete.html" role="button">削除</a>
-							</div>
-						</div>
-						<% } else { %>
-					</div>
+				<% for (Userbean userbean : ublist) {%>
+                <% if ( userbean.getReport_flag() == (0) ) {%>
 					<div class="col-md-3 col-sm-6 col-padding animate-box" data-animate-effect="fadeInLeft">
 						<div class="blog-entry">
 							<a class="blog-img"><img src="images/img-1.jpg" class="img-responsive" alt="Free HTML5 Bootstrap Template by FreeHTML5.co"></a>
 							<div class="desc">
-								<h3><%= u.getName() %></h3>
-								<span><small>ID <%= u.getUser_id() %> </small> / <small> <%= u.getBirth_date() %> </small> / <small> <i class="icon-comment"></i> <%= u.getReport_flag() %></small></span>
-								<p><%= u.getUser_tweet() %></p>
-                                    <a class="btn btn-info btn-block" href="Userguide_up" role="button">詳細</a>
-                                    <a class="btn btn-primary btn-block" href="Userupdate" role="button">更新</a>
-                                    <a class="btn btn-danger btn-block" href="Userdelete" role="button">削除</a>
+								<h3><%= userbean.getName() %></h3>
+								<span><small>ID <%= userbean.getUser_id() %> </small> / <small> <%= userbean.getBirth_date() %> </small> / <small> <i class="icon-comment"></i> <%= userbean.getReport_flag() %></small></span>
+								<p><%= userbean.getUser_tweet() %></p>
+                                    <a class="btn btn-info btn-block" href="Userguide_up?id=<%= userbean.getUser_id() %>" role="button">詳細</a>
+                                    <a class="btn btn-primary btn-block" href="Userupdate?id=<%= userbean.getUser_id() %>" role="button">更新</a>
+                                    <a class="btn btn-danger btn-block" href="Userdelete?id=<%= userbean.getUser_id() %>" role="button">削除</a>
+							</div>
+						</div>
+					</div>
+					<% } else { %>
+					<div class="col-md-3 col-sm-6 col-padding animate-box" data-animate-effect="fadeInLeft">
+						<div class="blog-entry">
+							<a class="blog-img"><img src="images/img-1.jpg" class="img-responsive" alt="Free HTML5 Bootstrap Template by FreeHTML5.co"></a>
+							<div class="desc">
+								<h3 class="text-danger"><%= userbean.getName() %></h3>
+								<span><small  class="text-danger">ID <%= userbean.getUser_id() %> </small> / <small> <%= userbean.getBirth_date() %> </small>/<small  class="text-danger"><i class="icon-comment"></i> <%= userbean.getReport_flag() %></small></span>
+								<p><%= userbean.getUser_tweet() %></p>
+                                    <a class="btn btn-info btn-block" href="Userguide_up?id=<%= userbean.getUser_id() %>" role="button">詳細</a>
+                                    <a class="btn btn-primary btn-block" href="Userupdate?id=<%= userbean.getUser_id() %>" role="button">更新</a>
+                                    <a class="btn btn-danger btn-block" href="Userdelete?id=<%= userbean.getUser_id() %>" role="button">削除</a>
 							</div>
 						</div>
 					</div>

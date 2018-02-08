@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import DAO.userDAO;
+import beans.Userbean;
+
 /**
  * Servlet implementation class Userguide_up
  */
@@ -28,13 +31,14 @@ public class Userguide_up extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub]
+		// TODO Auto-generated method stub
+		request.setCharacterEncoding("UTF-8");
 
-//		userDAO dao = new userDAO();
-//		String id = request.getParameter("id");
-//		System.out.println(id);
-//		Userbean dataub = dao.findByUser(id);
-//		request.setAttribute("dub", dataub);
+		userDAO dao = new userDAO();
+		String id = request.getParameter("id");
+		System.out.println(id);
+		Userbean dataub = dao.findByUser(id);
+		request.setAttribute("dub", dataub);
 
 
 		RequestDispatcher dispatcher =
