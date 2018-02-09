@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="beans.Userbean" %>
+<%Userbean u =(Userbean)session.getAttribute("ub"); %>
 
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -76,7 +77,6 @@
                             <h1 id="fh5co-logo"><a href="Index">TheBBS</a></h1>
 
                             <nav id="fh5co-main-menu" role="navigation">
-                            <%Userbean u =(Userbean)session.getAttribute("ub"); %>
 							<% if (u ==  null) { %>
 								<ul>
                                    	<ul>
@@ -99,7 +99,7 @@
                                 <ul>
                                     <ul>
                                     	<!--　管理者の場合 -->
-                                        <li><a href="Ownermenu_bbs?=<%= u.getUser_id() %>"><%= u.getName() %></a></li>
+                                        <li><a href="Ownermenu_bbs?id=<%= u.getUser_id() %>"><%= u.getName() %></a></li>
 
                                         <form class="navbar-form navbar-left" role="search">
 			                                <div class="form-group">

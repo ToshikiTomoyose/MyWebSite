@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="beans.Userbean" %>
 <%Userbean u =(Userbean)session.getAttribute("ub"); %>
+<%Userbean dub =  (Userbean)request.getAttribute("dub");%>
 
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -77,7 +78,7 @@
 			<nav id="fh5co-main-menu" role="navigation">
 				<ul>
                     <ul>
-                        <li class="fh5co-active"><a href="Userguide_up?id=userbean.getId()"><%= u.getName() %></a></li>
+                        <li class="fh5co-active"><a href="Userguide_up?id=<%= u.getUser_id() %>"><%= u.getName() %></a></li>
                         <form class="navbar-form navbar-left" role="search">
                                <div class="form-group">
                                     <div class="form-group">
@@ -111,20 +112,20 @@
                       <div class="form-group">
                         <label for="inputLoginID" class="col-lg-2 control-label">ログインID</label>
                         <div class="col-lg-10">
-							<input type="hidden" value="<%= u.getUser_id()%>" name="upd_id" >
-                            <input type="text" class="form-control" id="textArea" value="<%= u.getLogin_id()%>" placeholder="ログインIDを変更してね" name="upd_logid">
+							<input type="hidden" value="<%= dub.getUser_id()%>" name="upd_id" >
+                            <input type="text" class="form-control" id="textArea" value="<%= dub.getLogin_id()%>" placeholder="ログインIDを変更してね" name="upd_logid">
                         </div>
                       </div>
                         <div class="form-group">
                         <label for="inputname" class="col-lg-2 control-label">ユーザ名</label>
                         <div class="col-lg-10">
-                            <input type="text" class="form-control" id="textArea" value="<%= u.getName()%>" placeholder="ユーザ名を記入してね" name="upd_name">
+                            <input type="text" class="form-control" id="textArea" value="<%= dub.getName()%>" placeholder="ユーザ名を記入してね" name="upd_name">
                         </div>
                     </div>
                       <div class="form-group">
                         <label for="inputPassword" class="col-lg-2 control-label">パスワード</label>
                         <div class="col-lg-10">
-                          <input type="password" class="form-control" id="inputPassword" value="<%= u.getPassword() %>" placeholder="Password" name="upd_pass">
+                          <input type="password" class="form-control" id="inputPassword" value="<%= dub.getPassword() %>" placeholder="Password" name="upd_pass">
                         </div>
                       </div>
                          <div class="form-group">
@@ -136,13 +137,13 @@
                         <div class="form-group">
                             <label for="birthdate" class="col-lg-2 control-label">生年月日</label>
                             <div class="col-lg-10">
-                              <input type="date" class="form-control" value="<%= u.getBirth_date() %>" name="upd_birth">
+                              <input type="date" class="form-control" value="<%= dub.getBirth_date() %>" name="upd_birth">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="textArea" class="col-lg-2 control-label">ひとこと（任意）</label>
                             <div class="col-lg-10">
-                              <input type="text" class="form-control" id="textArea" value="<%= u.getUser_tweet() %>" name="upd_tweet">
+                              <input type="text" class="form-control" id="textArea" value="<%= dub.getUser_tweet() %>" name="upd_tweet">
                               <span class="help-block">公序良俗に反しなければなんでも書いていいよ。</span>
                             </div>
                         </div>
@@ -150,7 +151,7 @@
                           <label for="textArea" class="col-lg-2 control-label">プロフィール画像（任意）</label>
                         <div class="col-lg-10">
 
-                          <input type="file" value="<%= u.getProfile_photo() %>" name="upd_photo">
+                          <input type="file" value="<%= dub.getProfile_photo() %>" name="upd_photo">
                         </div>
                       </div>
                     </fieldset>

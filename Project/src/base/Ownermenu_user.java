@@ -54,7 +54,7 @@ public class Ownermenu_user extends HttpServlet {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("UTF-8");
 		userDAO fdao = new userDAO();
-		String userid = request.getParameter("userid");
+		String userid = request.getParameter("id");
 		List<Userbean> ublist = null;
 
 		if (userid == null) {

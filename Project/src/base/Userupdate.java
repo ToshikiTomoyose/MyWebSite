@@ -34,6 +34,14 @@ public class Userupdate extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 
+		request.setCharacterEncoding("UTF-8");
+
+		userDAO dao = new userDAO();
+		String id = request.getParameter("id");
+		System.out.println(id);
+		Userbean dataub = dao.findByUser(id);
+		request.setAttribute("dub", dataub);
+
 		RequestDispatcher dispatcher =
 		request.getRequestDispatcher("/WEB-INF/jsp/userupdate.jsp");
 		 dispatcher.forward(request, response);
@@ -45,6 +53,12 @@ public class Userupdate extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("UTF-8");
+
+		userDAO dao = new userDAO();
+//		String rid = request.getParameter("id");
+//		System.out.println(rid);
+//		Userbean roadub = dao.findByUser(rid);
+//		request.setAttribute("dub", roadub);
 
 		String id = request.getParameter("upd_id");
 		String logid = request.getParameter("upd_logid");
@@ -69,33 +83,40 @@ public class Userupdate extends HttpServlet {
 							dispatcher.forward(request, response);
 
 			} else  {
-				userDAO dao = new userDAO();
 				dao.Userupdate(id, logid, name, birthdate, profile_picture, pass, usertweet);
-				HttpSession session =  request.getSession();
-				Userbean ub = (Userbean)session.getAttribute("ub");
-				int iid = ub.getUser_id();
-				Integer lid = new Integer(iid);
-				String sid = lid.toString();
-				System.out.println(iid);
-				Userbean dataub = dao.findByUser(sid);
-				request.setAttribute("dub", dataub);
-
 				//セッションに更新した情報を詰めるためHttpSessionを呼ぶ↓
-
+				HttpSession session =  request.getSession();
 				//セッションから取り出す
+				Userbean ub = (Userbean)session.getAttribute("ub");
 
-//				int iid = ub.getUser_id();
-//				request.setAttribute("id", iid);
-//				Integer lid = new Integer(iid);
-//				String sid = lid.toString();
-				//取り出したセッションをdao.findByUserにセット
-//				Userbean uid = dao.findByUser(sid);
-//				session.setAttribute("ub", uid);
-//				request.setAttribute("id", iid);
-				RequestDispatcher dispatcher =
-						request.getRequestDispatcher("/WEB-INF/jsp/userguide_up.jsp");
-						dispatcher.forward(request, response);
+					if (ub.getUser_id() != 1 ) {
 
+						int iid = ub.getUser_id();
+						//daoのfindByUser()の返り値はStringなのでintからstringに変換
+						Integer lid = new Integer(iid);
+						String sid = lid.toString();
+						//きちんと取れてるか
+						System.out.println(iid);
+						//取り出したセッションをStringに変換しそれをdao.findByUserにセット
+						Userbean dataub = dao.findByUser(sid);
+						request.setAttribute("dub", dataub);
+					RequestDispatcher dispatcher =
+							request.getRequestDispatcher("/WEB-INF/jsp/userguide_up.jsp");
+							dispatcher.forward(request, response);
+
+						} else {
+							int iid = ub.getUser_id();
+							//daoのfindByUser()の返り値はStringなのでintからstringに変換
+							Integer lid = new Integer(iid);
+							String sid = lid.toString();
+							//きちんと取れてるか
+							System.out.println(iid);
+							//取り出したセッションをStringに変換しそれをdao.findByUserにセット
+							Userbean dataub = dao.findByUser(sid);
+							request.setAttribute("dub", dataub);
+							response.sendRedirect("Ownermenu_user");
+
+				}
 			}
 	}
 

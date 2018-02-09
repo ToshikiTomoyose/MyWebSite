@@ -33,6 +33,12 @@ public class Userdelete extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+
+		userDAO dao = new userDAO();
+		String id = request.getParameter("id");
+		Userbean ub = dao.UserDelete(id);
+		request.setAttribute("ub", ub);
+
 		RequestDispatcher dispatcher =
 		request.getRequestDispatcher("/WEB-INF/jsp/userdelete.jsp");
 		 dispatcher.forward(request, response);
@@ -45,10 +51,10 @@ public class Userdelete extends HttpServlet {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("UTF-8");
 
-		userDAO dao = new userDAO();
-		String id = request.getParameter("delid");
-		Userbean ub = dao.UserDelete(id);
-		request.setAttribute("ub", ub);
+//		userDAO dao = new userDAO();
+//		String id = request.getParameter("delid");
+//		Userbean ub = dao.UserDelete(id);
+//		request.setAttribute("ub", ub);
 
 		HttpSession session = request.getSession();
 		session.removeAttribute("ub");
