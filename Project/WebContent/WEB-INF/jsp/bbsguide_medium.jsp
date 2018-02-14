@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="beans.Userbean" %>
+<%Userbean u =(Userbean)session.getAttribute("ub"); %>
 
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -13,12 +16,12 @@
 	<meta name="keywords" content="free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />
 	<meta name="author" content="FreeHTML5.co" />
 
-  	<!-- 
+  	<!--
 	//////////////////////////////////////////////////////
 
-	FREE HTML5 TEMPLATE 
+	FREE HTML5 TEMPLATE
 	DESIGNED & DEVELOPED by FreeHTML5.co
-		
+
 	Website: 		http://freehtml5.co/
 	Email: 			info@freehtml5.co
 	Twitter: 		http://twitter.com/fh5co
@@ -42,7 +45,7 @@
 	<link rel="shortcut icon" href="favicon.ico">
 
 	<link href="https://https://fonts.googleapis.com/earlyaccess/notosansjapanese.css" rel="stylesheet" />
-	
+
 	<!-- Animate.css -->
 	<link rel="stylesheet" href="css/animate.css">
 	<!-- Icomoon Icon Fonts-->
@@ -53,7 +56,7 @@
 	<link rel="stylesheet" href="css/flexslider.css">
 	<!-- Theme style  -->
 	<link rel="stylesheet" href="css/style.css">
-        
+
     <link rel="stylesheet" href="css/logout.css">
 
 	<!-- Modernizr JS -->
@@ -65,14 +68,14 @@
 
 	</head>
 	<body>
-        
+
           <div id="fh5co-page">
                 <a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
                     <aside id="fh5co-aside" role="complementary" class="border js-fullheight">
 
                             <h1 id="fh5co-logo"><a href="index.html">TheBBS</a></h1>
-                        
-                            
+
+
 
                             <nav id="fh5co-main-menu" role="navigation">
                                 <ul>
@@ -91,7 +94,7 @@
                                                 </div>
                                             </div>
                                         </form>
-                                      
+
                                         <li class="fh5co-active"><a href="bbsguide_medium.html">掲示板一覧</a></li>
                                         <li><a href="#logout">ログアウト</a></li>
                                     </ul>
@@ -105,14 +108,14 @@
                                         <li><a href="#"><i class="icon-instagram"></i></a></li>
                                         <li><a href="#">LINE</a></li>
                                     </ul> -->
-                                    
+
                                     <p><small>Designed <span>&copy; 2016 Blend Free HTML5. All Rights Reserved.<span>Designed by <a href="http://freehtml5.co/" target="_blank">FreeHTML5.co</a> </span> <span>Demo Images: <a href="https://unsplash.com/" target="_blank">Unsplash</a></span> <span>Free html5 templates Made by <a href="http://freehtml5.co/" target="_blank">freehtml5.co</a></span></small></p>
                                 </div>
 
                     </aside>
             </div>
-        
-        
+
+
 		<div id="fh5co-main">
             <div class="fh5co-narrow-content">
                 <h1 id="tables" class="lead">掲示板一覧</h1>
@@ -142,7 +145,7 @@
                                 <th></th>
                                 <th>タイトル</th>
                                 <th></th>
-                              
+
                               </tr>
                             </thead>
                             <tbody>
@@ -179,7 +182,7 @@
                 </div>
         </div>
     </div>
-        
+
         <div id="contents">
                 <div id="modal">
                     <div id="logout">
@@ -207,8 +210,8 @@
 	<script src="js/jquery.waypoints.min.js"></script>
 	<!-- Flexslider -->
 	<script src="js/jquery.flexslider-min.js"></script>
-	
-	
+
+
 	<!-- MAIN JS -->
 	<script src="js/main.js"></script>
 

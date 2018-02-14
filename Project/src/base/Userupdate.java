@@ -71,11 +71,19 @@ public class Userupdate extends HttpServlet {
 
 			if ( !pass.equals(conpass)) {
 				request.setAttribute("passerr", "パスワード一致しない！");
+
+
+				Userbean dataub = dao.findByUser(id);
+				request.setAttribute("dub", dataub);
+
 				RequestDispatcher dispatcher =
 						request.getRequestDispatcher("/WEB-INF/jsp/userupdate.jsp");
 						dispatcher.forward(request, response);
 
 				} else if  ( logid.equals("") || name.equals("")  || birthdate.equals("")  || pass.equals("") || conpass.equals("") ) {
+
+					Userbean dataub = dao.findByUser(id);
+					request.setAttribute("dub", dataub);
 
 					request.setAttribute("errMsg", "【任意】以外の空白は許しまへんで～");
 					RequestDispatcher dispatcher =

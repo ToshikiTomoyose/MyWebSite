@@ -16,6 +16,7 @@ public class Userbean implements Serializable {
 
 	public Userbean () {}
 
+
 	public Userbean (int user_id,String login_id,String name,String birth_date, String profile_photo, int user_createdate,int user_updatedate, String password, String user_tweet, int report_flag) {
 		this.user_id = user_id;
 		this.login_id = login_id;
