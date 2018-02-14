@@ -75,7 +75,7 @@
 			<nav id="fh5co-main-menu" role="navigation">
 				<ul>
                     <ul>
-                        <li class="fh5co-active"><a href="Userguide_upl"><%= ub.getName() %></a></li>
+                        <li class="fh5co-active"><a href="Userguide_upl"><%= u.getName() %></a></li>
                         <form class="navbar-form navbar-left" role="search">
                            <div class="form-group">
                                 <div class="form-group">
@@ -98,8 +98,36 @@
         </aside>
     </div>
 
-
+	<% if (u.getUser_id() != (10)) {%>
 		<div id="fh5co-main">
+			<div class="fh5co-narrow-content">
+				<div class="row row-bottom-padded-md">
+
+					<div class="animate-box" data-animate-effect="fadeInLeft" align="center">
+						<h1 class="text-danger">本当にログイン情報を削除してもよろしいですか？</h1>
+                        <p class="text-danger">削除したら情報は復元できません。後悔のないようにお願いします。</p>
+
+                        <h2>ユーザID【<%= u.getUser_id() %>】</h2>
+
+                        <img src="images/skytree.jpg" width="100px">
+                        <p></p>
+                        <h3><%= u.getName() %></h3>
+						<div align="center">
+						<form action ="Userdelete" method ="post">
+							<input type="hidden" value="<%= u.getUser_id() %>" name = "delid">
+                            <p><strong>本当に良いければ</strong></p>
+                            <a href="Userguide_up?id=<%= u.getUser_id() %>" class="btn btn-primary btn-lg">戻る</a>
+                            <a>&nbsp;</a>
+                            <a><input type="submit" value="削除" class="btn btn-danger btn-lg"></a>
+                          </div>
+					 </form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<%} else { %>
+				<div id="fh5co-main">
 			<div class="fh5co-narrow-content">
 				<div class="row row-bottom-padded-md">
 
@@ -113,8 +141,8 @@
                         <p></p>
                         <h3><%= ub.getName() %></h3>
 						<div align="center">
-							<form action ="Userdelete" method ="post">
-							<input type="hidden" value="<%= ub.getUser_id() %>" name = "delid">
+						<form action ="Userdelete" method ="post">
+							<input type="hidden" value="<%= u.getUser_id() %>" name = "delid">
                             <p><strong>本当に良いければ</strong></p>
                             <a href="Userguide_up?id=<%= ub.getUser_id() %>" class="btn btn-primary btn-lg">戻る</a>
                             <a>&nbsp;</a>
@@ -125,6 +153,7 @@
 				</div>
 			</div>
 		</div>
+		<% } %>
 
 <div id="contents">
 <div id="modal">

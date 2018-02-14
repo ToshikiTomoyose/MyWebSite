@@ -91,11 +91,10 @@
 			                            </form>
                                         <li><p></p></li>
                                         <li><a href="Bbsguide_medium">掲示板一覧</a></li>
-
                                       </ul>
                                	</ul>
 
-                            	<%} else if ( u.getUser_id() == (1) )  { %>
+                            	<%} else if ( u.getUser_id() == (10) )  { %>
                                 <ul>
                                     <ul>
                                     	<!--　管理者の場合 -->
@@ -113,7 +112,7 @@
                                         <li><a href="#logout">ログアウト</a></li>
                                     </ul>
                                 </ul>
-	                                <% } else if ( u.getUser_id() != (1) ) { %>
+	                                <% } else if ( u.getUser_id() != (10) ) { %>
 	                                	<ul>
 	                                    	<ul>
 		                                        <li><a href="Userguide_up?id=<%= u.getUser_id()%>"><%= u.getName() %></a></li>

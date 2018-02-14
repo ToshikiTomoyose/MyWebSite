@@ -152,7 +152,7 @@
 								<h3><%= userbean.getName() %></h3>
 								<span><small>ID <%= userbean.getUser_id() %> </small> / <small> <%= userbean.getBirth_date() %> </small> / <small> <i class="icon-comment"></i> <%= userbean.getReport_flag() %></small></span>
 								<p><%= userbean.getUser_tweet() %></p>
-                                    <a class="btn btn-info btn-block" href="Userguide_up?id=<%= userbean.getUser_id() %>" role="button">詳細</a>
+                                    <a class="btn btn-info btn-block" href="Userguide_view?id=<%= userbean.getUser_id() %>" role="button">詳細</a>
                                     <a class="btn btn-primary btn-block" href="Userupdate?id=<%= userbean.getUser_id() %>" role="button">更新</a>
                                     <a class="btn btn-danger btn-block" href="Userdelete?id=<%= userbean.getUser_id() %>" role="button">削除</a>
 							</div>
@@ -166,7 +166,7 @@
 								<h3 class="text-danger"><%= userbean.getName() %></h3>
 								<span><small  class="text-danger">ID <%= userbean.getUser_id() %> </small> / <small> <%= userbean.getBirth_date() %> </small>/<small  class="text-danger"><i class="icon-comment"></i> <%= userbean.getReport_flag() %></small></span>
 								<p><%= userbean.getUser_tweet() %></p>
-                                    <a class="btn btn-info btn-block" href="Userguide_up?id=<%= userbean.getUser_id() %>" role="button">詳細</a>
+                                    <a class="btn btn-info btn-block" href="Userguide_view?id=<%= userbean.getUser_id() %>" role="button">詳細</a>
                                     <a class="btn btn-primary btn-block" href="Userupdate?id=<%= userbean.getUser_id() %>" role="button">更新</a>
                                     <a class="btn btn-danger btn-block" href="Userdelete?id=<%= userbean.getUser_id() %>" role="button">削除</a>
 							</div>

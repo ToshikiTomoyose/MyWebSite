@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="beans.Userbean" %>
 <%Userbean u =(Userbean)session.getAttribute("ub"); %>
-<%Userbean dub =  (Userbean)request.getAttribute("dub");%>
+<%Userbean dub = (Userbean)request.getAttribute("dub"); %>
 
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -77,7 +77,11 @@
 			<nav id="fh5co-main-menu" role="navigation">
 				<ul>
                     <ul>
+						<% if (u.getUser_id() != (10)) {%>
                         <li class="fh5co-active"><a href="Userguide_up?id=<%= u.getUser_id()%>"><%= u.getName() %></a></li>
+                        <%} else { %>
+                        <li class="fh5co-active"><a href="Ownermenu_bbs?id=<%= u.getUser_id()%>"><%= u.getName() %></a></li>
+                        <% } %>
                         <form class="navbar-form navbar-left" role="search">
                            <div class="form-group">
                                 <div class="form-group">
@@ -101,12 +105,69 @@
 
 		<div id="fh5co-main">
 			<div class="fh5co-narrow-content">
+			<% if (u.getUser_id() != (10)) {%>
+				<h2 class="fh5co-heading"><strong>【ユーザID <%= u.getUser_id() %>】<%= u.getName() %></strong></h2>
+				<div class="row row-bottom-padded-md">
+					<div class="col-md-3 col-sm-6 col-padding text-center">
+						<a class="work image-popup" style="background-image: url(images/oops.jpg);">
+						</a>
+					</div>
+                    <div class="col-md-3 col-sm-6 col-padding text-center">
+						<a>
+							<div class="desc">
+								<h3>ログインID</h3>
+								<p><%= u.getLogin_id() %></p>
+							</div>
+						</a>
+					</div>
+
+					<div class="col-md-3 col-sm-6 col-padding text-center">
+						<a>
+							<div class="desc">
+								<h3>名前</h3>
+								<p><%= u.getName() %></p>
+							</div>
+						</a>
+					</div>
+					<div class="col-md-3 col-sm-6 col-padding text-center">
+						<a>
+							<div class="desc">
+								<h3>生年月日</h3>
+								<p><%= u.getBirth_date() %></p>
+
+							</div>
+						</a>
+					</div>
+					<div class="col-md-3 col-sm-6 col-padding text-center ">
+						<a>
+							<div class="desc">
+								<h3>一言</h3>
+								<p><%= u.getUser_tweet()%></p>
+							</div>
+						</a>
+					</div>
+                    <div class="col-md-3 col-sm-6 col-padding text-center">
+						<a>
+							<div class="desc">
+								<h3>アカウント変更</h3>
+								<p><a href="Userupdate" class="btn btn-primary">更新する</a></p>
+							</div>
+						</a>
+					</div>
+                    <div class="col-md-3 col-sm-6 col-padding text-center">
+						<a>
+							<div class="desc">
+								<h3>アカウント削除【注意】</h3>
+								<p><a href="Userdelete" class="btn btn-danger">削除する</a></p>
+							</div>
+						</a>
+					</div>
+
+					<% } else { %>
 				<h2 class="fh5co-heading"><strong>【ユーザID <%= dub.getUser_id() %>】<%= dub.getName() %></strong></h2>
 				<div class="row row-bottom-padded-md">
 					<div class="col-md-3 col-sm-6 col-padding text-center">
 						<a class="work image-popup" style="background-image: url(images/oops.jpg);">
-							<input type= "hidden" value= "<%= dub.getUser_id() %>" name = "uid">
-							<%  %>
 						</a>
 					</div>
                     <div class="col-md-3 col-sm-6 col-padding text-center">
@@ -159,6 +220,7 @@
 							</div>
 						</a>
 					</div>
+					<% } %>
                 </div>
 
 
@@ -175,17 +237,17 @@
                             </thead>
                             <tbody>
                               <tr class="warning">
-                                <td><a href="bbsmain.html">6</a></td>
+                                <td><a href="Bbsmain">6</a></td>
                                 <td>ミディアム</td>
-                                <td><a href="bbsmain.html">タイトル</a></td>
-                                <td><a href="bbsmain.html">本文</a></td>
+                                <td><a href="Bbsmain">タイトル</a></td>
+                                <td><a href="Bbsmain">本文</a></td>
 
                               </tr>
                               <tr class="warning">
-                                <td><a href="bbsmain.html">6</a></td>
+                                <td><a href="Bbsmain">6</a></td>
                                 <td>ウェルダン</td>
-                                <td><a href="bbsmain.html">タイトル</a></td>
-                                <td><a href="bbsmain.html">本文</a></td>
+                                <td><a href="Bbsmain">タイトル</a></td>
+                                <td><a href="Bbsmain">本文</a></td>
 
                               </tr>
                             </tbody>

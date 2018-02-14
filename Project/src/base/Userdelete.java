@@ -2,7 +2,6 @@ package base;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -36,29 +35,20 @@ public class Userdelete extends HttpServlet {
 
 		userDAO dao = new userDAO();
 		String id = request.getParameter("id");
-		Userbean ub = dao.UserDelete(id);
-		request.setAttribute("ub", ub);
-
-		RequestDispatcher dispatcher =
-		request.getRequestDispatcher("/WEB-INF/jsp/userdelete.jsp");
-		 dispatcher.forward(request, response);
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		request.setCharacterEncoding("UTF-8");
-
-//		userDAO dao = new userDAO();
-//		String id = request.getParameter("delid");
-//		Userbean ub = dao.UserDelete(id);
-//		request.setAttribute("ub", ub);
+		dao.UserDelete(id);
 
 		HttpSession session = request.getSession();
-		session.removeAttribute("ub");
-		response.sendRedirect("Userdelete_ok");
+		Userbean u = (Userbean)session.getAttribute("ub");
+
+		if ( u.getUser_id() != (10)) {
+
+			session.removeAttribute("ub");
+			response.sendRedirect("Userdelete_ok");
+		} else {
+			response.sendRedirect("Ownermenu_user");
+		}
 	}
+
+
 
 }

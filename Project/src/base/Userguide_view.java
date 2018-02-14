@@ -15,14 +15,14 @@ import beans.Userbean;
 /**
  * Servlet implementation class Userguide_up
  */
-@WebServlet("/Userguide_up")
-public class Userguide_up extends HttpServlet {
+@WebServlet("/Userguide_view")
+public class Userguide_view extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Userguide_up() {
+    public Userguide_view() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -38,11 +38,11 @@ public class Userguide_up extends HttpServlet {
 		String id = request.getParameter("id");
 		System.out.println(id);
 		Userbean dataub = dao.findByUser(id);
-		request.setAttribute("dub", dataub);
+		request.setAttribute("vub", dataub);
 
 
 		RequestDispatcher dispatcher =
-				request.getRequestDispatcher("/WEB-INF/jsp/userguide_up.jsp");
+				request.getRequestDispatcher("/WEB-INF/jsp/userguide_view.jsp");
 				 dispatcher.forward(request, response);
 	}
 

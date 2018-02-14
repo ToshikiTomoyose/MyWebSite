@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="beans.Userbean" %>
 <%Userbean u =(Userbean)session.getAttribute("ub"); %>
-<%Userbean dub =  (Userbean)request.getAttribute("dub");%>
+<%Userbean dub =(Userbean)request.getAttribute("dub"); %>
 
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -103,6 +103,7 @@
 		<div id="fh5co-main">
             <div class="fh5co-narrow-content">
             <form class="form-horizontal" action = "Userupdate" method="post">
+            <% if (u.getUser_id() != (10) ) {%>
                 <h2 class="fh5co-heading animate-box" data-animate-effect="fadeInLeft"><strong>アカウント更新</strong></h2>
                 <div class="row row-bottom-padded-md">
              <div class="col-lg-8">
@@ -112,7 +113,77 @@
                       <div class="form-group">
                         <label for="inputLoginID" class="col-lg-2 control-label">ログインID</label>
                         <div class="col-lg-10">
-							<input type="hidden" value="<%= dub.getUser_id()%>" name="upd_id" >
+							<input type="hidden" value="<%= u.getUser_id()%>" name="upd_id" >
+                            <input type="text" class="form-control" id="textArea" value="<%= u.getLogin_id()%>" placeholder="ログインIDを変更してね" name="upd_logid">
+                        </div>
+                      </div>
+                        <div class="form-group">
+                        <label for="inputname" class="col-lg-2 control-label">ユーザ名</label>
+                        <div class="col-lg-10">
+                            <input type="text" class="form-control" id="textArea" value="<%= u.getName()%>" placeholder="ユーザ名を記入してね" name="upd_name">
+                        </div>
+                    </div>
+                      <div class="form-group">
+                        <label for="inputPassword" class="col-lg-2 control-label">パスワード</label>
+                        <div class="col-lg-10">
+                          <input type="text" class="form-control" id="inputPassword" value="<%= u.getPassword() %>" placeholder="Password" name="upd_pass">
+                        </div>
+                      </div>
+                         <div class="form-group">
+                            <label for="inputPassword" class="col-lg-2 control-label">パスワード（確認）</label>
+                            <div class="col-lg-10">
+                              <input type="text" class="form-control" id="inputPassword" placeholder="パスワード（確認）" name="upd_conpass">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="birthdate" class="col-lg-2 control-label">生年月日</label>
+                            <div class="col-lg-10">
+                              <input type="date" class="form-control" value="<%= u.getBirth_date() %>" name="upd_birth">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="textArea" class="col-lg-2 control-label">ひとこと（任意）</label>
+                            <div class="col-lg-10">
+                              <input type="text" class="form-control" id="textArea" value="<%= u.getUser_tweet() %>" name="upd_tweet">
+                              <span class="help-block">公序良俗に反しなければなんでも書いていいよ。</span>
+                            </div>
+                        </div>
+                      <div class="form-group">
+                          <label for="textArea" class="col-lg-2 control-label">プロフィール画像（任意）</label>
+                        <div class="col-lg-10">
+
+                          <input type="file" value="<%= u.getProfile_photo() %>" name="upd_photo">
+                        </div>
+                      </div>
+                    </fieldset>
+                </div>
+              </div>
+
+                    <div class="col-md-4 animate-box" data-animate-effect="fadeInLeft">
+                                <h1 class="fh5co-heading-colored">準備できたら</h1>
+                                <div class="row">
+                                   <div class="col-md-6 col-md-offset-3 col-md-pull-3 animate-box" data-animate-effect="fadeInLeft">
+
+                                     	<p><button type="submit" class="btn btn-primary">確定。</button></p>
+
+                                    </div>
+                                </div>
+                           </div>
+                    </div>
+
+
+		<%} else {%>
+                <h2 class="fh5co-heading animate-box" data-animate-effect="fadeInLeft"><strong>アカウント更新</strong></h2>
+                <div class="row row-bottom-padded-md">
+             <div class="col-lg-8">
+
+                <div class="well bs-component">
+                    <p class="text-danger">${passerr}${errMsg}</p>
+                    <fieldset>
+                      <div class="form-group">
+                        <label for="inputLoginID" class="col-lg-2 control-label">ログインID</label>
+                        <div class="col-lg-10">
+                        <input type="hidden" value="<%= dub.getUser_id()%>" name="upd_id" >
                             <input type="text" class="form-control" id="textArea" value="<%= dub.getLogin_id()%>" placeholder="ログインIDを変更してね" name="upd_logid">
                         </div>
                       </div>
@@ -125,7 +196,7 @@
                       <div class="form-group">
                         <label for="inputPassword" class="col-lg-2 control-label">パスワード</label>
                         <div class="col-lg-10">
-                          <input type="password" class="form-control" id="inputPassword" value="<%= dub.getPassword() %>" placeholder="Password" name="upd_pass">
+                          <input type="text" class="form-control" id="inputPassword" value="<%= dub.getPassword() %>" placeholder="Password" name="upd_pass">
                         </div>
                       </div>
                          <div class="form-group">
@@ -162,15 +233,14 @@
                                 <h1 class="fh5co-heading-colored">準備できたら</h1>
                                 <div class="row">
                                    <div class="col-md-6 col-md-offset-3 col-md-pull-3 animate-box" data-animate-effect="fadeInLeft">
-
                                      	<p><button type="submit" class="btn btn-primary">確定。</button></p>
-
                                     </div>
                                 </div>
-                           </div>
+                     </div>
 
                     </div>
-                    </form>
+				<% } %>
+	                    </form>
                 </div>
 
         </div>

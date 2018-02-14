@@ -98,7 +98,6 @@ public class userDAO {
 	                userbean.setUser_tweet(lusetweet);
 	                userbean.setReport_flag(lreportflag);
 
-
 	                return userbean;
 	            }
 	        } catch (SQLException e) {
@@ -158,7 +157,7 @@ public class userDAO {
 	                userbean.setUser_tweet(usetweet);
 	                userbean.setReport_flag(reportflag);
 
-	                return userbean;
+	                return  userbean;
 	            }
 	        } catch (SQLException e) {
 	            e.printStackTrace();
