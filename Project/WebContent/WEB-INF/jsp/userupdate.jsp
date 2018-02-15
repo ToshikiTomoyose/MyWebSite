@@ -143,7 +143,6 @@
                            </div>
                     </div>
 
-
 		<%} else {%>
                 <h2 class="fh5co-heading animate-box" data-animate-effect="fadeInLeft"><strong>アカウント更新</strong></h2>
                 <div class="row row-bottom-padded-md">

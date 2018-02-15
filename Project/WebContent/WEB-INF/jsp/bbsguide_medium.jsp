@@ -124,6 +124,7 @@
                 </div>
             </div>
         <div class="fh5co-narrow-content">
+        <% if (u == null) {%>
             <div class="row">
                 <div class="col-md-4 animate-box" data-animate-effect="fadeInLeft">
                     <h1 class="fh5co-heading-colored">スレ建てたいなら</h1>
@@ -131,10 +132,23 @@
             </div>
                 <div class="row">
                     <div class="col-md-6 col-md-offset-3 col-md-pull-3 animate-box" data-animate-effect="fadeInLeft">
-                        <p class="fh5co-lead">↓　コチラ</p>
-                        <p><a href="newbbs.html" class="btn btn-primary">スレッド立ち上げ</a></p>
+                        <p class="fh5co-lead">↓　まずは新規登録だ☆</p>
+                        <p><a href="Usercreate" class="btn btn-primary">新規登録</a></p>
                     </div>
                 </div>
+                <%} else { %>
+                <div class="row">
+	                <div class="col-md-4 animate-box" data-animate-effect="fadeInLeft">
+	                    <h1 class="fh5co-heading-colored">スレ建てたいなら</h1>
+	                </div>
+            	</div>
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-3 col-md-pull-3 animate-box" data-animate-effect="fadeInLeft">
+                        <p class="fh5co-lead">↓　コチラ</p>
+                        <p><a href="Newbbs" class="btn btn-primary">スレッド立ち上げ</a></p>
+                    </div>
+                </div>
+                <% } %>
         </div>
     </div>
 
