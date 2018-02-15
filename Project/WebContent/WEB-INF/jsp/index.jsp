@@ -239,7 +239,7 @@
 					</div>
 				</div>
 			</div>
-
+       </div>
 
 <div id="contents">
 <div id="modal">
@@ -258,7 +258,7 @@
 </div>
 </div>
 
-        </div>
+
 
 	<!-- jQuery -->
 	<script src="js/jquery.min.js"></script>
