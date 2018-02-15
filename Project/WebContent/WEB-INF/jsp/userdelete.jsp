@@ -67,36 +67,7 @@
 
 	</head>
 	<body>
-	<div id="fh5co-page">
-		<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
-		<aside id="fh5co-aside" role="complementary" class="border js-fullheight">
-
-			<h1 id="fh5co-logo"><a href="index.html">TheBBS</a></h1>
-			<nav id="fh5co-main-menu" role="navigation">
-				<ul>
-                    <ul>
-                        <li class="fh5co-active"><a href="Userguide_upl"><%= u.getName() %></a></li>
-                        <form class="navbar-form navbar-left" role="search">
-                           <div class="form-group">
-                                <div class="form-group">
-                                <input type="text" class="form-control" placeholder="検索">
-                                </div>
-                            </div>
-                        </form>
-                        <li><a href="Bbsguide_medium">掲示板一覧</a></li>
-                        <li><a href="#logout">ログアウト</a></li>
-				    </ul>
-                </ul>
-			</nav>
-
-			<div class="fh5co-footer">
-                <ul>
-
-                    <p><small>Designed <span>&copy; 2016 Blend Free HTML5. All Rights Reserved.<span>Designed by <a href="http://freehtml5.co/" target="_blank">FreeHTML5.co</a> </span> <span>Demo Images: <a href="https://unsplash.com/" target="_blank">Unsplash</a></span> <span>Free html5 templates Made by <a href="http://freehtml5.co/" target="_blank">freehtml5.co</a></span></span></small></p>
-                </ul>
-			</div>
-        </aside>
-    </div>
+<jsp:include page="/WEB-INF/jsp/menupositon.jsp" />
 
 	<% if (u.getUser_id() != (10)) {%>
 		<div id="fh5co-main">
@@ -155,22 +126,7 @@
 		</div>
 		<% } %>
 
-<div id="contents">
-<div id="modal">
-<div id="logout">
-<a href="#" class="close_overlay">×</a>
-<div class="modal_window">
-<h2>Logout</h2>
-<p>ログアウトしますか？</p>
-<p>よろしければ<br />
-<a class="btn btn-success" href="Logout">ログアウト</a> <br />
-<p>そうでなければこのウィンドウを閉じる際は、ウィンドウ外をクリックするか、<br />
-×をクリック。</p>
-<a href="#">【×】CLOSE</a>
-</div><!--/.modal_window-->
-</div><!--/#open01-->
-</div>
-</div>
+<jsp:include page="/WEB-INF/jsp/logoutmolder.jsp" />
 	<!-- jQuery -->
 	<script src="js/jquery.min.js"></script>
 	<!-- jQuery Easing -->
