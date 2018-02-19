@@ -1,6 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="beans.Userbean" %>
+<%@ page import="beans.Bbs_categorybean" %>
+<%@ page import="beans.Bbs_threadbean" %>
+<%@ page import="java.util.ArrayList"%>
+<%@ page import="java.util.List" %>
+
 <%Userbean u =(Userbean)session.getAttribute("ub"); %>
+<% ArrayList<Bbs_categorybean> bcbList = (ArrayList<Bbs_categorybean>) request.getAttribute("bcblist"); %>
+<%List<Bbs_threadbean> threList = (List<Bbs_threadbean>) request.getAttribute("threlist"); %>
 
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -59,6 +66,21 @@
 
     <link rel="stylesheet" href="css/logout.css">
 
+    <style type="text/css">
+    .select select {
+	-width: 100%;
+	padding: 10px;
+	color : #228896;
+	border: 1px solid #999;
+	background: #eee;
+	background:  right 50% no-repeat, -webkit-linear-gradient(#fff 100%);
+	background:  right 50% no-repeat, linear-gradient(#efebe1 ,#efebe1 100%);
+	font-style:
+	background-size: 20px, 100%;
+}
+
+    </style>
+
 	<!-- Modernizr JS -->
 	<script src="js/modernizr-2.6.2.min.js"></script>
 	<!-- FOR IE9 below -->
@@ -80,8 +102,8 @@
                   <div class="col-lg-12">
                     <div class="page-header">
 
-                        <div class="dropdown">
-                            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+                        <div class="select">
+                      <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
                                 カテゴリ【ミディアム】
                                 <span class="caret"></span>
                             </button>
@@ -90,6 +112,20 @@
                                 <li role="presentation"><a href="bbsguide_rare.html">カテゴリ【レア】</a></li>
                                 <li role="presentation"><a href="bbsguide_welldone.html">カテゴリ【ウェルダン】</a></li>
                             </ul>
+                           <!--  <label>カテゴリ  </label>
+                           <select name="select_category_id">
+						 <%--
+									for (Bbs_categorybean bcb : bcbList) {
+								%>
+								<option value="<%=bcb.getId()%>"> <%=bcb.getCategory_name() %> </option>
+								<%
+									}
+								%>
+								<%
+									//　ページスコープに設定
+									pageContext.setAttribute("StringData","select_category_id");
+									--%>
+							</select> -->
                         </div>
                     </div>
 
@@ -97,27 +133,25 @@
                           <table class="table table-striped table-hover-responsive">
                             <thead>
                               <tr>
-                                <th></th>
+                                <th>スレッドID</th>
                                 <th>タイトル</th>
-                                <th></th>
-
+                                <th>本文</th>
+                                <th>カテゴリ</th>
                               </tr>
                             </thead>
                             <tbody>
+                            <% for (Bbs_threadbean bthre : threList) {%>
                               <tr class="warning">
-                                <td><a href="bbsmain.html">6</a></td>
-                                <td><a href="bbsmain.html">タイトル</a></td>
-                                <td><a href="bbsmain.html">本文</a></td>
+                                <td><a href="Bbs_main?id=<%= bthre.getId() %>"><%= bthre.getId() %></a></td>
+                                <td><a href="Bbs_main?id=<%= bthre.getId() %>"><%= bthre.getTitle() %></a></td>
+                                <td><a href="Bbs_main?id=<%= bthre.getId() %>"><%= bthre.getMaintext() %></a></td>
+                                <td><a href="Bbs_main?id=<%= bthre.getId() %>"><%= bthre.getCategory_id() %></a></td>
                                 <td></td>
                               </tr>
-                              <tr class="warning">
-                                <td><a href="bbsmain.html">6</a></td>
-                                <td><a href="bbsmain.html">タイトル</a></td>
-                                <td><a href="bbsmain.html">本文</a></td>
-                                <td></td>
-                              </tr>
+                              <% } %>
                             </tbody>
                           </table>
+
                         </div>
                   </div>
                 </div>

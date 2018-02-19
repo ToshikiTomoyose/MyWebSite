@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import beans.Bbs_categorybean;
 import beans.Bbs_threadbean;;
 
 public class bbsDAO {
@@ -54,6 +55,41 @@ public class bbsDAO {
 	            return threadList;
 	        }
 
+	 	public ArrayList<Bbs_categorybean> watchBbs_category() {
+
+	 		Connection con = null ;
+	 		PreparedStatement st = null;
+
+	 		try {
+	 			con = DBManager.getConnection();
+	 			st = con.prepareStatement("SELECT * FROM bbs_category");
+	 			ResultSet rs = st.executeQuery();
+
+	 			ArrayList<Bbs_categorybean> categoryList = new ArrayList<Bbs_categorybean>();
+	 			while (rs.next()) {
+	 				Bbs_categorybean bcb = new Bbs_categorybean();
+					bcb.setId(rs.getInt("id"));
+					bcb.setCategory_name(rs.getString("category_name"));
+					categoryList.add(bcb);
+				}
+	 			return categoryList;
+	 		} catch (SQLException e) {
+				System.out.println(e.getMessage());
+
+	 		} finally {
+                // データベース切断
+                if (con != null) {
+                    try {
+                        con.close();
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                        return null;
+                    }
+                }
+            }
+			return watchBbs_category();
+	 	}
+
 
 		public void Bbscreate(String ctitle, String cmaintext, String ccategory_id, String cthread_photo, int user_id, String cprofile_photo) {
 	        Connection conn = null;
@@ -85,4 +121,60 @@ public class bbsDAO {
 	            }
 	        }
 		}
+
+		public Bbs_threadbean findByBbs(String id) {
+			   Connection conn = null;
+			   Bbs_threadbean treadbean = new Bbs_threadbean();
+
+		        try {
+		            // データベースへ接続
+		            conn = DBManager.getConnection();
+
+		            String sql = "SELECT * FROM bbs_thread where id = ?";
+
+	    		PreparedStatement pStmt = conn.prepareStatement(sql);
+		            pStmt.setString(1, id);
+		            ResultSet rs = pStmt.executeQuery();
+
+		            while (rs.next()) {
+		            	int thread_id = rs.getInt("id");
+		                String title = rs.getString("title");
+		                String maintext = rs.getString("maintext");
+		                int cateid = rs.getInt("category_id");
+		                String threphoto = rs.getString("thread_photo");
+		                int user_id = rs.getInt("user_id");
+		                String createdate = rs.getString("create_date");
+		                String update = rs.getString("update_date");
+		                String prophoto = rs.getString("profile_photo");
+
+		                treadbean.setId(thread_id);
+		                treadbean.setTitle(title);
+		                treadbean.setMaintext(maintext);
+		                treadbean.setCategory_id(cateid);
+		                treadbean.setThread_photo(threphoto);
+		                treadbean.setUser_id(user_id);
+		                treadbean.setCreate_date(createdate);
+		                treadbean.setUpdate_date(update);
+		                treadbean.setProfile_photo(prophoto);
+
+		                return  treadbean;
+		            }
+		        } catch (SQLException e) {
+		            e.printStackTrace();
+		            return null;
+		        } finally {
+		            // データベース切断
+		            if (conn != null) {
+		                try {
+		                    conn.close();
+		                } catch (SQLException e) {
+		                    e.printStackTrace();
+		                    return null;
+		                }
+		            }
+		        }
+		        return null;
+		}
+
+
 }

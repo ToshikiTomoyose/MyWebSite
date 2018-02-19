@@ -1,7 +1,6 @@
 package base;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -14,16 +13,16 @@ import DAO.bbsDAO;
 import beans.Bbs_threadbean;
 
 /**
- * Servlet implementation class Bbsguide_medium
+ * Servlet implementation class Bbs_main
  */
-@WebServlet("/Bbsguide_medium")
-public class Bbsguide_medium extends HttpServlet {
+@WebServlet("/Bbs_main")
+public class Bbs_main extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Bbsguide_medium() {
+    public Bbs_main() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,21 +32,15 @@ public class Bbsguide_medium extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		request.setCharacterEncoding("UTF-8");
-
 		bbsDAO bdao = new bbsDAO();
+		String id = request.getParameter("id");
+		System.out.println(id);
+		Bbs_threadbean dataub = bdao.findByBbs(id);
+		request.setAttribute("tub", dataub);
 
-		List<Bbs_threadbean> threadlist = bdao.findAllforThread();
-		request.setAttribute("threlist", threadlist);
-
-//		ArrayList<Bbs_categorybean> bcbList = bdao.watchBbs_category();
-//		request.setAttribute("bcblist", bcbList);
-
-			RequestDispatcher dispatcher =
-			request.getRequestDispatcher("/WEB-INF/jsp/bbsguide_medium.jsp");
-			dispatcher.forward(request, response);
-
-
+		RequestDispatcher dispatcher =
+		request.getRequestDispatcher("/WEB-INF/jsp/bbs_main.jsp");
+		dispatcher.forward(request, response);
 	}
 
 	/**
@@ -55,7 +48,6 @@ public class Bbsguide_medium extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		request.setCharacterEncoding("UTF-8");
 		doGet(request, response);
 	}
 

@@ -1,3 +1,9 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="beans.Userbean" %>
+<%@ page import="beans.Bbs_categorybean" %>
+<%@ page import="beans.Bbs_threadbean" %>
+<%Userbean u =(Userbean)session.getAttribute("ub"); %>
+<%Bbs_threadbean btb =  (Bbs_threadbean)request.getAttribute("tub");%>
 
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -7,18 +13,18 @@
 	<head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>thebbs</title>
+	<title>THEBBS <%= btb.getTitle() %></title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="Free HTML5 Website Template by FreeHTML5.co" />
 	<meta name="keywords" content="free html5, free template, free bootstrap, free website template, html5, css3, mobile first, responsive" />
 	<meta name="author" content="FreeHTML5.co" />
 
-  	<!-- 
+  	<!--
 	//////////////////////////////////////////////////////
 
-	FREE HTML5 TEMPLATE 
+	FREE HTML5 TEMPLATE
 	DESIGNED & DEVELOPED by FreeHTML5.co
-		
+
 	Website: 		http://freehtml5.co/
 	Email: 			info@freehtml5.co
 	Twitter: 		http://twitter.com/fh5co
@@ -43,7 +49,7 @@
 
 	<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700" rel="stylesheet">
     <link href="css/modal.css" rel="stylesheet">
-	
+
 	<!-- Animate.css -->
 	<link rel="stylesheet" href="css/animate.css">
 	<!-- Icomoon Icon Fonts-->
@@ -55,7 +61,7 @@
 	<!-- Theme style  -->
 	<link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/logout.css">
-   
+
 	<!-- Modernizr JS -->
 	<script src="js/modernizr-2.6.2.min.js"></script>
 	<!-- FOR IE9 below -->
@@ -65,50 +71,8 @@
 
 	</head>
 	<body>
-        
-         <div id="fh5co-page">
-                <a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
-                    <aside id="fh5co-aside" role="complementary" class="border js-fullheight">
 
-                            <h1 id="fh5co-logo"><a href="index.html">TheBBS</a></h1>
-         
-                            <nav id="fh5co-main-menu" role="navigation">
-                                <ul>
-                                    <ul>
-                                        <li><a href="login.html">ログイン</a></li>
-                                        <!-- ログイン済み（一般ユーザ） -->
-                                        <li><a href="userguide_up.html">おなまえ</a></li>
-                                        <!--　管理者の場合 -->
-                                        <li><a href="ownermenu_bbs.html">管理者</a></li>
-                                        <!-- 新規登録リンクはログインしたら消える -->
-                                        <li><a href="usercreate.html">アカウント新規登録</a></li>
-                                        <form class="navbar-form navbar-left" role="search">
-                                            <div class="form-group">
-                                                <div class="form-group">
-                                                    <input type="text" class="form-control" placeholder="検索">
-                                                </div>
-                                            </div>
-                                        </form>
-                                        <li class="fh5co-active"><a href="bbsguide_medium.html">掲示板一覧</a></li>
-                                        <li><a href="#logout">ログアウト</a></li>
-                                    </ul>
-                                </ul>
-                            </nav>
-
-                                <div class="fh5co-footer">
-                            <!--    <ul>
-                                        <li><a href="#"><i class="icon-facebook2"></i></a></li>
-                                        <li><a href="#"><i class="icon-twitter2"></i></a></li>
-                                        <li><a href="#"><i class="icon-instagram"></i></a></li>
-                                        <li><a href="#">LINE</a></li>
-                                    </ul> -->
-                                    
-                                    <p><small>Designed <span>&copy; 2016 Blend Free HTML5. All Rights Reserved.<span>Designed by <a href="http://freehtml5.co/" target="_blank">FreeHTML5.co</a> </span> <span>Demo Images: <a href="https://unsplash.com/" target="_blank">Unsplash</a></span> <span>Free html5 templates Made by <a href="http://freehtml5.co/" target="_blank">freehtml5.co</a></span></span></small></p>
-                                </div>
-
-                    </aside>
-            </div>
-                
+<jsp:include page="/WEB-INF/jsp/menupositon.jsp" />
 
             <div id="fh5co-main">
 
@@ -118,12 +82,12 @@
                             <div class="blog-entry">
                                 <div class="desc">
                                     <a id="top"></a>
-                                    <h1 class="text-left">Bootstrapさわってるけど質問ある？</h1>
+                                    <h1 class="text-left"><%= btb.getTitle() %></h1>
                                     <span class="text-right"><a href="bbsdelete.html">このスレッドを削除</a></span>
                                     <a> 1  :</a>
-                                    <span><a href="userguide_view.html"><img src="images/skytree.jpg" width="50px"></a><small>/</small><small>ID 1</small><small>/</small>コンちゃん</span>
+                                    <span><a href="userguide_view.html"><img src="images/skytree.jpg" width="50px"></a><small>/</small><small>ID <%= btb.getUser_id() %></small><small>/</small>コンちゃん</span>
                                     <span class="text-right"><a href="#commentdelete">削除</a> /<a href="#report"> 通報</a></span>
-                                    <p>本文本文ほんぶんほんぶんほんぶんほんぶんほんぶんほんぶんほんぶんほんぶん</p>
+                                    <p><%= btb.getMaintext() %></p>
                                     <a><img src="images/img-1.jpg" class="img-responsive" alt="Free HTML5 Bootstrap Template by     FreeHTML5.co"></a>
                                    <p class="text-right"><a href="#res">返信</a></p>
                                 </div>
@@ -147,16 +111,20 @@
                     </div>
             </div>
         </div>
-        <div align="center"><a href="#top">▲上へ戻る</a></div>
+        <div align="center"><a href="#top">▲上へ戻る </a></div>
+        	<p>空白予定</p>
+
+
+        <!--  コメント欄はログイン時に展開 -->
+		<% if (u != null)  {%>
             <div class="fh5co-narrow-content">
                             <form action="toukou">
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="row">
-
                                                 <div class="form-group">
                                                     <img src="images/skytree.jpg" width="100px"><br>
-                                                    <p class="lead">コンちゃん <span>/</span><span> ID001</span></p>
+                                                    <p class="lead"><%= u.getName() %> <span>/</span><span> ID<%= u.getUser_id() %></span></p>
                                                 </div>
                                                 <div class="form-group" id="res">
                                                     <input type="file">
@@ -175,9 +143,10 @@
                                 </div>
                             </form>
             </div>
+            <% } %>
 	</div>
-        
-        
+
+
 
 <section>
 <div id="contents">
@@ -197,7 +166,7 @@
                 <a href="#">【×】CLOSE</a>
             </div><!--/.modal_window-->
         </div><!--/#open01-->
-        
+
         <div id="deleteok">
             <a href="#" class="close_overlay posision: fixed;">×</a>
             <div class="modal_window">
@@ -209,7 +178,7 @@
             </div><!--/.modal_window-->
         </div>
 
-        
+
         <div id="report">
                     <a href="#" class="close_overlay posision: fixed;">×</a>
                     <div class="modal_window">
@@ -222,7 +191,7 @@
                         <a href="#">【×】CLOSE</a>
                     </div>
         </div>
-        
+
         <div id="reportok">
                     <a href="#" class="close_overlay posision: fixed;">×</a>
                     <div class="modal_window">
@@ -233,29 +202,13 @@
                         <a href="#">【×】CLOSE</a>
                     </div><!--/.modal_window-->
         </div>
-        
+
     </div><!--/#modal-->
 
 </div><!--/#contents-->
             </section>
-   
-<div id="contents">
-<div id="modal">
-<div id="logout">
-<a href="#" class="close_overlay">×</a>
-<div class="modal_window">
-<h2>Logout</h2>
-<p>ログアウトしますか？</p>
-<p>よろしければ<br />
-<a class="btn btn-success" href="logout.html">ログアウト。</a> <br />
-<p>そうでなければこのウィンドウを閉じる際は、ウィンドウ外をクリックするか、<br />
-×をクリック。</p>
-<a href="#">【×】CLOSE</a>
-</div><!--/.modal_window-->
-</div><!--/#open01-->
-</div>
-</div>
-        
+
+<jsp:include page="/WEB-INF/jsp/logoutmolder.jsp" />
 
 	<!-- jQuery -->
 	<script src="js/jquery.min.js"></script>
@@ -270,8 +223,8 @@
 	<!-- Google Map -->
 	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCefOgb1ZWqYtj7raVSmN4PL2WkTrc-KyA&sensor=false"></script>
 	<script src="js/google_map.js"></script>
-	
-	
+
+
 	<!-- MAIN JS -->
 	<script src="js/main.js"></script>
 
