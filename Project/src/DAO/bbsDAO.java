@@ -55,6 +55,7 @@ public class bbsDAO {
 	            return threadList;
 	        }
 
+
 	 	public ArrayList<Bbs_categorybean> watchBbs_category() {
 
 	 		Connection con = null ;
@@ -96,7 +97,6 @@ public class bbsDAO {
 	        try {
 
 	        	conn = DBManager.getConnection();
-
 	            String sql = "INSERT INTO bbs_thread ( title , maintext , category_id , thread_photo , user_id , create_date , update_date , profile_photo ) VALUES ( ?, ?, ?,  ?, ?, now(), now(), ? )";
 
 	            PreparedStatement pStmt = conn.prepareStatement(sql);
@@ -121,6 +121,7 @@ public class bbsDAO {
 	            }
 	        }
 		}
+
 
 		public Bbs_threadbean findByBbs(String id) {
 			   Connection conn = null;
@@ -174,7 +175,36 @@ public class bbsDAO {
 		            }
 		        }
 		        return null;
+
 		}
 
 
+		public void BbsPost(String pmassage, String pphoto, int user_id, String pprofile_photo, String thread_id) {
+	        Connection conn = null;
+	        try {
+	        	//SELECT文
+	        	conn = DBManager.getConnection();
+	            String sql = "INSERT INTO bbs_post ( massage, post_photo, user_id, profile_photo, thread_id, create_date, update_date ) VALUES ( ?, ?, ?, ?, ?, now(), now() )";
+
+	            PreparedStatement pStmt = conn.prepareStatement(sql);
+	            pStmt.setString(1, pmassage);
+	            pStmt.setString(2, pphoto);
+	            pStmt.setInt(3, user_id);
+	            pStmt.setString(4, pprofile_photo);
+	            pStmt.setString(5, thread_id);
+
+	            int rs = pStmt.executeUpdate();
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        } finally {
+	            if (conn != null) {
+	                try {
+	                    conn.close();
+	                } catch (SQLException e) {
+	                    e.printStackTrace();
+
+	                }
+	            }
+	        }
+		}
 }

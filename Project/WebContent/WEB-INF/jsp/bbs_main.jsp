@@ -10,6 +10,7 @@
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<!--  ロム専にやさしい -->
 	<head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -81,15 +82,21 @@
                         <div class="col-padding">
                             <div class="blog-entry">
                                 <div class="desc">
-                                    <a id="top"></a>
+                                    <a id="top">スレッドID 【<%= btb.getId() %>】</a>
                                     <h1 class="text-left"><%= btb.getTitle() %></h1>
+                                    <% if (u != null)  {%>
                                     <span class="text-right"><a href="bbsdelete.html">このスレッドを削除</a></span>
+                                    <% } %>
                                     <a> 1  :</a>
                                     <span><a href="userguide_view.html"><img src="images/skytree.jpg" width="50px"></a><small>/</small><small>ID <%= btb.getUser_id() %></small><small>/</small>コンちゃん</span>
+                                    <% if (u != null)  {%>
                                     <span class="text-right"><a href="#commentdelete">削除</a> /<a href="#report"> 通報</a></span>
+                                    <% } %>
                                     <p><%= btb.getMaintext() %></p>
                                     <a><img src="images/img-1.jpg" class="img-responsive" alt="Free HTML5 Bootstrap Template by     FreeHTML5.co"></a>
-                                   <p class="text-right"><a href="#res">返信</a></p>
+                                   <% if (u != null)  {%>
+                                    <p class="text-right"><a href="#res">返信</a></p>
+                                    <% } %>
                                 </div>
                             </div>
                         </div>
@@ -100,10 +107,14 @@
                                 <div class="desc">
                                     <a> 2  :</a>
                                     <span><span><a href="userguide_view.html"><img src="images/skytree.jpg" width="50px"></a><small>/</small><small>ID 1</small><small>/</small> 名無しさん </span>
+                                    <% if (u != null)  {%>
                                     <span class="text-right"><a href="#commentdelete">削除</a> /<a href="#report"> 通報</a></span>
+                                    <% } %>
                                     <p>>>1 ちょｗｗｗｗ</p>
                                     <a><img src="images/img-1.jpg" class="img-responsive" alt="Free HTML5 Bootstrap Template by FreeHTML5.co"></a>
+                                    <% if (u != null)  {%>
                                     <p class="text-right"><a href="#res">返信</a></p>
+                                    <% } %>
                                     </span>
                                 </div>
                             </div>
@@ -112,48 +123,55 @@
             </div>
         </div>
         <div align="center"><a href="#top">▲上へ戻る </a></div>
-        	<p>空白予定</p>
 
-
-        <!--  コメント欄はログイン時に展開 -->
+         <div class="fh5co-narrow-content">
+         <!--  コメント欄はログイン時に展開 -->
 		<% if (u != null)  {%>
-            <div class="fh5co-narrow-content">
-                            <form action="toukou">
+                            <form action="Bbs_main" method = "post">
+                            ${ errMsg }
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="row">
                                                 <div class="form-group">
+                                                	<!--  ユーザに関連する機能はセッションから取る -->
                                                     <img src="images/skytree.jpg" width="100px"><br>
                                                     <p class="lead"><%= u.getName() %> <span>/</span><span> ID<%= u.getUser_id() %></span></p>
                                                 </div>
-                                                <div class="form-group" id="res">
-                                                    <input type="file">
-                                                </div>
-
                                                 <div class="form-group">
-                                                    <textarea name="text" id="message" cols="30" rows="7" class="form-control" placeholder="Message"></textarea>
+                                                	<input type = "hidden" value = "<%= btb.getId() %>" name = "threadid">
+                                                    <input type="file" name = "postfile">
+                                                </div>
+                                                <div class="form-group">
+                                                    <textarea  id="message" cols="30" rows="7" class="form-control" placeholder="Message" name ="posttext"></textarea>
                                                 </div>
                                                 <div class="form-group">
                                                     <input type="submit" class="btn btn-primary btn-md" value="投稿">
                                                 </div>
-
                                         </div>
                                     </div>
-
                                 </div>
                             </form>
-            </div>
-            <% } %>
-	</div>
 
+            <% } else { %>
+             <div class="row">
+	                <div class="col-md-4 animate-box" data-animate-effect="fadeInLeft">
+	                    <h1 class="fh5co-heading-colored">カキコミたいなら</h1>
+	                </div>
+            	</div>
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-3 col-md-pull-3 animate-box" data-animate-effect="fadeInLeft">
+                        <p class="fh5co-lead">↓　まずは新規登録だ☆</p>
+                        <p><a href="Usercreate" class="btn btn-primary">新規登録</a></p>
+                    </div>
+                </div>
+            <% } %>
+            </div>
+	</div>
 
 
 <section>
 <div id="contents">
-
-
     <div id="modal">
-
         <div id="commentdelete">
             <a href="#" class="close_overlay posision: fixed;">×</a>
             <div class="modal_window">
@@ -177,7 +195,6 @@
                 <a href="#">【×】CLOSE</a>
             </div><!--/.modal_window-->
         </div>
-
 
         <div id="report">
                     <a href="#" class="close_overlay posision: fixed;">×</a>

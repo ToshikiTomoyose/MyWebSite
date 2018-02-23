@@ -51,7 +51,6 @@ public class Usercreate extends HttpServlet {
 		String usertweet = request.getParameter("ctweet");
 		String profile_picture = request.getParameter("cprogpic");
 
-
 			if ( !pass.equals(conpass)) {
 				request.setAttribute("passerr", "パスワード一致しない！");
 				RequestDispatcher dispatcher =
