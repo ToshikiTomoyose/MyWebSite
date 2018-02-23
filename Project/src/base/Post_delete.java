@@ -2,24 +2,25 @@ package base;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import DAO.postDAO;
+
 /**
- * Servlet implementation class Userdelete_ok
+ * Servlet implementation class Post_delete
  */
-@WebServlet("/Userdelete_ok")
-public class Userdelete_ok extends HttpServlet {
+@WebServlet("/Post_delete")
+public class Post_delete extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Userdelete_ok() {
+    public Post_delete() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,9 +30,12 @@ public class Userdelete_ok extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		RequestDispatcher dispatcher =
-		request.getRequestDispatcher("/WEB-INF/jsp/userdeleteOK.jsp");
-		dispatcher.forward(request, response);
+		postDAO pdao = new postDAO();
+		String id = request.getParameter("id");
+		String threadid = request.getParameter("thread_id");
+		pdao.PostDelete(id);
+
+		response.sendRedirect("Bbs_main?id="+ id);
 	}
 
 	/**
@@ -40,7 +44,6 @@ public class Userdelete_ok extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
-
 	}
 
 }

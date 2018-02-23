@@ -8,7 +8,7 @@
 
 <%Userbean u =(Userbean)session.getAttribute("ub"); %>
 <%Bbs_threadbean btb =  (Bbs_threadbean)request.getAttribute("tub");%>
-<%--Bbs_postbean ptb =  (Bbs_postbean)request.getAttribute("pub");--%>
+<%Bbs_postbean ptb =  (Bbs_postbean)request.getAttribute("pub");%>
 <%List<Bbs_postbean> postList = (List<Bbs_postbean>) request.getAttribute("postlist"); %>
 
 <!DOCTYPE html>
@@ -105,18 +105,20 @@
                                 </div>
                             </div>
                         </div>
-
+                        <!-- ぬるぽ対策で単体のリクエストスコープも用いる -->
+				<% if (ptb != null) {%>
 				<%  for (Bbs_postbean bpb : postList) { %>
+				<% if (bpb.getThread_id() == ptb.getThread_id()) {%>
                  <div class="row-bottom-padded-md">
                         <div class="col-padding">
                             <div class="blog-entry">
                                 <div class="desc">
-                                    <a><%= bpb.getId()%>  :</a>
+                                    <a><%= ptb.getId()%>  :</a>
                                     <span><span><a href="userguide_view.html"><img src="images/skytree.jpg" width="50px"></a><small>/</small><small>ID <%= bpb.getUser_id()%></small><small>/</small> 名無しさん </span>
                                     <% if (u != null)  {%>
                                     <span class="text-right"><a href="#commentdelete">削除</a> /<a href="#report"> 通報</a></span>
                                     <% } %>
-                                    <p><%= bpb.getText()%></p>
+                                    <p><%= ptb.getText()%></p>
                                     <a><img src="images/img-1.jpg" class="img-responsive" alt="Free HTML5 Bootstrap Template by FreeHTML5.co"></a>
                                     <% if (u != null)  {%>
                                     <p class="text-right"><a href="#res">返信</a></p>
@@ -127,6 +129,8 @@
                         </div>
                     </div>
                     <% } %>
+                  <% } %>
+				<% } %>
 
             </div>
         </div>
@@ -181,16 +185,20 @@
 <div id="contents">
     <div id="modal">
         <div id="commentdelete">
+        <form action="Post_delete" method = "post">
             <a href="#" class="close_overlay posision: fixed;">×</a>
             <div class="modal_window">
                 <h2>commentを削除</h2>
                 <p>コメントを削除します宜しいでしょうか。</p>
                 <p>よろしければ<br />
-                <a class="btn btn-warning" href="#deleteok">削除。</a> <br />
+                <input type="hidden" value = "<%= ptb.getId()%>" name = "id">
+                <input type="hidden" value = "<%= ptb.getThread_id()%>" name = "thread_id">
+                <input type="submit" class="btn btn-warning" value="削除"> <br />
                 <p>そうでなければこのウィンドウを閉じる際は、ウィンドウ外をクリックするか、<br />
                 ×をクリック。</p>
                 <a href="#">【×】CLOSE</a>
             </div><!--/.modal_window-->
+            </form>
         </div><!--/#open01-->
 
         <div id="deleteok">

@@ -49,7 +49,7 @@ public class Bbs_main extends HttpServlet {
 		Bbs_postbean expost = pdao.Bbs_postExtract(id);
 		List<Bbs_postbean> postlist = pdao.findAllforPost();
 		request.setAttribute("postlist", postlist);
-//		request.setAttribute("pub", expost);
+		request.setAttribute("pub", expost);
 
 
 		RequestDispatcher dispatcher =
