@@ -3,9 +3,13 @@
 <%@ page import="beans.Userbean" %>
 <%@ page import="beans.Bbs_categorybean" %>
 <%@ page import="beans.Bbs_threadbean" %>
+<%@ page import="beans.Bbs_postbean" %>
+<%@ page import="java.util.List" %>
+
 <%Userbean u =(Userbean)session.getAttribute("ub"); %>
 <%Bbs_threadbean btb =  (Bbs_threadbean)request.getAttribute("tub");%>
-<%Bbs_postbean ptb =  (Bbs_postbean)request.getAttribute("pub");%>
+<%--Bbs_postbean ptb =  (Bbs_postbean)request.getAttribute("pub");--%>
+<%List<Bbs_postbean> postList = (List<Bbs_postbean>) request.getAttribute("postlist"); %>
 
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -89,7 +93,6 @@
                                     <% if (u != null)  {%>
                                     <span class="text-right"><a href="bbsdelete.html">このスレッドを削除</a></span>
                                     <% } %>
-                                    <a> 1  :</a>
                                     <span><a href="userguide_view.html"><img src="images/skytree.jpg" width="50px"></a><small>/</small><small>ID <%= btb.getUser_id() %></small><small>/</small>コンちゃん</span>
                                     <% if (u != null)  {%>
                                     <span class="text-right"><a href="#commentdelete">削除</a> /<a href="#report"> 通報</a></span>
@@ -103,17 +106,17 @@
                             </div>
                         </div>
 
-
+				<%  for (Bbs_postbean bpb : postList) { %>
                  <div class="row-bottom-padded-md">
                         <div class="col-padding">
                             <div class="blog-entry">
                                 <div class="desc">
-                                    <a> 2  :</a>
-                                    <span><span><a href="userguide_view.html"><img src="images/skytree.jpg" width="50px"></a><small>/</small><small>ID 1</small><small>/</small> 名無しさん </span>
+                                    <a><%= bpb.getId()%>  :</a>
+                                    <span><span><a href="userguide_view.html"><img src="images/skytree.jpg" width="50px"></a><small>/</small><small>ID <%= bpb.getUser_id()%></small><small>/</small> 名無しさん </span>
                                     <% if (u != null)  {%>
                                     <span class="text-right"><a href="#commentdelete">削除</a> /<a href="#report"> 通報</a></span>
                                     <% } %>
-                                    <p><%= ptb.getText()%></p>
+                                    <p><%= bpb.getText()%></p>
                                     <a><img src="images/img-1.jpg" class="img-responsive" alt="Free HTML5 Bootstrap Template by FreeHTML5.co"></a>
                                     <% if (u != null)  {%>
                                     <p class="text-right"><a href="#res">返信</a></p>
@@ -123,6 +126,8 @@
                             </div>
                         </div>
                     </div>
+                    <% } %>
+
             </div>
         </div>
         <div align="center"><a href="#top">▲上へ戻る </a></div>

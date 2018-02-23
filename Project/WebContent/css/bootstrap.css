@@ -2600,15 +2600,15 @@ mark,
 }
 
 .text-lowercase {
-  text-transform: lowercase;
+  text-transform: none;
 }
 
 .text-uppercase, .initialism {
-  text-transform: uppercase;
+  text-transform: none;
 }
 
 .text-capitalize {
-  text-transform: capitalize;
+  text-transform: none;
 }
 
 .text-muted {

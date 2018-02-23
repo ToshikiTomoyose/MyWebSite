@@ -122,7 +122,7 @@ figure figcaption {
   font-family: "Roboto", Arial, sans-serif;
   font-weight: 700;
   margin-bottom: 2em;
-  text-transform: uppercase;
+  text-transform: none;
   font-size: 38px;
 }
 @media screen and (max-width: 768px) {
@@ -156,7 +156,7 @@ figure figcaption {
   color: rgba(0, 0, 0, 0.9);
   text-decoration: none;
   letter-spacing: .1em;
-  text-transform: uppercase;
+  text-transform: none;
   font-size: 13px;
   font-weight: 600;
   position: relative;
@@ -409,7 +409,7 @@ figure figcaption {
 }
 #fh5co-hero .flexslider .slider-text > .slider-text-inner .btn {
   font-size: 12px;
-  text-transform: uppercase;
+  text-transform: none;
   letter-spacing: 2px;
   color: #fff;
   padding: 22px 30px !important;
@@ -502,7 +502,7 @@ body.offcanvas #fh5co-main, body.offcanvas .fh5co-nav-toggle {
 }
 .blog-entry .desc h3 {
   font-size: 15px;
-  text-transform: uppercase;
+  text-transform: none;
   margin-bottom: 10px;
   letter-spacing: 1px;
   line-height: auto;
@@ -515,7 +515,7 @@ body.offcanvas #fh5co-main, body.offcanvas .fh5co-nav-toggle {
   display: block;
   margin-bottom: 20px;
   font-size: 11px;
-  text-transform: uppercase;
+  text-transform: none;
   letter-spacing: 1px;
   color: rgba(0, 0, 0, 0.4) !important;
 }
@@ -524,7 +524,7 @@ body.offcanvas #fh5co-main, body.offcanvas .fh5co-nav-toggle {
 }
 .blog-entry .desc .lead {
   font-size: 11px;
-  text-transform: uppercase;
+  text-transform: none;
   letter-spacing: 2px;
   color: #000;
 }
@@ -662,7 +662,7 @@ body.offcanvas #fh5co-main, body.offcanvas .fh5co-nav-toggle {
   margin-bottom: 0;
 }
 .fh5co-cards .fh5co-flex-wrap .fh5co-card h5 {
-  text-transform: uppercase;
+  text-transform: none;
   font-size: 12px;
   letter-spacing: .2em;
   padding: 4px 8px;
@@ -814,7 +814,7 @@ body.offcanvas #fh5co-main, body.offcanvas .fh5co-nav-toggle {
   color: rgba(0, 0, 0, 0.8);
   font-size: 14px;
   letter-spacing: .2em;
-  text-transform: uppercase;
+  text-transform: none;
 }
 .fh5co-feature.fh5co-feature-sm .fh5co-text {
   margin-top: 30px;
@@ -833,7 +833,7 @@ body.offcanvas #fh5co-main, body.offcanvas .fh5co-nav-toggle {
   font-size: 18px;
   margin-bottom: 2em;
   font-weight: 500;
-  text-transform: uppercase;
+  text-transform: none;
   letter-spacing: 2px;
 }
 .fh5co-heading.fh5co-light {
@@ -854,7 +854,7 @@ body.offcanvas #fh5co-main, body.offcanvas .fh5co-nav-toggle {
   font-family: "Roboto", Arial, sans-serif;
   font-size: 18px;
   font-weight: 400;
-  text-transform: uppercase;
+  text-transform: none;
   letter-spacing: 1px;
   -webkit-border-radius: 0px;
   -moz-border-radius: 0px;
@@ -1035,7 +1035,7 @@ body.offcanvas #fh5co-main, body.offcanvas .fh5co-nav-toggle {
   height: 2px;
   color: #00a497;
   font: bold 14px/.4 Helvetica;
-  text-transform: uppercase;
+  text-transform:none;
   text-indent: -55px;
   background: #00a497;
   transition: all .2s ease-out;

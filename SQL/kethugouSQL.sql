@@ -18,7 +18,7 @@ FROM
   bbs_post INNER JOIN bbs_user 
     ON bbs_post.user_id = bbs_user.id 
 WHERE
-  bbs_post.thread_id = 1;
+  bbs_post.thread_id = 2;
 
-
+SELECT id, massage, post_photo, user_id, profile_photo, thread_id, create_date, update_date FROM bbs_post;
 

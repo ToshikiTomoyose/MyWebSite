@@ -1,6 +1,7 @@
 package base;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import DAO.bbsDAO;
+import DAO.postDAO;
 import beans.Bbs_postbean;
 import beans.Bbs_threadbean;
 import beans.Userbean;
@@ -36,15 +38,18 @@ public class Bbs_main extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		bbsDAO bdao = new bbsDAO();
+		postDAO pdao = new postDAO();
+		Bbs_postbean posb = new Bbs_postbean();
 
 		String id = request.getParameter("id");
 		System.out.println(id);
 		Bbs_threadbean dataub = bdao.findByBbs(id);
 		request.setAttribute("tub", dataub);
 
-//		String tid = request.getParameter("threadid");
-		Bbs_postbean expost = bdao.Bbs_postExtract(id);
-		request.setAttribute("pub", expost);
+		Bbs_postbean expost = pdao.Bbs_postExtract(id);
+		List<Bbs_postbean> postlist = pdao.findAllforPost();
+		request.setAttribute("postlist", postlist);
+//		request.setAttribute("pub", expost);
 
 
 		RequestDispatcher dispatcher =
@@ -76,7 +81,7 @@ public class Bbs_main extends HttpServlet {
 							dispatcher.forward(request, response);
 
 			} else  {
-				bbsDAO dao = new bbsDAO();
+				postDAO dao = new postDAO();
 				dao.BbsPost(posttext, postfile, userid, profilephoto, pthread_id );
 				response.sendRedirect("Bbs_main?id="+ pthread_id);
 			}
