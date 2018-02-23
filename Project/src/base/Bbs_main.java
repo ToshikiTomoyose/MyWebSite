@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import DAO.bbsDAO;
+import beans.Bbs_postbean;
 import beans.Bbs_threadbean;
 import beans.Userbean;
 
@@ -35,22 +36,15 @@ public class Bbs_main extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		bbsDAO bdao = new bbsDAO();
+
 		String id = request.getParameter("id");
 		System.out.println(id);
 		Bbs_threadbean dataub = bdao.findByBbs(id);
 		request.setAttribute("tub", dataub);
 
-//		Bbs_threadbean btb = new Bbs_threadbean();
-//		HttpSession session = request.getSession();
-//		Userbean u = (Userbean)session.getAttribute("ub");
-//
-//		String rid  = request.getParameter("id");
-//		String title = request.getParameter("title");
-//		String main = request.getParameter("maintext");
-//		String catid = request.getParameter("catid");
-//		String threphoto = request.getParameter("thread_photo");
-//		int userid = u.getUser_id();
-
+//		String tid = request.getParameter("threadid");
+		Bbs_postbean expost = bdao.Bbs_postExtract(id);
+		request.setAttribute("pub", expost);
 
 
 		RequestDispatcher dispatcher =

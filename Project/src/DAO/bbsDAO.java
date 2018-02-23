@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import beans.Bbs_categorybean;
+import beans.Bbs_postbean;
 import beans.Bbs_threadbean;;
 
 public class bbsDAO {
@@ -175,7 +176,6 @@ public class bbsDAO {
 		            }
 		        }
 		        return null;
-
 		}
 
 
@@ -206,5 +206,63 @@ public class bbsDAO {
 	                }
 	            }
 	        }
+		}
+
+
+		public Bbs_postbean Bbs_postExtract(String id) {
+			   Connection conn = null;
+//			   Bbs_threadbean treadbean = new Bbs_threadbean();
+			   Bbs_postbean postbean = new Bbs_postbean();
+
+		        try {
+		            // データベースへ接続
+		            conn = DBManager.getConnection();
+		            //↓　sqlのスペース入れ忘れ注意　くっついた扱いになりエラーになる
+		            String sql = "SELECT "
+	            					+	" bbs_post. * , bbs_user. * "
+		            				+ " FROM "
+	            					+ 	"bbs_post "
+            						+ "INNER JOIN bbs_user "
+            						+ 	"ON bbs_post.user_id = bbs_user.id "
+            						+ "WHERE "
+	            					+ "bbs_post.thread_id = ? ";
+
+	    		PreparedStatement pStmt = conn.prepareStatement(sql);
+		            pStmt.setString(1, id);
+		            ResultSet rs = pStmt.executeQuery();
+
+		            while (rs.next()) {
+		            	int post_id = rs.getInt("id");
+		            	String massage = rs.getString("massage");
+		            	String post_photo = rs.getString("post_photo");
+		            	int user_id = rs.getInt("user_id");
+		            	String profile_photo = rs.getString("profile_photo");
+		            	int thread_id = rs.getInt("thread_id");
+		            	String create_date = rs.getString("create_date");
+
+		            	postbean.setId(post_id);
+		            	postbean.setText(massage);
+		            	postbean.setPost_photo(post_photo);
+		            	postbean.setUser_id(user_id);
+		            	postbean.setProfile_photo(profile_photo);
+		            	postbean.setThread_id(thread_id);
+		            	postbean.setCreate_date(create_date);
+
+		                return  postbean;
+		            }
+		        } catch (SQLException e) {
+		            e.printStackTrace();
+		            return null;
+		        } finally {
+		            if (conn != null) {
+		                try {
+		                    conn.close();
+		                } catch (SQLException e) {
+		                    e.printStackTrace();
+		                    return null;
+		                }
+		            }
+		        }
+		        return null;
 		}
 }

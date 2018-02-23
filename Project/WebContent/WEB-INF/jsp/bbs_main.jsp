@@ -1,9 +1,11 @@
+<%@page import="beans.Bbs_postbean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="beans.Userbean" %>
 <%@ page import="beans.Bbs_categorybean" %>
 <%@ page import="beans.Bbs_threadbean" %>
 <%Userbean u =(Userbean)session.getAttribute("ub"); %>
 <%Bbs_threadbean btb =  (Bbs_threadbean)request.getAttribute("tub");%>
+<%Bbs_postbean ptb =  (Bbs_postbean)request.getAttribute("pub");%>
 
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -101,6 +103,7 @@
                             </div>
                         </div>
 
+
                  <div class="row-bottom-padded-md">
                         <div class="col-padding">
                             <div class="blog-entry">
@@ -110,7 +113,7 @@
                                     <% if (u != null)  {%>
                                     <span class="text-right"><a href="#commentdelete">削除</a> /<a href="#report"> 通報</a></span>
                                     <% } %>
-                                    <p>>>1 ちょｗｗｗｗ</p>
+                                    <p><%= ptb.getText()%></p>
                                     <a><img src="images/img-1.jpg" class="img-responsive" alt="Free HTML5 Bootstrap Template by FreeHTML5.co"></a>
                                     <% if (u != null)  {%>
                                     <p class="text-right"><a href="#res">返信</a></p>
