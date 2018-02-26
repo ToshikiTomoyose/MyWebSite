@@ -11,10 +11,11 @@ public class Bbs_postbean implements Serializable {
 	private int thread_id;
 	private String create_date;
 	private String update_date;
+	private String user_name;
 
 	public Bbs_postbean () {}
 
-	public Bbs_postbean (int id, String text, String post_photo, int user_id, String profile_photo, int thread_id, String create_date, String update_date) {
+	public Bbs_postbean (int id, String text, String post_photo, int user_id, String profile_photo, int thread_id, String create_date, String update_date, String user_name) {
 
 		this.id = id;
 		this.text = text;
@@ -24,6 +25,7 @@ public class Bbs_postbean implements Serializable {
 		this.thread_id = thread_id;
 		this.create_date = create_date;
 		this.update_date = update_date;
+		this.setUser_name(user_name);
 
 	}
 
@@ -89,6 +91,14 @@ public class Bbs_postbean implements Serializable {
 
 	public void setUpdate_date(String update_date) {
 		this.update_date = update_date;
+	}
+
+	public String getUser_name() {
+		return user_name;
+	}
+
+	public void setUser_name(String user_name) {
+		this.user_name = user_name;
 	}
 
 }

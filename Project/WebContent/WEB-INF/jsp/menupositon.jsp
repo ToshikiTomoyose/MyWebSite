@@ -7,7 +7,7 @@
                 <a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
                     <aside id="fh5co-aside" role="complementary" class="border js-fullheight">
 
-                            <h1 id="fh5co-logo"><a href="Index">TheBBS</a></h1>
+                            <h1 id="fh5co-logo"><a href="Index">THEBBS</a></h1>
 
                             <nav id="fh5co-main-menu" role="navigation">
 							<% if (u ==  null) { %>

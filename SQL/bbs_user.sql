@@ -54,3 +54,5 @@ USE my_bbs;
 	login_id,name,birth_date,profile_photo,create_date,update_date,password,report_flag)
 	 VALUES ('kon','コンちゃん','1951-05-02',null,now(),now(),'kon',0);
 	 rollback;
+	 
+SELECT * FROM bbs_thread ORDER BY RAND() LIMIT 4

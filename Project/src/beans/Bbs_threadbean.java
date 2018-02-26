@@ -11,10 +11,11 @@ public class Bbs_threadbean implements Serializable {
 	private String create_date;
 	private String update_date;
 	private String profile_photo;
+	private String user_name;
 
 	public Bbs_threadbean () {}
 
-	public Bbs_threadbean (int id, String title, String maintext, int category_id, String thread_photo, int user_id, String create_date, String update_date, String profile_photo) {
+	public Bbs_threadbean (int id, String title, String maintext, int category_id, String thread_photo, int user_id, String create_date, String update_date, String profile_photo, String user_name) {
 
 		this.id = id;
 		this.title = title;
@@ -25,7 +26,7 @@ public class Bbs_threadbean implements Serializable {
 		this.create_date = create_date;
 		this.update_date = update_date;
 		this.profile_photo = profile_photo;
-
+		this.setUser_name(user_name);
 	}
 
 	public int getId() {
@@ -98,5 +99,13 @@ public class Bbs_threadbean implements Serializable {
 
 	public void setProfile_photo(String profile_photo) {
 		this.profile_photo = profile_photo;
+	}
+
+	public String getUser_name() {
+		return user_name;
+	}
+
+	public void setUser_name(String user_name) {
+		this.user_name = user_name;
 	}
 }

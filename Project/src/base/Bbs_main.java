@@ -70,6 +70,7 @@ public class Bbs_main extends HttpServlet {
 		String posttext = request.getParameter("posttext");
 		String postfile = request.getParameter("postfile");
 		int userid = u.getUser_id();
+		String username = u.getName();
 		String profilephoto = u.getProfile_photo();
 		String pthread_id = request.getParameter("threadid");
 
@@ -82,7 +83,7 @@ public class Bbs_main extends HttpServlet {
 
 			} else  {
 				postDAO dao = new postDAO();
-				dao.BbsPost(posttext, postfile, userid, profilephoto, pthread_id );
+				dao.BbsPost(posttext, postfile, userid, profilephoto, pthread_id, username );
 				response.sendRedirect("Bbs_main?id="+ pthread_id);
 			}
 		}

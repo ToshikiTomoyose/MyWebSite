@@ -12,12 +12,12 @@ import beans.Bbs_postbean;
 
 public class postDAO {
 
-	public void BbsPost(String pmassage, String pphoto, int user_id, String pprofile_photo, String thread_id) {
+	public void BbsPost(String pmassage, String pphoto, int user_id, String pprofile_photo, String thread_id, String user_name) {
         Connection conn = null;
         try {
         	//SELECT文
         	conn = DBManager.getConnection();
-            String sql = "INSERT INTO bbs_post ( massage, post_photo, user_id, profile_photo, thread_id, create_date, update_date ) VALUES ( ?, ?, ?, ?, ?, now(), now() )";
+            String sql = "INSERT INTO bbs_post ( massage, post_photo, user_id, profile_photo, thread_id, create_date, update_date, user_name ) VALUES ( ?, ?, ?, ?, ?, now(), now(), ? )";
 
             PreparedStatement pStmt = conn.prepareStatement(sql);
             pStmt.setString(1, pmassage);
@@ -25,6 +25,7 @@ public class postDAO {
             pStmt.setInt(3, user_id);
             pStmt.setString(4, pprofile_photo);
             pStmt.setString(5, thread_id);
+            pStmt.setString(6, user_name);
 
             int rs = pStmt.executeUpdate();
         } catch (SQLException e) {
@@ -50,7 +51,7 @@ public class postDAO {
 	            try {
 	                conn = DBManager.getConnection();
 
-	                String sql = "SELECT id, massage, post_photo, user_id, profile_photo, thread_id, create_date, update_date FROM bbs_post";
+	                String sql = "SELECT id, massage, post_photo, user_id, profile_photo, thread_id, create_date, update_date, user_name FROM bbs_post";
 	                Statement stmt = conn.createStatement();
 	                ResultSet rs = stmt.executeQuery(sql);
 
@@ -63,7 +64,8 @@ public class postDAO {
 	                    int thread_id = rs.getInt("thread_id");
 	                    String create_date = rs.getString("create_date");
 	                    String update_date = rs.getString("update_date");
-	                    Bbs_postbean post = new Bbs_postbean(id, massage, post_photo, user_id, profile_photo, thread_id, create_date, update_date);
+	                    String user_name = rs.getString("user_name");
+	                    Bbs_postbean post = new Bbs_postbean(id, massage, post_photo, user_id, profile_photo, thread_id, create_date, update_date, user_name);
 	                    postList.add(post);
 	                }
 	            } catch (SQLException e) {
@@ -86,7 +88,6 @@ public class postDAO {
 
 	public Bbs_postbean Bbs_postExtract(String id) {
 		   Connection conn = null;
-//		   Bbs_threadbean treadbean = new Bbs_threadbean();
 		   Bbs_postbean postbean = new Bbs_postbean();
 
 	        try {
@@ -114,6 +115,7 @@ public class postDAO {
 	            	String profile_photo = rs.getString("profile_photo");
 	            	int thread_id = rs.getInt("thread_id");
 	            	String create_date = rs.getString("create_date");
+	            	String user_name = rs.getString("user_name");
 
 	            	postbean.setId(post_id);
 	            	postbean.setText(massage);
@@ -122,6 +124,7 @@ public class postDAO {
 	            	postbean.setProfile_photo(profile_photo);
 	            	postbean.setThread_id(thread_id);
 	            	postbean.setCreate_date(create_date);
+	            	postbean.setUser_name(user_name);
 
 	                return  postbean;
 	            }

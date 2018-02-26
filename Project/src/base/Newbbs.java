@@ -54,6 +54,7 @@ public class Newbbs extends HttpServlet {
 		String title = request.getParameter("bbstitle");
 		String photo = request.getParameter("threadphoto");
 		String maintext = request.getParameter("maintext");
+		String user_name = u.getName();
 
 		if  ( category.equals("") || title.equals("")  || maintext.equals("")  ) {
 
@@ -64,7 +65,7 @@ public class Newbbs extends HttpServlet {
 
 		} else  {
 			bbsDAO dao = new bbsDAO();
-			dao.Bbscreate(title, maintext, category, photo, id, profilephoto);
+			dao.Bbscreate(title, maintext, category, photo, id, profilephoto, user_name);
 //			response.sendRedirect("Newbbsconfim");
 			response.sendRedirect("Bbsguide_medium");
 		}

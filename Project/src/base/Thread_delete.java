@@ -8,19 +8,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import DAO.postDAO;
+import DAO.bbsDAO;
 
 /**
- * Servlet implementation class Post_delete
+ * Servlet implementation class Thread_delete
  */
-@WebServlet("/Post_delete")
-public class Post_delete extends HttpServlet {
+@WebServlet("/Thread_delete")
+public class Thread_delete extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Post_delete() {
+    public Thread_delete() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,14 +30,12 @@ public class Post_delete extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		postDAO pdao = new postDAO();
-		String id = request.getParameter("id");
-		String threadid = request.getParameter("thread_id");
-		pdao.PostDelete(id);
+		bbsDAO pdao = new bbsDAO();
+		String id = request.getParameter("tdid");
+		System.out.println(id);
+		pdao.ThreadDelete(id);
 
-		System.out.println(id + threadid);
-
-		response.sendRedirect("Bbs_main?id="+ id);
+		response.sendRedirect("Bbsguide_medium");
 	}
 
 	/**
