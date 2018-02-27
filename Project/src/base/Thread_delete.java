@@ -30,10 +30,10 @@ public class Thread_delete extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		bbsDAO pdao = new bbsDAO();
+		bbsDAO bdao = new bbsDAO();
 		String id = request.getParameter("tdid");
 		System.out.println(id);
-		pdao.ThreadDelete(id);
+		bdao.ThreadDelete(id);
 
 		response.sendRedirect("Bbsguide_medium");
 	}

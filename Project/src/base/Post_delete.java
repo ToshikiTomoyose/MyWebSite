@@ -37,7 +37,7 @@ public class Post_delete extends HttpServlet {
 
 		System.out.println(id + threadid);
 
-		response.sendRedirect("Bbs_main?id="+ id);
+		response.sendRedirect("Bbs_main?id="+ threadid);
 	}
 
 	/**

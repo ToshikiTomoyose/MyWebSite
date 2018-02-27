@@ -1,4 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="beans.Bbs_threadbean" %>
+<%@ page import="beans.Userbean" %>
+<%@ page import="java.util.List" %>
+
+<%List<Bbs_threadbean> threadlist = (List<Bbs_threadbean>)request.getAttribute("threadlist");%>
+<%Userbean u =(Userbean)session.getAttribute("ub"); %>
 
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -98,45 +104,23 @@
                 <p></p>
 
 				<div class="row row-bottom-padded-md">
+				<% for (Bbs_threadbean threadbean : threadlist) {%>
 					<div class="col-md-3 col-sm-6 col-padding animate-box" data-animate-effect="fadeInLeft">
 						<div class="blog-entry">
 							<a class="blog-img"><img src="images/img-1.jpg" class="img-responsive" alt="Free HTML5 Bootstrap Template by FreeHTML5.co"></a>
 							<div class="desc">
-								<h3>Inspirational Website</h3>
-								<span><small>by Admin </small> / <small> Web Design </small> / <small> <i class="icon-comment"></i> 14</small></span>
-								<p>Design must be functional and functionality must be translated into visual aesthetics</p>
-                                    <a class="btn btn-info btn-block" href="bbsmain.html" role="button">詳細</a>
-                                    <a class="btn btn-danger btn-block" href="bbsdelete.html" role="button">削除</a>
+								<h3><%= threadbean.getTitle() %></h3>
+								<span><small>by <%= threadbean.getUser_name() %> </small> / <small> category </small> / <small> <i class="icon-comment"></i> <%= threadbean.getCategory_id() %> </small></span>
+								<p><%= threadbean.getMaintext() %></p>
+                                    <a class="btn btn-info btn-block" href="Bbs_main?id=<%= threadbean.getId() %>" role="button">詳細</a>
+                                    <form action="Thread_delete" method ="post">
+	                                    <input type="hidden" value="<%= threadbean.getId() %>" name = "delid">
+	                                    <input type="submit" class="btn btn-danger btn-block" value="削除">
+                                    </form>
 							</div>
 						</div>
 					</div>
-					<div class="col-md-3 col-sm-6 col-padding animate-box" data-animate-effect="fadeInLeft">
-						<div class="blog-entry">
-							<a class="blog-img"><img src="images/img-1.jpg" class="img-responsive" alt="Free HTML5 Bootstrap Template by FreeHTML5.co"></a>
-							<div class="desc">
-								<h3>Inspirational Website</h3>
-								<span><small>by Admin </small> / <small> Web Design </small> / <small> <i class="icon-comment"></i> 14</small></span>
-								<p>Design must be functional and functionality must be translated into visual aesthetics</p>
-                                    <a class="btn btn-info btn-block" href="bbsmain.html" role="button">詳細</a>
-                                    <a class="btn btn-danger btn-block" href="bbsdelete.html" role="button">削除</a>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-3 col-sm-6 col-padding animate-box" data-animate-effect="fadeInLeft">
-						<div class="blog-entry">
-							<a class="blog-img"><img src="images/img-1.jpg" class="img-responsive" alt="Free HTML5 Bootstrap Template by FreeHTML5.co"></a>
-							<div class="desc">
-								<h3>Inspirational Website</h3>
-								<span><small>by Admin </small> / <small> Web Design </small> / <small> <i class="icon-comment"></i> 14</small></span>
-								<p>Design must be functional and functionality must be translated into visual aesthetics</p>
-                                    <a class="btn btn-info btn-block" href="bbsmain.html" role="button">詳細</a>
-                                    <a class="btn btn-danger btn-block" href="bbsdelete.html" role="button">削除</a>
-							</div>
-						</div>
-					</div>
-
-
-
+				<% } %>
 				</div>
 			</div>
 		  </div>

@@ -182,7 +182,7 @@
             </div>
 	</div>
 
-
+<% if (ptb != null) {%>
 <section>
 <div id="contents">
     <div id="modal">
@@ -244,6 +244,7 @@
 
 </div><!--/#contents-->
             </section>
+ <% } %>
 
 <jsp:include page="/WEB-INF/jsp/logoutmolder.jsp" />
 

@@ -39,7 +39,7 @@ public class Bbs_main extends HttpServlet {
 		// TODO Auto-generated method stub
 		bbsDAO bdao = new bbsDAO();
 		postDAO pdao = new postDAO();
-		Bbs_postbean posb = new Bbs_postbean();
+//		Bbs_postbean posb = new Bbs_postbean();
 
 		String id = request.getParameter("id");
 		System.out.println(id);
