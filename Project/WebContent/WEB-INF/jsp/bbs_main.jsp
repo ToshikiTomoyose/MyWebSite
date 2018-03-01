@@ -91,15 +91,15 @@
                                     <a id="top">スレッドID 【<%= btb.getId() %>】</a>
                                     <h1 class="text-left"><%= btb.getTitle() %></h1>
                                     <% if (u != null)  {%>
+                                    	<% if (btb.getUser_id() == u.getUser_id() )  {%>
                                     <form action = "Thread_delete" method = "get">
-                                    <input type ="hidden" value = "<%= btb.getId()%>" name = "tdid" >
-                                    <span class="text-right"><input type ="submit" class="btn btn-warning" value ="このスレッドを削除"></span>
-                                    </form>
+                                    	<input type ="hidden" value = "<%= btb.getId()%>" name = "tdid" >
+	                                    <span class="text-right"><input type ="submit" class="btn btn-warning" value ="このスレッドを削除"></span>
+	                                    </form>
+	                                    <% } %>
                                     <% } %>
                                     <span><a href="userguide_view.html"><img src="images/skytree.jpg" width="50px"></a><small>/</small><small>ID <%= btb.getUser_id() %></small><small>/</small><%= btb.getUser_name() %></span>
-                                    <% if (u != null)  {%>
-                                    <span class="text-right"><a href="#commentdelete">削除</a> /<a href="#report"> 通報</a></span>
-                                    <% } %>
+                                   	<span class="text-right"><a href="#report"> 通報</a></span>
                                     <p><%= btb.getMaintext() %></p>
                                     <a><img src="images/img-1.jpg" class="img-responsive" alt="Free HTML5 Bootstrap Template by     FreeHTML5.co"></a>
                                    <% if (u != null)  {%>
@@ -110,14 +110,14 @@
                         </div>
                         <!-- ぬるぽ対策で単体のリクエストスコープも用いる -->
 				<% if (ptb != null) {%>
-				<%  for (Bbs_postbean bpb : postList) { %>
+				<%for (Bbs_postbean bpb : postList) { %>
 				<!-- 一覧から踏んだリクエストと一致させる　リクエストスコープのだと表示がおかしくなるので拡張for文を用いる -->
 				<% if (bpb.getThread_id() == ptb.getThread_id()) {%>
                  <div class="row-bottom-padded-md">
                         <div class="col-padding">
                             <div class="blog-entry">
                                 <div class="desc">
-                                    <a><%= ptb.getId()%>  :</a>
+                                    <a>1  :</a>
                                     <span><span><a href="userguide_view.html"><img src="images/skytree.jpg" width="50px"></a><small>/</small><small>ID <%= bpb.getUser_id()%></small><small>/</small> <%= bpb.getUser_name()%> </span>
                                     <% if (u != null)  {%>
                                     <span class="text-right"><a href="#commentdelete">削除</a> /<a href="#report"> 通報</a></span>
@@ -132,6 +132,73 @@
                             </div>
                         </div>
                     </div>
+
+                    <% if (ptb != null) {%>
+<section>
+<div id="contents">
+    <div id="modal">
+        <div id="commentdelete">
+        <form action="Post_delete" method = "post">
+            <a href="#" class="close_overlay posision: fixed;">×</a>
+            <div class="modal_window">
+                <h2>commentを削除</h2>
+                <p>コメントを削除します宜しいでしょうか。</p>
+                <p>よろしければ<br />
+                <input type="hidden" value = "<%= ptb.getId()%>" name = "id">
+                <input type="hidden" value = "<%= ptb.getThread_id()%>" name = "thread_id">
+                <input type="submit" class="btn btn-warning" value="削除"> <br />
+                <p>そうでなければこのウィンドウを閉じる際は、ウィンドウ外をクリックするか、<br />
+                ×をクリック。</p>
+                <a href="#">【×】CLOSE</a>
+            </div><!--/.modal_window-->
+            </form>
+        </div><!--/#open01-->
+
+        <div id="deleteok">
+            <a href="#" class="close_overlay posision: fixed;">×</a>
+            <div class="modal_window">
+                <h2>commentを削除完了。</h2>
+                <p>コメントを削除しました！</p>
+                <p>ウィンドウ外をクリックするか、<br />
+                ×をクリックで閉じます。</p>
+                <a href="#">【×】CLOSE</a>
+            </div><!--/.modal_window-->
+        </div>
+
+        <div id="report">
+                    <a href="#" class="close_overlay posision: fixed;">×</a>
+                    <div class="modal_window">
+                    <form action="User_report" method = "post">
+                        <h2>コメントのユーザを通報</h2>
+                        <input type="hidden" value = "<%= ptb.getId()%>" name = "posid">
+                        <input type="hidden" value = "<%= ptb.getUser_id()%>" name = "urid">
+                        <p>ユーザ名「<%= ptb.getUser_name()%>」を通報します</p>
+                        <p>通報しますか<br />
+                        <input type="submit" class="btn btn-warning" value="通報"> <br />
+                        <p>そうでなければこのウィンドウを閉じる際は、ウィンドウ外をクリックするか、<br />
+                        ×をクリック。</p>
+                        <a href="#">【×】CLOSE</a>
+                     </form>
+                    </div>
+        </div>
+
+        <div id="reportok">
+                    <a href="#" class="close_overlay posision: fixed;">×</a>
+                    <div class="modal_window">
+                        <h2>通報完了。</h2>
+                        <p>ユーザ名「いいい」を通報しますた。</p>
+                        <p>ウィンドウ外をクリックするか、<br />
+                            ×をクリックで閉じます。</p>
+                        <a href="#">【×】CLOSE</a>
+                    </div><!--/.modal_window-->
+        </div>
+
+    </div><!--/#modal-->
+
+</div><!--/#contents-->
+            </section>
+
+ <% } %>
                     <% } %>
                   <% } %>
 				<% } %>
@@ -174,77 +241,15 @@
             	</div>
                 <div class="row">
                     <div class="col-md-6 col-md-offset-3 col-md-pull-3 animate-box" data-animate-effect="fadeInLeft">
-                        <p class="fh5co-lead">↓　まずは新規登録だ☆</p>
-                        <p><a href="Usercreate" class="btn btn-primary">新規登録</a></p>
+                        <p class="fh5co-lead">↓　まずはログインだ☆</p>
+                        <p><a href="Login" class="btn btn-primary">ログイン</a></p>
                     </div>
                 </div>
             <% } %>
             </div>
 	</div>
 
-<% if (ptb != null) {%>
-<section>
-<div id="contents">
-    <div id="modal">
-        <div id="commentdelete">
-        <form action="Post_delete" method = "post">
-            <a href="#" class="close_overlay posision: fixed;">×</a>
-            <div class="modal_window">
-                <h2>commentを削除</h2>
-                <p>コメントを削除します宜しいでしょうか。</p>
-                <p>よろしければ<br />
-                <input type="hidden" value = "<%= ptb.getId()%>" name = "id">
-                <input type="hidden" value = "<%= ptb.getThread_id()%>" name = "thread_id">
-                <input type="submit" class="btn btn-warning" value="削除"> <br />
-                <p>そうでなければこのウィンドウを閉じる際は、ウィンドウ外をクリックするか、<br />
-                ×をクリック。</p>
-                <a href="#">【×】CLOSE</a>
-            </div><!--/.modal_window-->
-            </form>
-        </div><!--/#open01-->
 
-        <div id="deleteok">
-            <a href="#" class="close_overlay posision: fixed;">×</a>
-            <div class="modal_window">
-                <h2>commentを削除完了。</h2>
-                <p>コメントを削除しました！</p>
-                <p>ウィンドウ外をクリックするか、<br />
-                ×をクリックで閉じます。</p>
-                <a href="#">【×】CLOSE</a>
-            </div><!--/.modal_window-->
-        </div>
-
-        <div id="report">
-                    <a href="#" class="close_overlay posision: fixed;">×</a>
-                    <div class="modal_window">
-                    <form action="User_report" method = "post">
-                        <h2>コメントのユーザを通報</h2>
-                        <p>ユーザ名「いいい」を通報します</p>
-                        <p>通報しますか<br />
-                        <input type="submit" class="btn btn-warning" value="通報"> <br />
-                        <p>そうでなければこのウィンドウを閉じる際は、ウィンドウ外をクリックするか、<br />
-                        ×をクリック。</p>
-                        <a href="#">【×】CLOSE</a>
-                     </form>
-                    </div>
-        </div>
-
-        <div id="reportok">
-                    <a href="#" class="close_overlay posision: fixed;">×</a>
-                    <div class="modal_window">
-                        <h2>通報完了。</h2>
-                        <p>ユーザ名「いいい」を通報しますた。</p>
-                        <p>ウィンドウ外をクリックするか、<br />
-                            ×をクリックで閉じます。</p>
-                        <a href="#">【×】CLOSE</a>
-                    </div><!--/.modal_window-->
-        </div>
-
-    </div><!--/#modal-->
-
-</div><!--/#contents-->
-            </section>
- <% } %>
 
 <jsp:include page="/WEB-INF/jsp/logoutmolder.jsp" />
 

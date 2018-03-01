@@ -55,6 +55,7 @@ public class Bbs_main extends HttpServlet {
 		RequestDispatcher dispatcher =
 		request.getRequestDispatcher("/WEB-INF/jsp/bbs_main.jsp");
 		dispatcher.forward(request, response);
+
 	}
 
 	/**

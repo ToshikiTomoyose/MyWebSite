@@ -114,7 +114,7 @@
 								<p><%= threadbean.getMaintext() %></p>
                                     <a class="btn btn-info btn-block" href="Bbs_main?id=<%= threadbean.getId() %>" role="button">詳細</a>
                                     <form action="Thread_delete" method ="post">
-	                                    <input type="hidden" value="<%= threadbean.getId() %>" name = "delid">
+	                                    <input type="hidden" value="<%= threadbean.getId() %>" name = "tdid">
 	                                    <input type="submit" class="btn btn-danger btn-block" value="削除">
                                     </form>
 							</div>

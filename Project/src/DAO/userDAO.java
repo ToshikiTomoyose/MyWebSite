@@ -280,6 +280,38 @@ public class userDAO {
 			return null;
 	  }
 
+
+		public Userbean UserReport(String id) {
+	        Connection conn = null;
+	        try {
+	            // データベースへ接続、SELECT文で文字内のを呼び、書き換えるため次はUPDATE文を使いユーザ識別するためのWHERE文も使う
+	        	conn = DBManager.getConnection();
+	            // INSERT文を準備
+	            String sql = "UPDATE bbs_user SET report_flag = 1 WHERE id = ? ";
+
+	         // SELECTを実行し、結果表を取得
+	            PreparedStatement pStmt = conn.prepareStatement(sql);
+	            pStmt.setString(1, id);
+	            int rs = pStmt.executeUpdate();
+
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        } finally {
+
+	            // データベース切断
+	            if (conn != null) {
+	                try {
+	                    conn.close();
+	                } catch (SQLException e) {
+	                    e.printStackTrace();
+
+	                }
+	            }
+	        }
+			return null;
+	  }
+
+
 		public List<Userbean> searchUser(String id) {
 			   Connection conn = null;
 			   List<Userbean> beanlist = new ArrayList<Userbean>();

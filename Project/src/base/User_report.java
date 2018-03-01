@@ -7,22 +7,20 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import DAO.bbsDAO;
-import beans.Userbean;
+import DAO.userDAO;
 
 /**
- * Servlet implementation class Thread_delete
+ * Servlet implementation class User_report
  */
-@WebServlet("/Thread_delete")
-public class Thread_delete extends HttpServlet {
+@WebServlet("/User_report")
+public class User_report extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Thread_delete() {
+    public User_report() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,18 +30,7 @@ public class Thread_delete extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		bbsDAO bdao = new bbsDAO();
-		String id = request.getParameter("tdid");
-		System.out.println(id);
-		bdao.ThreadDelete(id);
 
-		HttpSession session = request.getSession();
-		Userbean u = (Userbean)session.getAttribute("ub");
-		if (u.getUser_id() == (10) ) {
-			response.sendRedirect("Ownermenu_bbs");
-		} else {
-			response.sendRedirect("Bbsguide_medium");
-		}
 	}
 
 	/**
@@ -51,7 +38,12 @@ public class Thread_delete extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		userDAO dao = new userDAO();
+		String pid = request.getParameter("posid");
+		String urid = request.getParameter("urid");
+		dao.UserReport(urid);
+
+			response.sendRedirect("Bbs_main?id="+ pid);
 	}
 
 }
